@@ -1,0 +1,3236 @@
+%\documentclass[UTF8]{ctexart}
+%基本文件设置，Ctex中文+UTF8编码。需要XeTex编译。
+%用这个生成中文索引USE：cctmkind -o 微分几何.ind -s cct.ist -C pinyin 微分几何.idx
+%备选USE：cctmkind -o 微分几何.ind -s cct.ist -C stroke 微分几何.idx
+%备选USE：cctmkind -o 微分几何.ind -s cct.ist -C mixed 微分几何.idx
+%------------------文件设置-----------------
+\documentclass[winfonts,UTF8,c5size,a4paper,fancyhdr,hyperref,titlepage,nocap]{ctexart}
+%winfonts=使用Windows 的字体设置，默认为六种中易字体：宋体、仿宋、黑体、楷体、隶书、幼圆（在使用XeTEX时只有前四种）。该选项的结果将和老版本ctex宏包完全一致。这是默认设置。
+%cs4size=使用小四字号为缺省字体大小。
+%a4paper=页面大小为A4。
+%fancyhdr=保持和fancyhdr宏包的兼容性。该选项将使得fancyhdr宏包被自动调用。
+%hyperref=自动判断调用fancyhdr宏包的正确参数以避免产生乱码。该选项将使得hyperref宏包被自动调用。
+%------------------整体格式-----------------
+%\usepackage[xetex]{hyperref}%让生成的文章目录有链接和标签。
+%\usepackage{ifthen}
+%条件分支
+%\ifthenelse{test}{then_text}{else_text}%
+%测试test，如果为真，执行then_text语句；如果为假，执行else_text。
+%\whiledo{test}{do_text}
+%测试test，为真则执行do_text语句，为假则不执行。
+\usepackage{amsmath,amsthm,amssymb,amsfonts,bm}         %AMS数学包。
+\usepackage[all]{xy}                                    %交换图表。
+\usepackage{epic}															%增强绘图。
+\usepackage{graphicx}														%图像增强
+\usepackage{mathrsfs,mathtools}
+\usepackage{cite}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{upgreek}%直立的小写希腊字母
+\usepackage[text={170mm,250mm},centering]{geometry}   %调整页面布局
+%\CTEXsetup[number={},indent={-1ex}]{section}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{color}
+\CTEXoptions[today=small]
+\renewcommand{\labelitemii}{\textbullet}
+\renewcommand{\labelitemiii}{\textbullet}
+\renewcommand{\labelitemiv}{\textbullet}
+%-----------------定理命题-----------------
+\newtheorem{thm}{定理}
+\newtheorem{cor}[thm]{推论}
+\newtheorem{con}[thm]{结论}
+\newtheorem{lem}[thm]{引理}
+\newtheorem{prop}[thm]{命题}
+\newtheorem{axiom}{公理}
+\newtheorem{xiti}{习题}
+\newtheorem{exa}[thm]{例}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{定义}
+\theoremstyle{remark}
+\newtheorem*{rem}{注}
+\newtheorem*{note}{约定}
+\numberwithin{equation}{subsection}
+\renewcommand{\proofname}{\bf  证明}
+% THEOREM Environments --------------------------------------------------------
+%\newtheorem{thm}{Theorem}[subsection]
+%\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{prop}[thm]{Proposition}
+%\theoremstyle{definition}
+%\newtheorem{defn}[thm]{Definition}
+%\theoremstyle{remark}
+%\newtheorem{rem}[thm]{Remark}
+%\numberwithin{equation}{subsection}
+%-----------------页眉页脚-----------------
+%\usepackage{fancyhdr}                       %页眉页脚包
+%\pagestyle{fancy}                           %设置页眉
+%-----------------制定命令-----------------
+% MATH ------------------------------------------------------------------------
+\DeclareMathOperator{\RE}{Re}
+\DeclareMathOperator{\IM}{Im}
+\DeclareMathOperator{\ess}{ess}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\s}{\mathcal{S}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+%\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\BOP}{\mathbf{B}}
+\newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+\newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Field}{\mathbb{F}}
+\newcommand{\RPlus}{\Real^{+}}
+\newcommand{\pp}{\mathcal{P}}
+\newcommand{\Polar}{\mathcal{P}_{\s}}
+\newcommand{\Poly}{\mathcal{P}(E)}
+\newcommand{\EssD}{\mathcal{D}}
+\newcommand{\Lom}{\mathcal{L}}
+\newcommand{\States}{\mathcal{T}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\seq}[1]{\left<#1\right>}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+\newcommand{\ob}{\mathrm{ob}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\base}[1]{\mathrm{base}(\mathscr{#1})}
+\newcommand{\bun}[1]{\mathrm{bun}\mathcal{#1}}
+\newcommand{\fib}{\mathrm{fib}}
+\newcommand{\RP}{\mathbb{R}\mathbf{P}}
+\newcommand{\red}{\color{red}}
+\newcommand{\dd}{\operatorname{d}}
+\newcommand{\dt}{\frac{\operatorname{d}}{\operatorname{d}t}}
+\newcommand{\pfrac}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\px}[1]{\left.\pfrac{}{x^{#1}}\right|_p}
+\newcommand{\py}[1]{\left.\pfrac{}{y^{#1}}\right|_q}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\spa}{\operatorname{span}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Xf}[1]{\mathfrak{X}(#1)}
+\newcommand{\local}[2]{\left.{#1}\right|_{#2}}%Local #1 at #2
+\newcommand{\localt}[1]{\local{#1}{t=0}}%Local #1 at  t=0
+\newcommand{\localp}[1]{\local{#1}{p}}%Local #1 at  p
+%==================================================
+\newcommand{\defen}{\mathop{\iff}\limits^{\mathclap{\text{\scriptsize def}}}}%s上标箭头
+\newcommand{\markar}[1]{\stackrel{{#1}}{\longrightarrow}}%带标号箭头（定长，与\xleftarrow不同）
+\newcommand{\defeq}{\stackrel{{\mathrm{def}}}{=}}
+\newcommand{\mexseq}[2]{\cdots \longrightarrow {#1}_{n-1} \markar{{#2}_{n-1}} {#1}_n \markar{{#2}_n} {#1}_{n+1} \longrightarrow \cdots}
+  %middle exact sequence
+\newcommand{\schain}[2]{{#1}_0 \markar{{#2}_0} {#1}_1 \markar{{#2}_1} {#1}_2 \longrightarrow \cdots}
+  %起始链
+\newcommand{\fchain}[2]{\cdots \longrightarrow {#1}_{n-2} \markar{{#2}_{n-2}} {#1}_{n-1} \markar{{#2}_{n-1}} {#1}_n}
+  %结束链
+\newcommand{\lchain}[2]{{#1}_0 \markar{{#2}_0} {#1}_1 \markar{{#2}_1} {#1}_2 \longrightarrow \cdots \longrightarrow {#1}_{n-2} \markar{{#2}_{n-2}} {#1}_{n-1} \markar{{#2}_{n-1}} {#1}_n}
+  %完整长链
+\newcommand{\mapdes}[5]
+  {
+    \begin{align*}
+      #1\colon\  #2 & \longrightarrow  #3 \\
+            #4 & \mapsto  #5
+    \end{align*}
+    %多于两个对齐点，align会出问题。换用alignat。
+  }
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\grad}{\operatorname{grad}}%梯度
+\newcommand{\curl}{\operatorname{curl}}%旋度
+\newcommand{\Div}{\operatorname{div}}%散度
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\ad}{\operatorname{ad}}
+%------------------标题作者-----------------
+\title{微分几何笔记}
+\author{Gau Syu}
+\date{last version: \today}
+%\setcounter{secnumdepth}{1}
+\makeindex
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\section*{Preface}
+\addcontentsline{toc}{section}{Preface}
+这是2012年下半年南开大学数学科学学院黄利兵老师的研究生课程“微分几何”的笔记。
+
+过往版本：
+\begin{itemize}
+  \item ver1.0: 2013.1.2
+  \item ver1.1: 2013.1.22
+\end{itemize}
+
+\subsection{主要内容}
+\begin{enumerate}
+  \item 微分流形
+  \begin{enumerate}
+    \item 向量场
+    \item 张量场
+    \item 切丛、余切丛
+  \end{enumerate}
+  \item 外微分
+  \begin{enumerate}
+    \item 活动标架法和李群
+  \end{enumerate}
+  \item 主纤维丛上的联络
+\end{enumerate}
+\subsection{教材}
+陈省身，《微分几何讲义》
+\subsection{参考书}
+\begin{itemize}
+  \item Kobayashi \& Nomizu\\
+Foundations of Differential Geometry\\
+Vol.I Chapts 1-2
+  \item M.Spivak\\
+A Comprehensive Introduction to Differential Geometry\\
+Vol. II 1,Gauss's paper 2,Riemann's report 3,联络概念的5个版本
+  \item J.M.Lee, Introduction to Smooth Manifolds(GTM218)
+\end{itemize}
+\tableofcontents
+\newpage
+\section{微分流形}
+\subsection*{2012-9-13}
+记号：$\Real^n$。
+\begin{defn}
+  $n$元函数$f:\Real^n\to\Real^n$，若$f$的任意$r$阶偏导数存在且连续，则称$f$为{\red$C^r$}\index{$C^r$函数}的。
+\end{defn}
+\begin{exa}
+  $C^{\infty}$，{\red 光滑函数}\index{光滑函数}。
+
+  $C^{\omega}$，{\red 解析函数}\index{解析函数}。
+\begin{equation*}
+f(x)=f(x_0)+\sum\frac{\partial f}{\partial x_i}(x_0)(x_i-(x_0)_i)+\frac{1}{2}\sum\frac{\partial^2f}{\partial x_i\partial x_j}(x_0)(x_i-(x_0)_i)(x_j-(x_0)_j)+\cdots
+\end{equation*}
+\end{exa}
+\begin{defn}
+  设$M$是Hausdorff空间，若对任意的$x\in M$，存在$x$的领域$U\subset M$使得存在同胚$\varphi\colon U\to\Real^n$，\footnote{每一处的维数相同。}则称$M$为{\red \emph{（$n$维）流形}}\index{流形}。$(\varphi, U)$ 称为$x$ 处的{\red \emph{坐标系}}\index{坐标系 }。
+\end{defn}
+\begin{defn}
+  设$M$为$n$维流形，若坐标系的集合$\mathscr{A}=\{(\varphi_i, U_i)\mid i\in I\}$使得
+    \begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $M$为$\mathscr{A}$所覆盖，即$M=\bigcup\limits_{i\in I}U_i$。
+    \item $\mathscr{A}$是{\red\emph{$C^r$相容}}\index{相容}的，即或者$U_i\cap U_j=\varnothing$，或者$\varphi_i\circ\varphi^{-1}_j\colon\varphi_j(U_i\cap U_j)\to\varphi_i(U_i\cap U_j)$是$C^r$的。
+    \item $\mathscr{A}$具有极大性，即对任意坐标系$(\varphi, U)$,若其与任意$(\varphi_i, U_i)$是$C^r$相容的，则$(\varphi, U)\in\mathscr{A}$。
+  \end{enumerate}
+  则称$\mathscr{A}$为$M$上的一个{\red\emph{$C^r$微分结构}}\index{微分结构}。赋予$C^r$微分结构的流形$M$称为一个{\red\emph{$C^r$微分流形}}\index{$C^r$微分流形}。
+\end{defn}
+\begin{exa}
+  $M=\Real^n$，取$\mathscr{A}=\{(\id, \Real^n)\}$。
+\end{exa}
+\begin{exa}
+  $M=S^n=\{(x_0,x_1,\cdots,x_n)\in\Real^{n+1}\mid x^2_0+x^2_1+\cdots+x^2_n=1\}$，取$U_1=S^n\backslash\{(-1,\vec{0})\}$，$U_2=S^n\backslash\{(1,\vec{0})\}$，则$S^n=U_1\cup U_2$。 定义
+  \begin{center}
+  \parbox{0.4\linewidth}{\mapdes{\varphi_1}{U_1}{\Real^n}{(x_0,\vec{x})}{\frac{\vec{x}}{1+x_0}}}
+  \parbox{0.4\linewidth}{\mapdes{\varphi_2}{U_2}{\Real^n}{(x_0,\vec{x})}{\frac{\vec{x}}{1-x_0}}}
+  \end{center}
+  则$(\varphi_1,U_1)$与$(\varphi_2,U_2)$是光滑相容的：
+  \mapdes{\varphi_1\circ\varphi^{-1}_2}{\Real^n\backslash\{0\}}{\Real^n\backslash\{0\}}{\vec{u}}{\frac{\vec{u}}{|\vec{u}|^2}}
+\end{exa}
+\begin{proof}
+\begin{align*}
+    \begin{cases}
+    \cfrac{\vec{x}}{1-x_0}=\vec{u}\\
+    x_0^2+|\vec{x}|^2=1
+    \end{cases}
+    &\Longrightarrow
+    \begin{cases}
+    \vec{x}=(1-x_0)\vec{u}\\
+    x_0^2+(1-x_0)^2|\vec{u}|^2=1
+    \end{cases}
+    \\
+  &\Longrightarrow \varphi^{-1}_2(\vec{u})=(\frac{|\vec{u}|^2-1}{|\vec{u}|^2+1},\frac{2\vec{u}}{|\vec{u}|^2+1}) \\
+  &\Longrightarrow \varphi_1\circ\varphi^{-1}_2(\vec{u})=\cfrac{\frac{2\vec{u}}{|\vec{u}|^2+1}}{\frac{2|\vec{u}|^2}{|\vec{u}|^2+1}}=\frac{\vec{u}}{|\vec{u}|^2}
+\end{align*}
+\end{proof}
+\begin{exa}
+  $M=\RP^n=(\Real^{n+1}\backslash\{0\})/\sim$，这里$(x_0,x_1,\cdots,x_n)\sim(y_0,y_1,\cdots,y_n)$指$\exists\lambda\in\Real$，使得$x_i=\lambda y_i$。
+令$Z_i=\{(x_0,x_1,\cdots,x_n)\in\Real^{n+1}\mid x_i\neq0\}$，$U_i=Z_i/\sim$，则$\RP^n=U_0\cup U_1\cup\cdots\cup U_n$。
+
+定义$\varphi_i([x_0,x_1,\cdots,x_n])=(\frac{x_0}{x_i},\frac{x_1}{x_i},\cdots,\frac{x_{i-1}}{x_i},\frac{x_{i+1}}{x_i},\cdots,\frac{x_n}{x_i})$，则任意$(\varphi_i,U_i)$与$(\varphi_j,U_j)$相容：
+\begin{align*}
+  \varphi_j^{-1}(r_1,r_2,\cdots,r_n)&=[r_1,r_2,\cdots,r_i,1,r_{j+1},\cdots,r_n] \\
+  \varphi_i\circ\varphi_j^{-1}(r_1,r_2,\cdots,r_n)&=\varphi_i([r_1,r_2,\cdots,r_i,1,r_{j+1},\cdots,r_n])\\
+  &=\begin{cases}
+  (\frac{r_1}{r_i},\frac{r_2}{r_i},\cdots,\frac{r_j}{r_i},\frac{1}{r_i},\frac{r_{j+1}}{r_i},\cdots,\frac{r_{i-1}}{r_i},\frac{r_{i+1}}{r_i},\cdots,\frac{r_n}{r_i})&i>j\\
+  (\frac{r_1}{r_i},\frac{r_2}{r_i},\cdots,\frac{r_{i-1}}{r_i},\frac{r_{i+1}}{r_i},\cdots,\frac{r_j}{r_i},\frac{1}{r_i},\frac{r_{j+1}}{r_i},\cdots,\frac{r_n}{r_i})&i<j
+  \end{cases}
+\end{align*}
+\end{exa}
+\begin{defn}
+  设$M$、$N$为光滑流形，$f\colon M\to N$是连续映射。对于$x\in M$，若存在$x$处的坐标系$(\varphi,U)$和$f(x)$处的坐标系$(\psi,V)$，使得
+  \begin{equation*}
+  \psi\circ f\circ\varphi^{-1}\colon\Real^{\dim M}\longrightarrow\Real^{\dim N}
+  \end{equation*}
+  是光滑映射，则称$f$\emph{\red 在$x$处光滑}。
+
+  若$\forall x\in M$，$f$在$x$处光滑，则称$f$为\emph{\red 光滑映射}\index{光滑映射}，记作$f\in C^{\infty}(M,N)$。
+\end{defn}
+\begin{exa}
+  光滑映射$f\colon M\to\Real$称为$M$上的{\red 光滑函数}\index{光滑函数}。$M$上的光滑函数全体记为$C^{\infty}(M)$。
+\end{exa}
+\begin{exa}
+  若$f\colon M\to N$是同胚，且$f\in C^{\infty}(M,N),f^{-1}\in C^{\infty}(N,M)$，则称$f$ 为{\red 光滑同胚}\index{光滑同胚}。
+\end{exa}
+\begin{exa}
+  光环映射$f\colon\Real\to M$称为$M$上的{\red 光滑曲线}\index{光滑曲线}。
+\end{exa}
+\begin{exa}
+  考虑$f\colon S^3\to S^2$，其中
+  \begin{align*}
+  S^3&=\{(z_1,z_2)\in\Complex^2\mid|z_1|^2+|z_2|^2=1\} \\
+  S^2&=\{(\alpha,\beta)\in\Real\times\Complex\mid\alpha^2+|\beta|^2=1\} \\
+  f(z_1,z_2)&=(|z_1|^2-|z_2|^2,2\overline{z_1}z_2)
+  \end{align*}
+  这个$f$称为{\red Hopf fibration}\index{Hopf fibration}。
+\begin{displaymath}
+      \xymatrix{
+        \Complex^2\ar[r]^-{\widetilde{f}}&\Real\times\Complex\\
+        S^3\ar[r]^{f}\ar[u]^{i}&S^2\ar[u]^{i}
+      }
+\end{displaymath}
+
+对于$\xi\in\Complex,|\xi|=1$，$f(\xi z_1,\xi z_2)=f(z_1,z_2)$。也就是说，$S^3$中的一个圆周被映射为$S^2$上的一个点。
+\end{exa}
+\begin{defn}
+  设$M$和$N$为光滑流形，微分结构分别为
+\begin{gather*}
+\mathscr{A}=\{(\varphi_i,U_i)\mid i\in A\}\\
+\mathscr{B}=\{(\psi_j,V_j)\mid j\in B\}
+\end{gather*}
+则
+\begin{equation*}
+\mathscr{A}\times\mathscr{B}=\{(\varphi_i\times\psi_j,U_i\times V_j)\mid i\in A, j\in B\}
+\end{equation*}
+定义$M\times N$上微分结构，使$M\times N$成为一个光滑流形，称为$M$和$N$的\emph{\red 乘积流形}\index{乘积流形}。
+其中
+\begin{equation*}
+(\varphi_i\times\psi_j)(x,y)=(\varphi_i(x),\psi_j(y))\in\Real^{\dim M}\times\Real^{\dim N}
+\end{equation*}
+\end{defn}
+\begin{rem}
+  $S^3\neq S^2\times S^1$。
+\end{rem}
+
+\section{切空间和余切空间}
+\subsection*{2012-9-20}
+\begin{defn}
+对于光滑曲线$\gamma\colon(-\varepsilon,\varepsilon)\to M$，设$\gamma(0)=p$，定义$\gamma$在$p$点的\emph{\red 切向量}\index{切向量 } $X_p=\dot{\gamma}(0)$为映射
+\mapdes{X_p}{C^{\infty}_p}{\Real}{f}{\localt{\dt f(\gamma(t))}}
+\end{defn}
+\begin{prop}
+切向量$X_p\colon C^{\infty}_p\to\Real$是实线性映射，且满足{\red Leibniz's Law}\index{Leibniz's Law}
+\begin{equation*}
+X_p(fg)=X_p(f)g(p)+X_p(g)f(p)
+\end{equation*}
+\end{prop}
+\begin{proof}
+  对任意的$\lambda, \mu\in\Real, f,g\in C^{\infty}_p$有
+\begin{align*}
+X_p(\lambda f+\mu g)&=\localt{\dt(\lambda f+\mu g)(\gamma(t))}\\
+                    &=\localt{\dt(\lambda f(\gamma(t))+\mu g(\gamma(t)))}\\
+                    &=\lambda X_p(f)+\mu X_p(g)\\
+X_p(fg)&=\localt{\dt(f(\gamma(t))g(\gamma(t)))}\\
+       &=\localt{\dt f(\gamma(t))}g(p)+\localt{\dt g(\gamma(t))}f(p)\\
+       &=X_p(f)g(p)+X_p(g)f(p)
+\end{align*}
+\end{proof}
+\begin{note}
+  取$p\in M$处的坐标系$(\varphi,U)$，设$\varphi(p)=(x_0^1,x_0^2,\cdots,x_0^n)$，考虑过$p$的曲线
+\begin{equation*}
+\gamma_i(t)=\varphi^{-1}(x_0^1,x_0^2,\cdots,x_0^i+t,\cdots,x_0^n)
+\end{equation*}
+将它在$p$点的切向量记作$\px{i}$。
+\end{note}
+\begin{prop}
+取定$p\in M$处的坐标系$(x^i)$，则$p$点的任一切向量$X_p$可写为$\px{1},\px{2},\cdots,\px{n}$的线性组合。
+反之，$\forall \xi^i\in\Real, \xi^i\px{i}$必为切向量。
+\end{prop}
+\begin{proof}
+  任一曲线$\gamma$，设$\varphi(\gamma(t))=(\gamma^1(t),\gamma^2(t),\cdots,\gamma^n(t))$。则$\gamma$ 在$p$点的切向量$X_p$满足
+\begin{align*}
+X_p(f)&=\localt{\dt(f(\gamma(t)))}\\
+      &=\localt{\dt(f\circ\varphi^{-1}\circ\varphi\circ\gamma(t))}\\
+      &=\localt{\dt(\widetilde{f}(\gamma^1(t),\gamma^2(t),\cdots,\gamma^n(t)))}\\
+      &=\pfrac{\widetilde{f}}{x^i}(\gamma^1(0),\gamma^2(0),\cdots,\gamma^n(0))\gamma^i(0)
+\end{align*}
+下面说明它等于$(\px{i})(f)\gamma^i(0)$：
+\begin{align*}
+(\px{i})(f)&=\localt{\dt f(\gamma_i(t))}\\
+           &=\localt{\dt f(\varphi^{-1}(x_0^1,x_0^2,\cdots,x_0^i+t,\cdots,x_0^n))}\\
+           &=\pfrac{\widetilde{f}}{x^i}(x_0^1,x_0^2,\cdots,x_0^n)
+\end{align*}
+
+这表明$X_p$与$\dot{\gamma}^i(0)(\px{i})$在任何$f\in C^{\infty}_p$上的作用相等。所以$X_p=\dot{\gamma}^i(0)(\px{i})$。
+
+下面证明$\px{1},\px{2},\cdots,\px{n}$线性无关：
+
+若有$\xi^i\in\Real$使得$\xi^i\px{i}=0$，则
+\begin{equation*}
+0=(\xi^i\px{i})(x^j\circ\varphi)=\xi^i\delta^j_i=\xi^j
+\end{equation*}
+故$\px{1},\px{2},\cdots,\px{n}$线性无关。
+\end{proof}
+\begin{thm}
+$p$点的全体切向量构成$n=\dim M$维线性空间，且任取$p$点的坐标系$(x^i)$则$\{\px{i}\}$ 构成它的一组基。将这个实线性空间称为$p$点的{\red 切空间}\index{切空间 }，记作$T_pM$。
+\end{thm}
+\begin{rem}
+切向量有局部性：$\forall f,g\in C^{\infty}_p$，若$f|_U=g|_U$，则$X_p(f)=X_p(g)$。等价地说，$\forall f\in C^{\infty}_p$，若$f|_U=0$，则$X_p(f)=0$。
+
+定义$C^{\infty}_p$之等价关系为$f\sim g$当且仅当存在$p$的领域$U$使得$f|_U=g|_U$。该关系下的等价类称为在$p$点的\emph{\red 函数芽}\index{函数芽 }（germ\index{germ}）。
+\end{rem}
+\begin{defn}
+$T_pM$的对偶空间，称为$p$点的\emph{\red 余切空间}\index{余切空间}，记作$T^{\ast}_p$，其中元素称为\emph{\red 余切向量}\index{余切向量}（也称为\emph{\red $1-$ 形式}\index{$1-$ 形式}）。
+\end{defn}
+\begin{defn}
+对于$f\in C^{\infty}_p$定义$f$在$p$点的\emph{\red 全微分}\index{全微分 }$\dd f|_p$为这样一个余切向量：
+\begin{equation*}
+(\dd f|_p)(X_p)=X_p(f),\forall X_p\in T_pM
+\end{equation*}
+\end{defn}
+取$p$点的坐标系$(x^i)$，将$\dd(x^i\circ\varphi)|_p$简写为$\dd x^i|_p$，则有：
+\begin{prop}
+  $\{\dd x^i|_p\}$构成$T^{\ast}_pM$的一组基。
+\end{prop}
+\begin{proof}
+  \begin{equation*}
+  (\dd x^i|_p)(\px{j})=(\px{j})(x^i\circ\varphi)=\delta^i_j
+  \end{equation*}
+所以$\{\dd x^i|_p\}$与$\{\px{i}\}$是对偶基。
+\end{proof}
+\begin{exa}
+考虑$M=O(n)=\{A\in\Real^{n\times n}\mid A'A=I\}$，有$\dim M=\cfrac{n(n-1)}{2}$。
+\end{exa}
+\begin{proof}
+  有$I\in M$，下求$T_IM$。
+
+取曲线$A(t)$过$I$，即$A(0)=I$，则
+\begin{equation*}
+A(t)^{T}A(t)=I
+\end{equation*}
+在$t=0$处求导得：
+\begin{equation*}
+\dot{A}(t)^{T}A(t)+A(t)^{T}\dot{A}(t)=0
+\end{equation*}
+取$t=0$得知切向量$X=\dot{A}(0)$满足
+\begin{equation*}
+X^{T}+X=0
+\end{equation*}
+即$X$为反对称矩阵。所以$T_IM\subset\{X\in\Real^{n\times n}\mid X^{T}+X=0\}$。
+
+反之，对任何反对称矩阵$X$，考虑曲线
+\begin{equation*}
+A(t)=e^{tX}=I+tX+\cfrac{t^2}{2!}X^2+\cdots
+\end{equation*}
+则$A(t)\in O(n)$且$\dot{A}(0)=X$，于是$T_IM=\{X\in\Real^{n\times n}\mid X^{T}+X=0\}$。故$\dim M=\dim T_IM=\cfrac{n(n-1)}{2}$。
+\end{proof}
+\begin{note}
+  设$f\colon M\to N$是光滑流形的光滑映射。对$M$上的任一曲线$\gamma(t)$，设$\gamma(0)=p,f(p)=q$，将曲线$f(\gamma(t))$在$q$点的切向量记作$f_{\ast p}(\dot{\gamma}(0))$。
+\end{note}
+\begin{prop}
+  $f_{\ast p}\colon T_PM\to T_qN$是线性映射。
+\end{prop}
+\begin{proof}
+  首先证明$f_{\ast p}$ well-defined，即，对任意两条过$p$的曲线$\gamma(t)$和$\widetilde{\gamma}(t)$，$\gamma(0)=\widetilde{\gamma}(0)=p$，若$\dot{\gamma}(0)=\dot{\widetilde{\gamma}}(0)=q$，则$f(\gamma(t))$和$f(\widetilde{\gamma}(t))$在$q$点切向量相同。
+
+为此，只需验证：
+\begin{equation*}
+\forall g\in C^{\infty}_q, \localt{\dt g(f(\gamma(t)))}=\localt{\dt g(f(\widetilde{\gamma}(t)))}
+\end{equation*}
+
+令$\widetilde{g}=g\circ f\in C^{\infty}_p$，则
+\begin{align*}
+\localt{\dt g(f(\gamma(t)))}&=\localt{\dt \widetilde{g}(\gamma(t))}=\dot{\gamma}(0)(\widetilde{g})\\
+\localt{\dt g(f(\widetilde{\gamma}(t)))}&=\dot{\widetilde{\gamma}}(0)(\widetilde{g})
+\end{align*}
+
+再证$f_{\ast p}$是实线性映射，即
+\begin{equation*}
+f_{\ast p}(X_p+\lambda Y_p)=f_{\ast p}X_p+\lambda f_{\ast p}Y_p
+\end{equation*}
+因为
+\begin{equation*}
+f_{\ast p}(X_p)(g)=\localt{\dt g(f(\gamma(t)))}=X_p(g\circ f)
+\end{equation*}
+所以
+\begin{align*}
+(f_{\ast p}(X_p+\lambda Y_p))(g)&=(X_p+\lambda Y_p)(g\circ f)\\
+                                &=X_p(g\circ f)+\lambda Y_p(g\circ f)\\
+                                &=(f_{\ast p}X_p)(g)+\lambda(f_{\ast p}Y_p)(g)
+\end{align*}
+故$f_{\ast p}$是实线性映射。
+\end{proof}
+\begin{defn}
+$f_{\ast p}\colon T_PM\to T_qN$称为$f$在$p$点的\emph{\red 切映射}\index{切映射 }。$\rank_pf\defeq\rank f_{\ast p}$称为$f$在$p$点的\emph{\red 秩}\index{秩 }。
+\end{defn}
+设$f\colon M\to N, f(p)=q$，分取$p,q$之坐标系$(\varphi,U),(\psi,V)$使得$f(U)\subset V$，此时，$f$有局部表达式：
+\begin{equation*}
+\widetilde{f}(x^1,\cdots,x^m)=(f^1(x^1,\cdots,x^m),\cdots,f^n(x^1,\cdots,x^m))
+\end{equation*}
+即$f=\psi^{-1}\circ\widetilde{f}\circ\varphi$。
+$(f_{\ast p})(\px{i})$就是曲线$f(\gamma_i(t))$在$t=0$处的切向量,其中$\gamma_i(t)=\varphi^{-1}(x_0^1,\cdots,x_0^i+t,\cdots,x_0^n)$。
+\begin{gather*}
+f(\gamma_i(t))=\varphi^{-1}\circ\widetilde{f}(x_0^1,\cdots,x_0^i+t,\cdots,x_0^n)
+\gamma^{\alpha}(t)=f^{\alpha}(x_0^1,\cdots,x_0^i+t,\cdots,x_0^n)
+\end{gather*}
+所以
+\begin{equation*}
+\dot{\gamma}^{\alpha}(0)=\left.\pfrac{f^{\alpha}}{x^i}(\varphi(p))\pfrac{}{y^{\alpha}}\right|_q
+\end{equation*}
+\begin{prop}
+  $f_{\ast p}\colon T_pM\to T_pN$在基$\{\px{i}\}$和$\{\py{\alpha}\}$下的矩阵为Jacobi矩阵。
+\end{prop}
+\begin{exa}
+  $M=\Real^{n\times n}, N=\Real, f(A)=\det(A)$。
+\end{exa}
+\begin{proof}
+$f_{\ast I}(B)$是曲线$f(I+tB)$在$t=0$处的切向量。
+\begin{align*}
+f_{\ast I}(B)&=\localt{\dt|I+tB|}\\
+\dt|I+tB|&=t^n|B+\frac{1}{t}I|
+\end{align*}
+若$B$之特征多项式为$F(\lambda)$，则
+\begin{equation*}
+|I+tB|=(-t)^nF(\frac{1}{t})
+\end{equation*}
+由于
+\begin{equation*}
+F(\lambda)=\lambda^n-(\lambda_1+\cdots+\lambda_n)\lambda^{n-1}+\cdots
+\end{equation*}
+所以
+\begin{align*}
+|I+tB|&=(-t)^{n}((-\frac{1}{t})^n-\tr(B)(-\frac{1}{t})^{n-1}+\cdots)\\
+      &=1+\tr(B) t+o(t)
+\end{align*}
+所以$f_{\ast I}(B)=\tr(B)$。
+\end{proof}
+\begin{defn}
+对于$f\in C^{\infty}(M,N)$，切映射$f_{\ast}$的共轭映射$f^{\ast}\colon T^{\ast}_qN\to T^{\ast}_pM$ 称为\emph{\red 拉回}\index{拉回}。
+\end{defn}
+\begin{proof}(验证well-define)
+$\forall\alpha\in T^{\ast}_qN,\forall X\in T_pM$，有
+\begin{align*}
+(f^{\ast}\alpha)(X)&=\alpha(f_{\ast}X)\\
+f^{\ast}(\dd y^j)&=\dd f^j=\localp{\pfrac{f^j}{x^i}\dd x^i}
+\end{align*}
+\end{proof}
+
+\section{子流形}
+\subsection*{2012-9-27}
+\begin{defn}
+  设$f\colon M\to N$是光滑映射，$\forall p\in M$，定义$f$在$p$点的\emph{\red 秩}为$f_{\ast p}$的秩，记作$\rank_p f = \rank f_{\ast p}$。
+
+若$\rank_p f=\dim M$，则称$f$在$p$点\emph{\red 浸入}\index{浸入}（immersion）\index{immersion}；
+
+若$\rank_p f=\dim N$，则称$f$在$p$点\emph{\red 淹没}\index{淹没}（submersion）\index{submersion}；
+
+若$f$在每一点浸入（淹没），则称$f$是\emph{\red 浸入（淹没）映射}\index{浸入（淹没）映射}。
+\end{defn}
+\begin{exa}
+\mapdes{f}{(-\frac{\pi}{2},\frac{\pi}{2})\times(0,\pi)}{\Real^3}{(u,v)}{(\cos u\cos v,\cos u\sin v,\sin u)}
+\end{exa}
+\begin{thm}[浸入的局部典范表示]\index{浸入的局部典范表示 }
+设$f\colon M\to N$是光滑映射且$f$在$p\in M$上是浸入，则存在$p$的坐标系$(\varphi,U)$ 和$q=f(p)$的坐标系$(\psi,V)$使得
+\begin{equation*}
+\psi\circ f\circ\varphi^{-1}(x^1,\cdots,x^m)=(x^1,\cdots,x^m,0,\cdots,0)
+\end{equation*}
+\end{thm}
+\begin{proof}
+  取$p$之坐标系$(\widetilde{\varphi},\widetilde{U})$和$q$之坐标系$(\widetilde{\psi},\widetilde{V})$，设$f_{\ast p}$在$\{\localp{\pfrac{}{\widetilde{x}^i}}\}$和$\{\local{\pfrac{}{\widetilde{y}^{\alpha}}}{q}\}$的矩阵为
+  \begin{equation*}
+  (\pfrac{\widetilde{f}^{\alpha}}{\widetilde{x}^i})=(A|\ast)
+  \end{equation*}
+  由于$\rank(\pfrac{\widetilde{f}^{\alpha}}{\widetilde{x}^i})=\dim M(=m)$，不妨设$A=(\pfrac{\widetilde{f}^{\alpha}}{\widetilde{x}^i})^{1\leqslant\alpha\leqslant m}_{1\leqslant i\leqslant m}$ 可逆。
+
+  定义映射
+\mapdes{F}{\widetilde{\varphi}(\widetilde{U})\times\Real^{n-m}}{\Real^n}{(x,z)}{\widetilde{\psi}\circ f\circ\widetilde{\varphi}^{-1}(x)+(0,z)}
+则$F$在$(\widetilde{\varphi}(p),0)$处的Jacobi为
+\begin{equation*}
+\left(
+  \begin{array}{cc}
+  A&\ast\\
+    &I_{n-m}
+  \end{array}
+\right)
+\end{equation*}
+这是可逆矩阵。
+
+由反函数定理，存在$(\widetilde{\varphi}(p),0)$之邻域$U\times \widehat{U}$使$F|_{U\times \widehat{U}}$可逆，将反函数记作$F^{-1}$，令$\psi=F^{-1}\circ\widetilde{\psi}\colon F(U\times \widehat{U})\cap V\to\Real^n$，则$(\widetilde{\varphi},U),(\psi,V)$满足定理要求：
+\begin{align*}
+ &\psi\circ f\circ\varphi^{-1}(x^1,\cdots,x^m)\\
+=&F^{-1}\circ(\widetilde{\psi}\circ f\circ\widetilde{\psi}^{-1})(x^1,\cdots,x^m)\\
+=&F^{-1}(F(x,0))=(x^1,\cdots,x^m,0,\cdots,0)
+\end{align*}
+\end{proof}
+\begin{exa}
+  $f\colon\Real\to\Real^2$定义为
+\begin{align*}
+f(t)&=(2\cos(t-\frac{\pi}{2}),\sin(2t-\pi))\\
+    &=(2\sin t,-\sin 2t)
+\end{align*}
+计算一下：
+\begin{align*}
+f'(t)&=(2\cos t,-2\cos 2t)\\
+     &=(2\cos t,-2(2\cos^2t-1))\neq0
+\end{align*}
+可见$f$是浸入。然而$f(\Real)$并不是流形！
+\end{exa}
+\begin{defn}
+  设$f\colon M\to N$是光滑映射且$f$在$p\in M$上是浸入，则称$(M,f)$是$N$的\emph{\red 浸入子流形}\index{浸入子流形 }。若$f$是单射，则称$(M,f)$是$N$的\emph{\red 嵌入子流形}\index{嵌入子流形 }。
+\end{defn}
+\begin{exa}
+$f\colon\Real\to\Real^2$定义为
+\begin{equation*}
+f(t)=(2\cos(2\arctan t+\frac{\pi}{2}),\sin2(2\arctan t+\frac{\pi}{2}))
+\end{equation*}
+注意到$f(M)$与$M$同胚，但在$0$点的拓扑与$\Real^2$不同。
+\end{exa}
+\begin{defn}
+  设$f\colon M\to N$是嵌入映射，若$f\colon M\to f(M)$是（微分）同胚（这里$f(M)$具有从$N$诱导的拓扑），则称$f$是\emph{\red 正则子流形}\index{正则子流形 }。
+\end{defn}
+\begin{defn}
+给定光滑流形$N$，设$S\subset N$，若$\forall p\in S$，存在$p$在$N$中的坐标系$(\varphi,U)$使得$\varphi(S\cap U)$是由
+\begin{equation*}
+x^{k+1}=c^1,x^{k+2}=c^2,\cdots,x^n=c^{n-k}
+\end{equation*}
+定义的，则称$S$是$N$的一个$k$维\emph{\red 闭子流形}\index{闭子流形 }。
+
+这里由$x^{k+1}=c^1,x^{k+2}=c^2,\cdots,x^n=c^{n-k}$所定义的$\Real^n$的子集称为$\Real^n$上的$k$维\emph{\red 切片}\index{切片}（slice）\index{slice}。
+\end{defn}
+\begin{thm}
+  对于$N$的任一正则子流形$f\colon M\to N$，$f(M)$是$N$的闭子流形。反之，对于$N$之任一闭子流形$S$，$i\colon S\to N$是正则的嵌入。
+\end{thm}
+\begin{proof}
+前一部分，用浸入的局部典范表示；后一部分，只需验证
+\begin{equation*}
+i\colon(x^1,\cdots,x^k)\to(x^1,\cdots,x^k,c^1,\cdots,c^{n-k})
+\end{equation*}
+是浸入。
+\end{proof}
+\begin{thm}\label{淹没原像}
+  $f\colon M\to N$是淹没，即
+\begin{equation*}
+\rank_pf=\dim N, \forall p\in M
+\end{equation*}
+则$\forall q\in N$，$f^{-1}(q)$是$M$的闭子流形。
+\end{thm}
+\begin{proof}
+先证，$\forall p\in M,f(p)=q$，则存在$p$之坐标系$(\varphi,U)$和$q$之坐标系$(\psi,V)$使得
+\begin{equation*}
+\psi\circ f\circ\varphi^{-1}(x^1,\cdots,x^m)=(x^1,\cdots,x^n)
+\end{equation*}
+
+为此，先取$(\widetilde{\varphi},\widetilde{U})$和$(\widetilde{\psi},\widetilde{V})$使$\widetilde{\varphi}(p)=0$。设
+\begin{equation*}
+\widetilde{\psi}\circ f\circ\widetilde{\varphi}^{-1}(x^1,\cdots,x^m)=(f^1(x),\cdots,f^n(x))
+\end{equation*}
+
+由于$\rank(\pfrac{\widetilde{f}^{\alpha}}{x^i})=\dim N$，不妨设$A=(\pfrac{\widetilde{f}^{\alpha}}{x^i})^{1\leqslant\alpha\leqslant n}_{1\leqslant i\leqslant n}$ 可逆，于是映射
+\mapdes{F}{\Real^r}{\Real^n}{(x^1,\cdots,x^n)}{f^1(x^1,\cdots,x^n,0,\cdots,0),\cdots,f^n(x^1,\cdots,x^n,0,\cdots,0)}
+在$0$点附近可逆。
+
+令$\psi=F^{-1}\circ\widetilde{\psi}$，则$(\widetilde{\varphi},U),(\psi,V)$满足要求。
+
+再证：$\forall p\in f^{-1}(q)$，存在坐标系$(\varphi,U)$，使得$\varphi(U\cap f^{-1}(q))$是$\Real^m$的切片。
+
+取上一步得到的坐标系，则$\varphi(U\cap f^{-1}(q))=\{(x^1,\cdots,x^m)\in\varphi(U)\mid(x^1,\cdots,x^n)=\psi(q)\}$是切片。
+\end{proof}
+\begin{exa}[Hopf fibration]
+\mapdes{f}{S^3}{S^2}{(z_1,z_2)}{(|z_1|^2-|z_2|^2,2\overline{z_1}z_2)}
+对于$(x_1,x_2,x_3,x_4)\in S^3$，$(-x_2,x_1,-x_4,x_3),(-x_3,x_4,x_1,-x_2),(-x_4,-x_3,x_2,x_1)$是其切向量。
+\end{exa}
+\begin{defn}
+  设$f\colon M\to N$是光滑映射且$f$在$p\in M$上是淹没，则称$p$是$f$的\emph{\red 正则点}\index{正则点 }。
+对于$q\in N$，若$\forall p\in f^{-1}(q)$都是正则点，则称$q$是$f$的\emph{\red 正则值}\index{正则值 }。
+\end{defn}
+\begin{cor}[正则值原像定理]\index{正则值原像定理 }\label{正则值原像定理}
+设$f\colon M\to N$是光滑映射，$q\in N$是$f$的正则值，则$f^{-1}(q)$是$M$的闭子流形。
+\end{cor}
+\begin{exa}
+  $\begin{cases}
+  x^2+y^2+z^2+t^2=1\\
+  xy-zt=0
+  \end{cases}$
+是否是闭子流形？
+\end{exa}
+\begin{proof}
+考虑映射
+\mapdes{f}{\Real^4}{\Real^2}{(x,y,z,t)}{(x^2+y^2+z^2+t^2,xy-zt)}
+由于
+\begin{equation*}
+\rank_pf=\rank\left(
+                 \begin{array}{cccc}
+                   2x & 2y & 2z & 2t \\
+                   y & x & -t & -z \\
+                 \end{array}
+               \right)
+               =2
+\end{equation*}
+故$f^{-1}(1,0)$是闭子流形。
+\end{proof}
+\begin{thm}[H.Whitney浸入定理]\index{H.Whitney浸入定理}
+设$M$是光滑流形，$n\geqslant 2\dim M$，则$\forall f\in C^{\infty}(M,\Real^n), \varepsilon>0$，存在$g\in C^{\infty}(M,\Real^n)$使得
+    \begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $g$是浸入
+    \item $|f(p)-g(p)|<\varepsilon,\forall p\in M$
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+Step1，局部上对$f\colon U\to\Real^n$作修改
+\begin{equation*}
+g(x)=f(x)+Ax, A\in\Real^{m\times m}
+\end{equation*}
+适当取$A$可使$q$是浸入且$|Ax|<\varepsilon$；
+
+Step2，稳定；
+
+Step3，延拓。
+\end{proof}
+
+\section{向量场和流}
+\subsection*{2012-9-29}
+\begin{defn}
+  $M$上切向量的全体，记作$TM$，即$TM=\{u\in T_pM\mid p\in M\}$，称为$M$的\emph{\red 切丛}\index{切丛}。
+\end{defn}
+\begin{prop}
+  若$M$是$m$维光滑流形，则$TM$可赋予微分结构，成为$2m$维光滑流形。
+\end{prop}
+\begin{proof}
+设$\{(\varphi_i,U_i)\mid i\in I\}$为$M$的微分结构。
+$\forall p\in M$，设$p\in U_i$的局部坐标为$(x^1,\cdots,x^m)$，$\forall y\in T_pM$，可写成$y=y^i\px{i}$，从而得到从$TM$之开集$\widehat{U}_i=\{y\in T_pM\mid p\in U_i\}$到$\Real^{2m}$之映射：
+\mapdes{\widehat{\varphi}_i}{\widehat{U}_i}{\Real^m\times\Real^m}{y}{(x^1,\cdots,x^m,y^1,\cdots,y^m)}
+于是：
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $TM=\bigcup_{i\in I}\widehat{U}_i$
+    \item $(\widehat{U}_i,\widehat{\varphi}_i)$与$(\widehat{U}_j,\widehat{\varphi}_j)$光滑相容：
+\begin{equation*}
+    \widehat{U}_i\cap\widehat{U}_j\neq\varnothing\Longrightarrow U_i\cap U_j\neq\varnothing;
+\end{equation*}
+        \begin{align*}
+   &\widehat{\varphi}_i\circ\widehat{\varphi}_j^{-1}(\widetilde{x}^1,\cdots,\widetilde{x}^m,\widetilde{y}^1,\cdots,\widetilde{y}^m)\\
+=&\widehat{\varphi}_i(\widetilde{y}^i\px{i})\\
+=&(x^1,\cdots,x^m,\widetilde{y}^i\pfrac{x^1}{\widetilde{x}^i},\cdots,\widetilde{y}^i\pfrac{x^m}{\widetilde{x}^i})
+        \end{align*}
+  \end{enumerate}
+\end{proof}
+\begin{defn}
+  若映射$X\colon M\to TM$，满足\footnote{i.e. $X$ is a section of $\pi$.}$\pi\circ X=\id\colon M\to M$，则称$X$是$M$上的\emph{\red 向量场}\index{向量场 }。
+  若$X$光滑，则称为\emph{\red 光滑向量场}\index{光滑向量场 }。
+\end{defn}
+\begin{prop}
+  $X$是光滑向量场当且仅当$\forall f\in C^{\infty}(M)$，$X(f)$是光滑函数。这里$X(f)(p)=X(p)(f),\forall p\in M$。
+\end{prop}
+\begin{proof}
+  “$\Rightarrow$”：$\forall p\in M$，取$p$点坐标系$(x^i)$，则可设$X(p)=X^i(p)\px{i}$，其中$X^i$是$M$上的函数，局部上：
+\begin{align*}
+ &\widehat{\varphi}\circ X\circ\varphi^{-1}(x^1,\cdots,x^m)\\
+=&(x^1,\cdots,x^m,X^1\circ\varphi^{-1},\cdots,X^m\circ\varphi^{-1})
+\end{align*}
+
+于是$X$是光滑向量场$\Leftrightarrow$每个$X^i\circ\varphi^{-1}$是光滑函数。
+
+$\forall f\in C^{\infty}(M)$，
+\begin{align*}
+X(f)(p)&=X_p(f)\\
+       &=X^i(p)\px{i}(f)\\
+       &=(X^i\circ\varphi^{-1})\pfrac{f\circ\varphi^{-1}}{x^i}
+\end{align*}
+是光滑函数。
+
+“$\Leftarrow$”：取$f=x^i$，则$X(x^i)=X^i$光滑，由前面讨论知$X$是光滑向量场。
+
+\end{proof}
+\begin{rem}
+  以后可将向量场$X$写成
+\begin{equation*}
+X=X^i\pfrac{}{x^i}
+\end{equation*}
+\end{rem}
+\begin{note}
+$M$上的光滑向量场全体记作$\Xf{M}$。
+\end{note}
+\begin{defn}
+  给定光滑向量场$X$，若有曲线$\gamma\colon(-\varepsilon,\varepsilon)\to M$满足$\dot{\gamma}(t)=X(\gamma(t))$，则称$\gamma$为$X$的一条\emph{\red 积分曲线}\index{积分曲线}。
+\end{defn}
+\begin{prop}
+  若$X\in\Xf{M}$，则存在唯一的过$p$的积分曲线$\gamma$，使得$\gamma(0)=p$。
+\end{prop}
+\begin{proof}
+取$p$点的坐标系$(x^i)$，设
+\begin{equation*}
+X=X^i\pfrac{}{x^i}
+\end{equation*}
+又设$\gamma(t)=(\gamma^1(t),\cdots,\gamma^m(t))$，则$\dot{\gamma}(t)=\localt{\dot{\gamma}^i(t)\pfrac{}{x^i}}$。要使$\gamma$是$X$的积分曲线，则$\gamma^i$满足
+\begin{equation*}
+\dot{\gamma}^i(t)=X^i(\gamma(t))
+\end{equation*}
+由ODE理论，上述ODEs有解。
+\end{proof}
+\begin{defn}
+  设$M$是光滑流形，光滑映射$\psi\colon(-\varepsilon,\varepsilon)\times M\to M$若满足：
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\psi_0=\id\colon M\to M$
+    \item $\psi_{s}\circ\psi_{t}=\psi_{s+t}, \forall s,t,s+t\in(-\varepsilon,\varepsilon)$
+\end{enumerate}
+其中$\psi_{t}(p)=\psi(t,p), t\in(-\varepsilon,\varepsilon), p\in M$
+
+则称$\psi$为$M$上的一个\emph{\red （局部）流}\index{局部流 }（flow）\index{flow}
+\end{defn}
+\begin{prop}
+  $\forall X\in\Xf{M}$，存在$M$上的一个流$\psi$，使得
+\begin{equation*}
+X(p)=\localt{\dt\psi_t(p)}
+\end{equation*}
+称$\psi$为$X$生成的流。
+\end{prop}
+\begin{proof}
+取过$p$的积分曲线$\gamma(t)$，使$\gamma(0)=p$，令$\psi_t(p)=\gamma_p(t)$，则
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\psi_0(p)=p$
+    \item $\psi_s\circ\psi_t(q)=\psi_{s+t}(q)$
+\end{enumerate}
+\end{proof}
+\begin{thm}[管状流定理（Flow Box）]\index{管状流定理 }\index{Flow Box}
+设$X\in\Xf{M}$，$X_p\neq0$，则存在$p$点的坐标系，使$X=\pfrac{}{x^i}$
+\end{thm}
+\begin{proof}
+  先取坐标系$(y^i)$使$X_p=\py{i}$且$p$点的坐标为$(0,\cdots,0)$。设$X$生成的流为$\psi_t$，定义
+\mapdes{\theta}{\Real^m}{U}{(y^1,\cdots,y^m)}{\psi_{y^1}(0,y^2,\cdots,y^m)}
+则
+\begin{align*}
+\theta_{\ast0}\local{\pfrac{}{y^1}}{0}&=X_p=\py{1}\\
+\theta_{\ast0}\pfrac{}{y^i}&=\py{i}
+\end{align*}
+
+于是$\theta_{\ast0}$可逆，由反函数定理，存在$0$和$p$的领域$\widetilde{U}$，使$\theta$ 在$\widetilde{U}$上可逆。
+
+取$p$之坐标系$(\widetilde{U},\theta^{-1})$则
+\begin{align*}
+\theta_{\ast}\pfrac{}{y^1}&=\localt{\dt\psi_{y^1+t}(0,y^2,\cdots,y^m)}\\
+                          &=X(\psi_{y^1}(0,y^2,\cdots,y^m))
+\end{align*}
+
+故$\theta_{\ast}^{-1}X=\pfrac{}{y^1}$。
+\end{proof}
+\begin{defn}
+  设$X_1,X_2,\cdots,X_s\in\Xf{M}$，若$\forall p\in M$，$\rank\{X_1(p),X_2(p),\cdots,X_s(p)\}=k$为常数，则称$X_1,X_2,\cdots,X_s$构成$M$ 上的$k$维\emph{\red 切空间场}\index{切空间场}。
+\end{defn}
+\begin{defn}
+给定$M$上的$k$维切子空间场$\{X_1,X_2,\cdots,X_s\}$，若浸入$f\colon N\to M$满足
+$f_{\ast}(T_pN)\subset \spa\{X_1,X_2,\cdots,X_s\}_{f(p)},\forall p\in M$
+则称$N$是上述切子空间场的\emph{\red 积分子流形}\index{积分子流形 }。
+\end{defn}
+\begin{exa}
+  $M=\Real^3\backslash\{0\}$中定义
+\begin{equation*}
+  \begin{cases}
+    X_1=z\pfrac{}{z}-y\pfrac{}{y}\\
+    X_2=y\pfrac{}{x}+x\pfrac{}{z}\\
+    X_3=z\pfrac{}{x}+x\pfrac{}{y}
+  \end{cases}
+\end{equation*}
+则
+\begin{equation*}
+xX_1-zX_2+yX_3=0\Rightarrow\rank\{X_1,X_2,X_3\}=2
+\end{equation*}
+因此$\{X_1,X_2,X_3\}$是$2$维切子空间场，而且曲面$N\colon\frac{1}{2}x^2-yz=1$是其积分子流形，$(x,-z,-y)$是其法向量。
+对$(2,1,1)\in N$有$X_1=(0,-1,1),X_2=(1,0,2),X_3=(1,2,0)$，法向量为$(2,-1,-1)$。
+\end{exa}
+\subsection*{总结}
+\begin{description}
+  \item[$X$生成流$\psi_t$]
+  \begin{equation*}
+  X(\psi_s(p))=\local{\dt\psi_t(p)}{t=s}
+  \end{equation*}
+  \item[流$\psi_t$固定一点变成积分曲线]
+  \begin{equation*}
+  \gamma(t)=\psi_t(p), X(\gamma(t))=X(\psi_t(p))=\dot{\gamma}(t)
+  \end{equation*}
+  \item[$\psi_t$诱导向量场$X$]
+  \begin{equation*}
+  \localt{\dt\psi_t(p)}=X(p)
+  \end{equation*}
+  \item[Flow Box]  $X\in\Xf{M},X(p)\neq0$，则存在$p$点的坐标系$(x^i)$使得$X=\pfrac{}{x^i}$。
+\end{description}
+
+\section{Frobenius定理}
+\subsection*{2012-10-11}
+\begin{exa}
+  在$\Real^3$上定义
+\begin{equation*}
+\begin{cases}
+X_1=y\pfrac{}{x}+\pfrac{}{z}\\
+X_2=\pfrac{}{y}
+\end{cases}
+\end{equation*}
+$E=\spa\{X-1,X_2\}$是$2$维切子空间场，然而：
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $E$没有$2$维积分子流形；
+    \item $E$有$1$维积分子流形
+$\begin{cases}
+x=c_1\\
+z=x_2
+\end{cases}$
+\end{enumerate}
+\end{exa}
+\begin{defn}\label{Lie括号}
+  对于$X,Y\in \Xf{M}, [X,Y]\defeq X\circ Y-Y\circ X$也是$M$上的光滑向量场，称为$X$和$Y$ 的\emph{\red Lie括号}\index{Lie括号}或\emph{\red Poisson括号}\index{Poisson括号}。
+\end{defn}
+\begin{proof}[验证]
+将$X$视为泛函$C^{\infty}(M)\to C^{\infty}(M)$
+\begin{align*}
+X(f)(p)&=X_p(f)\\
+       &=X^i(p)\px{i}(f)
+\end{align*}
+故$X(f)=X^i\pfrac{f}{x^i}$。
+
+设$Y(f)=Y^j\pfrac{f}{x^j}$，则
+\begin{align*}
+[X,Y](f)&=X(Y(f))-Y(X(f))\\
+        &=X(Y^j\pfrac{f}{x^j})-Y(X^i\pfrac{f}{x^i})\\
+        &=X^i\pfrac{}{x^i}(Y^j\pfrac{f}{x^j})-Y^j\pfrac{}{x^j}(X^i\pfrac{f}{x^i})\\
+        &=X^i\pfrac{Y^j}{x^i}\pfrac{f}{x^j}-Y^j\pfrac{X^i}{x^j}\pfrac{f}{x^i}+X^iY^j\frac{\partial^2{f}}{\partial{x^i}\partial{x^j}}-Y^jX^i\frac{\partial^2{f}}{\partial{x^j}\partial{x^i}}\\
+        &=(X^i\pfrac{Y^j}{x^i}-Y^i\pfrac{X^j}{x^i})\pfrac{f}{x^j}
+\end{align*}
+若令$Z^j=X^i\pfrac{Y^j}{x^i}-Y^i\pfrac{X^j}{x^i}$，$Z=Z^j\pfrac{}{x^j}$，则
+\begin{equation*}
+[X,Y](f)=Z(f),\forall f\in C^{\infty}(M)
+\end{equation*}
+即$[X,Y]=Z\in\Xf{M}$。
+\end{proof}
+\begin{defn}
+  $X$是向量场，$f\colon N\to M$为浸入，若$\forall q\in N$，$X(f(q))\in f_{\ast}(T_qN)$则称$X$与$f$\emph{\red 相切}\index{相切}。
+\end{defn}
+\begin{exa}
+  在$\Real^3$中，$X=-y\pfrac{}{x}+x\pfrac{}{y}$与$S^2$相切。
+\end{exa}
+\begin{prop}
+  若$X,Y\in\Xf{M}$都与某个浸入子流形$f\colon N\to M$相切，则$[X,Y]$也与$f$相切。
+\end{prop}
+\begin{proof}
+  $\forall q\in N$，取$q$点坐标系$(y^i)$及$f(q)$点坐标系$(x^i)$使得
+\begin{equation*}
+f(y^1,y^2,\cdots,y^n)=(x^1,x^2,\cdots,x^n,0,\cdots,0)
+\end{equation*}
+
+又设$X=X^i\pfrac{}{x^i},Y=Y^j\pfrac{}{x^j}$
+\begin{equation*}
+f_{\ast}(T_qN)=\spa\{\pfrac{}{x^1},\cdots,\pfrac{}{x^n}\}_{f(q)}
+\end{equation*}
+
+由于$X,Y$与$f$相切，故$X^k(f(q))=0, Y^k)f)q))=0, n<k\leqslant m$
+\begin{equation*}
+[X,Y]=(X^i\pfrac{Y^j}{x^i}-Y^i\pfrac{X^j}{x^i})\pfrac{}{x^j}
+\end{equation*}
+
+由于
+\begin{equation*}
+(X^i\pfrac{Y^k}{x^i}-Y^i\pfrac{X^k}{x^i})(f(q))=0, n<k\leqslant m
+\end{equation*}
+所以$[X,Y]$也与$f$相切。
+\end{proof}
+\begin{prop}
+  若$X,Y\in\Xf{M}$且$X$生成的流为$\psi t$，则
+\begin{equation*}
+[X,Y]=\lim_{t\to0}\frac{Y-\psi_{t\ast}Y}{t}
+\end{equation*}
+即
+\begin{equation*}
+[X,Y]_p=\lim_{t\to0}\frac{Y_p-\psi_{t\ast}(Y_{\psi_t(p)})}{t}
+\end{equation*}
+\end{prop}
+\begin{proof}
+  $\forall f\in C^{\infty}_p$，设
+\begin{equation*}
+f(\psi_t(p))=c_0(p)+c_1(p)t+c_2(p)t^2+o(t^2)
+\end{equation*}
+于是
+\begin{align*}
+c_0(p)&=f(p)\\
+c_1(p)&=\localt{\dt f(\psi_t(p))}\\
+      &=X_p(f)=X(f)(p)
+\end{align*}
+\begin{align*}
+  &(Y_p-\psi_{t\ast}(Y_{\psi_t(p)}))(f)\\
+=&Y_p(f)-Y_{\psi_t(p)}(f\circ\psi_t)\\
+=&Y_p(f)-Y_{\psi_t(p)}(f+tX(f)+o(t))\\
+=&Y_p(f)-Y_{\psi_t(p)}(f)-tY_{\psi_t(p)}(X(f))-Y_{\psi_t(p)}(o(t))\\
+\end{align*}
+于是
+\begin{align*}
+  &\lim_{t\to0}\frac{Y_p-\psi_{t\ast}(Y_{\psi_t(p)})}{t}(f)\\
+=&\lim_{t\to0}\frac{Y(f)(p)-Y(f)(\psi_t(p))}{t}-Y_p(X(f))\\
+=&X_p(Y(f))-Y_p(X(f))\\
+=&[X,Y]_p(f)
+\end{align*}
+\end{proof}
+\begin{prop}
+设$X\in\Xf{M}$生成的流为$\psi_t$，$\varphi\colon M\to M$是光滑同胚，则$\varphi_{\ast}X$生成的流是
+\begin{equation*}
+  \varphi\circ\psi_t\circ\varphi^{-1}
+\end{equation*}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\varphi\circ\psi_t\circ\varphi^{-1}$是流。
+    \item $\varphi\circ\psi_t\circ\varphi^{-1}$诱导的向量场是$\varphi_{\ast}X$：
+  \begin{align*}
+     &\localt{\dt\varphi\circ\psi_t\circ\varphi^{-1}(p)}\\
+  =&\varphi_{\ast}(\localt{\dt\psi_t(\varphi^{-1}(p))})\\
+  =&\varphi_{\ast}X_{\varphi^{-1}(p)}
+  \end{align*}
+\end{enumerate}
+\end{proof}
+\begin{cor}
+  $\varphi_{\ast}X=X\Longleftrightarrow\varphi\circ\psi_t\circ\varphi^{-1}=\psi_t$
+\end{cor}
+\begin{prop}
+  设$X,Y\in\Xf{M}$生成的流分别为$\psi_t,\phi_t$，则$[X,Y]=0$的充要条件是$\psi_t\circ\phi_t=\phi_t\circ\psi_t$。
+\end{prop}
+\begin{proof}
+\begin{align*}
+  [X,Y]=0&\Longleftrightarrow\lim_{t\to0}\frac{Y-\psi_{t\ast}Y}{t}=0\\
+       &\Longleftrightarrow Y=\psi_{t\ast}Y\\
+       &\Longleftrightarrow \phi_s\circ\psi_t=\psi_t\circ\phi_s
+\end{align*}
+\end{proof}
+\begin{prop}[Lie括号性质]
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $[X,Y]=–[Y,X]$;
+    \item $[X+Y,Z]=[X,Z]+[Y,Z]$;
+    \item $[X,fY]=X(f)Y+f[X,Y]$;
+    \item $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+  \begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item trivial;
+    \item trivial;
+    \item \begin{align*}
+[X,fY](g)&=X(fY(g))-fY(X(g))\\
+         &=X(f)Y(g)+fX(Y(g))-fY(X(g))\\
+         &=X(f)Y(g)+f[X,Y](g)
+          \end{align*}
+    \item \begin{align*}
+[X,[Y,Z]](f)&=X([Y,Z](f))-[Y,Z](Xf)\\
+            &=XYZ(f)-XZY(f)-YZX(f)+ZYX(f)
+                                         \end{align*}
+  \end{enumerate}
+\end{proof}
+\begin{thm}[同步管状流定理]\index{同步管状流定理 }
+$X_1,X_2,\cdots,X_r\in\Xf{M}$，且$\rank\{X_1,X_2,\cdots,X_r\}=r, [X_i,X_j]=0$，则$\forall p\in M$，存在坐标系$(x^i)$，使得$X_i=\pfrac{}{x^i},1\leqslant i\leqslant r$。
+\end{thm}
+\begin{proof}
+  任取$p$点之坐标系$(u^i)$使$p$点坐标为$(0,\cdots,0)$。考虑
+\mapdes{\theta}{\Real^m}{U}{(x^1,\cdots,x^m)}{(\varphi_1)_{x^1}\circ(\varphi_2)_{x^2}\cdots\circ(\varphi_r)_{x^r}(0,\cdots,0,x^{r+1},\cdots,x^m)}
+其中$(\varphi_i)_{t_i}$是$X_i$生成的流。
+
+下面验证$\theta_{\ast}\pfrac{}{x^i}=X_i$：
+\begin{align*}
+\theta_{\ast u}\pfrac{}{x^i}&=\localt{\dt\theta(x^1,\cdots,x^i+t,\cdots,x^m)}\\
+                            &=\localt{\dt(\varphi_i)_{x^i+t}\circ(\varphi_1)_{x^1}\circ\cdots\circ\widehat{(\varphi_i)_{x^i}}\cdots\circ(\varphi_r)_{x^r}}\\
+                            &=\localt{\dt(\varphi_i)_t\circ(\varphi_1)_{x^1}\circ(\varphi_2)_{x^2}\cdots\circ(\varphi_r)_{x^r}}\\
+                            &=X(\theta(u)), 1\leqslant i\leqslant r\\
+\theta_{\ast 0}\pfrac{}{x^k}&=\dt\theta(0,\cdots,\widehat{t},\cdots,0)\\
+                            &=\localt{\dt(0,\cdots,t,\cdots,0)}\\
+                            &=\localp{\pfrac{}{u^k}}, r<k\leqslant m
+\end{align*}
+只要取$(U,u^i)$s使$\localp{X_i},\localp{\pfrac{}{u^i}}$线性无关即可。
+\end{proof}
+\begin{thm}
+  设$E=\spa\{X_1,\cdots,X_r\}$是$M$上的$r$维子空间，且满足{\red Frobenius条件}\index{Frobenius条件}
+\begin{equation*}
+[X_i,X_j]_p\in E_p
+\end{equation*}
+则过任一点$p\in M$，有唯一的极大积分子流形$f\colon N\to M$，且$\dim N=r$。
+\end{thm}
+换言之，$\forall p\in M$，存在坐标系$(x^i)$使得
+\begin{equation*}
+E=\spa\{\pfrac{}{x^1},\cdots,\pfrac{}{x^r}\}
+\end{equation*}
+这时由$x^{r+1}=c^{r+1},\cdots,x^m=c^m$所定义的闭子流形与$E$相切。
+\begin{proof}
+  先取坐标系$(U,u^i)$设
+\begin{equation*}
+X_j=X_j^i\pfrac{}{u^i}
+\end{equation*}
+\begin{equation*}
+\left(
+  \begin{array}{ccc}
+    X_1^1 & \cdots & X_1^m \\
+    \cdots & \cdots & \cdots \\
+    X_r^1 & \cdots & X_r^m \\
+  \end{array}
+\right)
+\stackrel{\text{初等行变换}}{\Longrightarrow}
+\left(
+  \begin{array}{ccc}
+    1 & & 0 \\
+     & \ddots &  \\
+    0 & & 1 \\
+  \end{array}
+\middle|
+\text{\Huge$\ast$}
+\right)
+\end{equation*}
+即可找到$Y_1,\cdots,Y_r\in\Xf{M}$使得$\spa\{Y_1,\cdots,Y_r\}=E$且$Y_i=\pfrac{}{x^i}+Y_i^k\pfrac{}{x^k}, r+1\leqslant k\leqslant m$。
+
+这时
+\begin{align*}
+[Y_i,Y_j]&=[A_i^sX_s,A_j^tX_t]\\
+         &=A_i^sX_s(A_j^t)X_t-A_j^tX_t(A_i^s)X_s+A_i^sA_j^t[X_s,X_t]\in E\\
+[\pfrac{}{x^i}+Y_i^k\pfrac{}{x^k},\pfrac{}{x^j}+Y_j^l\pfrac{}{x^l}]&=Y_i(Y_j^l)\pfrac{}{x^l}-Y_j(Y_i^k)\pfrac{}{x^k}\in E
+\end{align*}
+
+故$[Y_i,Y_j]=0 i,j\leqslant r$，故可用同步管状流。
+\end{proof}
+向量场$X\colon C^{\infty}(M)\to C^{\infty}(M)$
+\begin{equation*}
+[X,Y]=X\circ Y-Y\circ X
+\end{equation*}
+$X,Y$都与子流形$N\subset M$相切，则$[X,Y]$与$N$相切。
+\begin{equation*}
+[X,Y]=\lim_{t\to0}\frac{Y-\varphi_{t\ast}Y}{t}
+\end{equation*}
+
+切子空间场$E$
+\begin{align*}
+\pi&\colon G_k(TM)=\{P\subset T_xM\mid\dim P=k,x\in M\}\longrightarrow M\\
+E&\colon M\longrightarrow G_k(TM)
+\end{align*}
+\begin{exa}
+  $S^2$上不存在$1$维切子空间场，即不存在处处非零的光滑向量场。
+\end{exa}
+\begin{exa}[Clifford代数]
+若$S^n$上存在$1,2,\cdots,k$维光滑切子空间场，求$k$的最大值。
+\begin{align*}
+2\mid^n&\Longrightarrow k=0\\
+n=3&\Longrightarrow k=3\\
+n\equiv3\mod4&\Longrightarrow  k\geqslant3\\
+n=7&\Longrightarrow k=7\\
+n=5& k=1
+\end{align*}
+具体的：
+\begin{align*}
+S^1&\rightsquigarrow \text{复数}\\
+S^3&\rightsquigarrow \text{四元数}\\
+S^7&\rightsquigarrow \text{八元数}
+\end{align*}
+\end{exa}
+\begin{defn}[Frobenius条件]\index{Frobenius条件}
+\begin{equation*}
+\forall X,Y\in\Xf{M}, X_p,Y_p\in E_p(X,Y\in E)\Longrightarrow[X,Y]\in E
+\end{equation*}
+\end{defn}
+\begin{rem}
+  等价于“取$E$的一组基$X_1,X_2,\cdots,X_k$时$[X_i,X_j]\in E$”。
+\end{rem}
+\begin{thm}[Frobenius定理]\index{Frobenius定理}
+若$k$维切子空间场$E$满足Frobenius条件，则$\forall p\in M$，存在唯一的极大积分子流形$N$经过$p$。
+\end{thm}
+\begin{proof}
+  设$X_1,\cdots,X_k$是$E$的一组基，则
+\begin{equation*}
+X_i=X^j_i\pfrac{}{x^i}
+\end{equation*}
+\begin{equation*}
+\left(
+  \begin{array}{ccc}
+    X_1^1 & \cdots & X_1^n \\
+    \cdots & \cdots & \cdots \\
+    X_k^1 & \cdots & X_k^n \\
+  \end{array}
+\right)
+\stackrel{\text{初等行变换}}{\Longrightarrow}
+\left(
+  \begin{array}{ccc}
+    1 & & 0 \\
+     & \ddots &  \\
+    0 & & 1 \\
+  \end{array}
+\middle|
+\text{\Huge$\ast$}
+\right)
+\end{equation*}
+得到另一组基$Y_i=\pfrac{}{u^i}+Y^{\alpha}_i\pfrac{}{u^{\alpha}}, k+1\leqslant\alpha\leqslant n$
+\begin{equation*}
+[Y_i,Y_j]=Y_i(Y^{beta}_j)\pfrac{}{u^{\beta}}-Y_j(Y^{\alpha}_i)\pfrac{}{u^{\alpha}}
+\end{equation*}
+
+由Frobenius条件，
+\begin{align*}
+ [Y_i,Y_j]&=C^l_{ij}Y_l\\
+         &=C^l_{ij}(\pfrac{}{u^l}+Y^{\gamma}_l\pfrac{}{\gamma})
+\end{align*}
+比较得$C^l_{ij}=0$，于是$[Y_i,Y_j]=0$。
+
+由同步管状流，存在坐标系$(x^i)$使得
+\begin{equation*}
+Y_i=\pfrac{}{x^i}
+\end{equation*}
+于是$Y_1,Y_2,\cdots,Y_k$都与切片$x^{k+1}=cst,\cdots,x^n=cst$相切。
+\end{proof}
+
+\section{外代数}
+\subsection*{2012-10-18}
+\begin{defn}
+  设$V,W$是实线性空间，$V^{\ast},W^{\ast}$是其对偶空间。
+对于$\alpha\in V^{\ast}, \beta\in W^{\ast}$，定义
+\mapdes{\alpha\otimes\beta}{V\times W}{\Real}{(v,w)}{\alpha(v)\beta(w)}
+可见$\alpha\otimes\beta$是双线性函数。
+
+以$V^{\ast}\otimes W^{\ast}$记所有形如$\alpha\otimes\beta$所张成的线性空间，称为$V^{\ast}$和$W^{\ast}$的\emph{\red 张量积}\index{张量积 }。
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $V^{\ast}\otimes W^{\ast}$的元素就是$V\times W$上的双线性函数；
+    \item 设$\alpha^1,\cdots,\alpha^m$和$\beta^1,\cdots,\beta^n$分别是$V^{\ast}$和$W^{\ast}$的一组基，则$\{\alpha^i\otimes\beta^j\}$是$V^{\ast}\otimes W^{\ast}$ 的一组基。
+\end{enumerate}
+同理可定义$V\otimes W$。
+\end{defn}
+\begin{defn}
+  $T^r_s(V)=\underbrace{V\otimes\cdots\otimes V}_{r}\otimes \underbrace{V^{\ast}\otimes\cdots\otimes V^{\ast}}_{s}$中的元素称为\emph{\red $(r,s)$ 型张量}\index{$(r,s)$型张量 }。
+\end{defn}
+\begin{defn}
+  对于$(r,0)$型或$(0,s)$型张量$T$，若
+\begin{equation*}
+T(\theta^1,\cdots,\theta^r)=T(\theta^{\sigma(1)},\cdots,\theta^{\sigma(r)})
+\end{equation*}
+则称$T$是\emph{\red 对称的}\index{对称张量}；
+\begin{equation*}
+T(\theta^1,\cdots,\theta^r)=\sgn(\sigma)T(\theta^{\sigma(1)},\cdots,\theta^{\sigma(r)})
+\end{equation*}
+则称$T$是\emph{\red 反对称的}\index{反对称张量 }。
+\end{defn}
+\begin{align*}
+V\otimes V^{\ast}&\cong\End(V)\\
+f&=f^i_jv_i\otimes\alpha^j\\
+f(v_j)&=f^j_iv_j
+\end{align*}
+\begin{note}
+  记$T^r_0(V)$中反对称张量全体为$A^r(V)$。
+\end{note}
+\begin{defn}
+$\forall \xi\in A^k(V), \eta\in A^l(V)$，\emph{\red 外积}\index{外积}定义为
+\begin{equation*}
+\xi\wedge\eta\defeq\frac{1}{(k+l)!}\sum_{\sigma}\sgn(\sigma)\sigma(\xi\otimes\eta)
+\end{equation*}
+\end{defn}
+\begin{prop}
+  外积满足以下运算律
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item 分配律
+    \begin{align*}
+      (\xi_1+\xi_2)\wedge\eta&=\xi_1\wedge\eta+\xi_2\wedge\eta\\
+      \xi\wedge(\eta_1+\eta_2)&=\xi\wedge\eta_1+\xi\wedge\eta_2
+    \end{align*}
+    \item 反交换律
+    \begin{equation*}
+      \xi\wedge\eta=(-1)^{kl}\eta\wedge\xi
+    \end{equation*}
+    \item 结合律
+    \begin{equation*}
+      (\xi\wedge\eta)\wedge\zeta=\xi\wedge(\eta\wedge\zeta)
+    \end{equation*}
+\end{enumerate}
+\end{prop}
+\begin{thm}
+  矢量$v_1,\cdots,v_r\in V$线性相关的充要条件是$v_1\wedge\cdots\wedge v_r=0$。
+\end{thm}
+\begin{thm}[Cartan 引理]\index{Cartan 引理}
+设$v_1,\cdots,v_r;w^1,\cdots,w^r$是$V$中两组矢量，使得
+\begin{equation*}
+v_i\wedge w^i=0
+\end{equation*}
+
+如果$v_1,\cdots,v_r$线性无关，则存在满足$h^{ij}=h^{ji}$的$h^{ij}$使得
+\begin{equation*}
+w^j=h^{ij}v_i, 1\leqslant j\leqslant r
+\end{equation*}
+\end{thm}
+
+\section{外微分}
+\subsection*{2012-10-25}
+\begin{defn}
+  $A^r(M)=\bigcup\limits_{p\in M}A^r(T^{\ast}_pM)$称为$M$上的$r$次\emph{\red 外形式丛}\index{外形式丛}。
+\end{defn}
+$\forall p\in M$，取坐标系$(x^i)$，$\dd x^1,\cdots,\dd x^m$是$T^{\ast}_pM$的一组基，故$\forall \omega\in A^r(T^{\ast}_pM)$可写为
+\begin{equation*}
+\omega=\frac{1}{r!}\omega_{i_1\cdots i_r}\dd x^{i_1}\wedge\cdots\wedge\dd x^{i_r}
+\end{equation*}
+其中$\omega_{i_1\cdots i_r}$关于任意两个角标反对称。于是$(x^i,\omega_{i_1\cdots i_r})$可构成$A^r(M)$上的坐标系。容易验证，这些坐标系是光滑相容的，从而$A^r(M)$关于这一微分结构成为光滑流形。
+\begin{defn}
+  若$\omega\colon M\to A^r(M)$是光滑映射且满足$\pi\circ\omega=\id$，这里$\pi\colon A^r(M)\to M$是自然投影，则称$\omega$是一个$r$次\emph{\red 外微分式}\index{外微分式}，
+  也称为\emph{\red $r$形式}\index{$r$形式}。
+\end{defn}
+\begin{lem}
+  局部上，$\omega$是$r$形式等价于
+\begin{equation*}
+\omega(p)=\frac{1}{r!}\omega_{i_1\cdots i_r}(p)\dd x^{i_1}\wedge\cdots\wedge\dd x^{i_r}
+\end{equation*}
+其中系数$\omega_{i_1\cdots i_r}$是光滑函数。
+\end{lem}
+\begin{note}
+  记$A(M)$为$M$上所有$0$形式、$1$形式、$\cdots$、$m$形式的全体。
+\end{note}
+\begin{thm}
+  存在唯一的算子$\dd\colon A(M)\to A(M)$，满足
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\dd(A^r(M))\subset A^{r+1}(M)$；
+    \item $\dd$是实线性的；
+    \item 对任意$r$形式$\omega_1$，$k$形式$\omega_2$
+    \begin{equation*}
+    \dd(\omega_1\wedge\omega_2)=\dd\omega_1\wedge\omega_2+(-1)^r\omega_1\wedge\dd\omega_2
+    \end{equation*}
+    \item 对$0$形式$f\in C^{\infty}(M)$，$\dd f$是$f$的全微分且$\dd(\dd f)=0$。
+\end{enumerate}
+称$\dd$为{\red 外微分算子}\index{外微分算子 }。
+\end{thm}
+\begin{proof}
+  先证明这样的$\dd$若存在，则具有\emph{局部性}，即
+\begin{equation*}
+\local{\omega_1}{U}=\local{\omega_2}{U}\Longrightarrow\local{\dd\omega_1}{U}=\local{\dd\omega_2}{U}
+\end{equation*}
+由于$\dd$具有实线性，只需证明$\local{\omega}{U}=0\Rightarrow\local{\dd\omega}{U}$。
+
+$\forall p\in U$，取邻域$\widehat{U}\subset U$，并取光滑函数$f$，使$\local{f}{\widehat{U}}=1, \local{f}{M\backslash U}=0$。则
+\begin{align*}
+f(\omega)=0&\Longrightarrow\dd(f(\omega))=0\\
+                   &\Longrightarrow\dd f\wedge(\omega)+f(\dd\omega)=0
+\end{align*}
+由于在$p$点
+\begin{equation*}
+\localp{\dd f}=0, \localp{f}=1
+\end{equation*}
+故$\localp{\dd\omega}=0$。
+
+再证明\emph{局部存在唯一性}
+
+\emph{存在性}：
+对单项式$\omega=f(x)\dd x^1\wedge\cdots\wedge\dd x^r$，规定$\dd\omega=\dd f\wedge\dd x^1\wedge\cdots\wedge\dd x^r$。由实线性，得
+\begin{align*}
+  \omega&=\frac{1}{r!}\omega_{i_1\cdots i_r}\dd x^{i_1}\wedge\cdots\wedge\dd x^{i_r}\\
+  \dd\omega&=\frac{1}{r!}\dd\omega_{i_1\cdots i_r}\wedge\dd x^{i_1}\wedge\cdots\wedge\dd x^{i_r}
+\end{align*}
+
+验证$3)$：
+\begin{align*}
+  \omega_1&=\frac{1}{r!}\omega_I\dd x^I\\
+  \omega_2&=\frac{1}{k!}\eta_J\dd x^J
+\end{align*}
+\begin{align*}
+  &\omega_1\wedge\omega_2=\frac{1}{r!}\frac{1}{k!}\omega_I\eta_J\dd x^I\wedge\dd x^J\\
+\Longrightarrow&\dd(\omega_1\wedge\omega_2)=\frac{1}{r!}\frac{1}{k!}\dd(\omega_I\eta_J)\wedge\dd x^I\wedge\dd x^J
+\end{align*}
+其中$\dd(\omega_I\eta_J)=\omega_I\dd(\eta_J)+\eta_J\dd(\omega_I)$。
+
+故
+\begin{align*}
+\dd(\omega_1\wedge\omega_2)&=\frac{1}{r!}\frac{1}{k!}(\omega_I\dd(\eta_J)\wedge\dd x^I\wedge\dd x^J+\eta_J\dd(\omega_I)\wedge\dd x^I\wedge\dd x^J)\\
+                           &=\dd\omega_1\wedge\omega_2+(-1)^r\omega_1\wedge\dd\omega_2
+\end{align*}
+
+验证$4)$：
+\begin{align*}
+\dd f&=\pfrac{f}{x^i}\dd x^i\\
+\dd(\dd f)&=\dd(\pfrac{f}{x^i})\wedge\dd x^i\\
+          &=\frac{\partial^2f}{\partial x^i\partial x^j}\dd x^j\wedge\dd x^i\\
+          &=\sum_{j<i}(\frac{\partial^2f}{\partial x^i\partial x^j}-\frac{\partial^2f}{\partial x^j\partial x^i})\dd x^j\wedge\dd x^i\\
+          &=0
+\end{align*}
+
+\emph{唯一性}：对$r$用数学归纳法证明$\dd(\dd x^I)=0$，于是
+\begin{equation*}
+\dd(f\dd x^I)=\dd f\wedge\dd x^I+(-1)^{0}f\dd(\dd x^I)=\dd f\wedge\dd x^I
+\end{equation*}
+
+最后证明\emph{整体的存在唯一性}：
+$\forall p\in U\cap W$，由于
+\begin{equation*}
+\local{\dd(\omega_U)}{U\cap W}=\dd(\omega_{U\cap W})=\local{\dd(\omega_W)}{U\cap W}
+\end{equation*}
+故$\dd$在$U\cap W$上是一致的。
+\end{proof}
+\begin{thm}[Poinc\'{a}re引理]\index{Poinc\'{a}re引理}
+  外微分算子$\dd$具有性质$\dd\circ\dd=0$。
+\end{thm}
+\begin{proof}
+  由于实线性性质，只需证明对于单项式$\omega=f\dd x^I$有$\dd(\dd\omega)=0$即可。而
+\begin{align*}
+ \dd(\dd\omega)&=\dd(\dd f\wedge\dd x^I)\\
+              &=\dd(\dd f)\wedge\dd x^I-\dd f\wedge\dd(\dd x^I)\\
+              &=0
+\end{align*}
+\end{proof}
+\begin{exa}
+  对于$f\in C^{\infty}(\Real^3)$
+\begin{equation*}
+\dd f=\pfrac{f}{x}\dd x+\pfrac{f}{y}\dd y+\pfrac{f}{z}\dd z
+\end{equation*}
+$\grad f=(\pfrac{f}{x},\pfrac{f}{y},\pfrac{f}{z})$通常称为$f$的{\red 梯度}\index{梯度}\footnote{有一个定理：函数$F$在一点的梯度与其过该点的\emph{\red 水平集}\index{水平集 }$\{x\mid F(x)=cst\}$垂直，故梯度可以用来求法向量。}。
+\end{exa}
+\begin{exa}
+  对于$1$形式
+\begin{align*}
+\omega&=P\dd x+Q\dd y+R\dd z\\
+\dd\omega&=\dd P\wedge\dd x+\dd Q\wedge\dd y+\dd R\wedge\dd z\\
+         &=(\pfrac{Q}{x}-\pfrac{P}{y})\dd x\wedge\dd y\\
+         &+(\pfrac{R}{y}-\pfrac{Q}{z})\dd y\wedge\dd z\\
+         &+(\pfrac{P}{z}-\pfrac{R}{x})\dd z\wedge\dd x
+\end{align*}
+通常，把$(\pfrac{Q}{x}-\pfrac{P}{y},\pfrac{R}{y}-\pfrac{Q}{z},\pfrac{P}{z}-\pfrac{R}{x})$称为向量场$X=(P,Q,R)$的{\red 旋度场}\index{旋度}，记为$\curl X$。
+\end{exa}
+\begin{exa}
+  对于$2$形式
+\begin{align*}
+\omega&=P\dd y\wedge\dd z+Q\dd z\wedge\dd x+R\dd x\wedge\dd y\\
+\dd\omega&=(\pfrac{P}{x}+\pfrac{Q}{y}+\pfrac{R}{z})\dd x\wedge\\ y\wedge\dd z
+\end{align*}
+通常，把$\pfrac{P}{x}+\pfrac{Q}{y}+\pfrac{R}{z}$称为$X=(P,Q,R)$的{\red 散度}\index{散度}，记为$\Div X$。
+\end{exa}
+由Poinc\'{a}re引理，得
+\begin{align*}
+\curl(\grad f)=0,& \forall f\in C^{\infty}(\Real^3)\\
+\Div(\curl X)=0,& \forall X\in \Xf{\Real^3}
+\end{align*}
+\begin{thm}[外微分求值公式]\index{外微分求值公式 }
+设$\omega$是$1$形式，$X,Y\in\Xf{M}$，则
+\begin{equation*}
+\dd\omega(X,Y)=X(\omega(Y))-Y(\omega(X))-\omega[X,Y]
+\end{equation*}
+\end{thm}
+\begin{proof}
+  \begin{align*}
+\omega&=f\dd g\\
+\dd\omega&=\dd f\wedge\dd g\\
+\dd\omega(X,Y)&=(\dd f\wedge\dd g)(X,Y)\\
+              &=
+                \begin{vmatrix}
+                 \dd f(X) & \dd g(X) \\
+                 \dd f(Y) & \dd g(Y) \\
+                \end{vmatrix}\\
+              &=X(f)Y(g)-X(g)Y(f)
+   \end{align*}
+
+   另一方面，
+\begin{align*}
+\omega(Y)&=f\dd g(Y)=fY(g)\\
+\omega(X)&=fX(g)
+\end{align*}
+   所以
+   \begin{align*}
+   &X(\omega(Y))-Y(\omega(X))-\omega[X,Y]\\
+  =&X(fY(g))-Y(fX(g))-f(X(Y(g))-Y(X(g)))\\
+  =&X(f)Y(g)-X(g)Y(f)
+   \end{align*}
+\end{proof}
+
+\section{外微分（续）}
+\subsection*{2012-11-1}
+\begin{lem}\label{lem8.1}
+  设$\{X_1,\cdots,X_m\}$是$m$维流形$M$上的一个局部标架场（自动满足Frobenius条件，即存在光滑函数$C^i_{jk}$，使$[X_j,X_k]=C^i_{jk}X_i$），又设$\omega^1,\cdots,\omega^m$是与$X_1,\cdots,X_m$对偶的余标架场，则
+  \begin{equation*}
+    \dd\omega^i=-\frac{1}{2}C^i_{jk}\omega^j\wedge\omega^k
+  \end{equation*}
+\end{lem}
+\begin{proof}
+  一方面：
+\begin{align*}
+\dd\omega^i(X_p,X_q)&=X_p(\omega^i(X_q))-X_q(\omega^i(X_p))-\omega^i[X_p,X_q]\\
+                    &=-\omega^i[X_p,X_q]\\
+                    &=-\omega^i(C^r_{pq}X_r)\\
+                    &=-C^r_{pq}\omega^iX_r=-C^i_{pq}
+\end{align*}
+
+另一方面：
+\begin{align*}
+  &-\frac{1}{2}C^i_{jk}\omega^j\wedge\omega^k(X_p,X_q)\\
+ =&-\frac{1}{2}C^i_{jk}
+                \begin{vmatrix}
+                 \dd \omega^j(X_p) & \dd \omega^k(X_p) \\
+                 \dd \omega^j(X_q) & \dd \omega^k(X_q) \\
+                \end{vmatrix}\\
+ =&-\frac{1}{2}C^i_{jk}(\delta^j_p\delta^k_q-\delta^k_p\delta^j_q)\\
+ =&-\frac{1}{2}(C^i_{pq}-C^i_{qp})=-C^i_{pq}
+\end{align*}
+\end{proof}
+\begin{defn}
+  设$\{X_1,\cdots,X_r\}$是$r$维切子空间场，将它扩充为一个局部标架场$X_1,\cdots,X_m$并取与之对偶的余标架场$\omega^1,\cdots,\omega^m$。若$1$形式$\omega^{r+1},\cdots,\omega^m$线性无关，且对于$r$维子空间场$E$，满足
+\begin{equation*}
+\omega^{\alpha}(X)=0,\forall X\in E
+\end{equation*}
+则称$\omega^{r+1},\cdots,\omega^m$是$E$的\emph{\red 定义方程}\index{定义方程}（\emph{\red 零化子}\index{零化子 }）。
+\end{defn}
+\begin{defn}
+  线性无关的$1$形式$\omega^{r+1},\cdots,\omega^m$若满足
+\begin{equation*}
+\dd\omega^{\alpha}\equiv0\mod\omega^{r+1},\cdots,\omega^m, \forall r+1\leqslant\alpha\leqslant m
+\end{equation*}
+即存在$1$形式$\theta^{\alpha}_{\beta}$使得
+\begin{equation*}
+\dd\omega^{\alpha}=\theta^{\alpha}_{\beta}\wedge\omega^{\beta}
+\end{equation*}
+则称$\omega^{r+1},\cdots,\omega^m$满足\emph{\red Frobenius条件}\index{Frobenius条件}。
+\end{defn}
+\begin{thm}[Frobenius定理]\index{Frobenius定理}
+设$r$维切子空间场$E$的定义方程$\omega^{r+1},\cdots,\omega^m$满足Frobenius条件，则$E$是完全可积的，即存在局部坐标系$(x^i)$使
+\begin{equation*}
+E=\{\pfrac{}{x^1},\cdots,\pfrac{}{x^r}\}
+\end{equation*}
+或者写成外微分式：
+\begin{equation*}
+\{\omega^{r+1},\cdots,\omega^m\}=\{\dd x^{r+1},\cdots,\dd x^m\}
+\end{equation*}
+\end{thm}
+\begin{proof}
+  不妨设$X_1,\cdots,X_m$与$\omega^{r+1},\cdots,\omega^m$对偶，只需验证$E=\{X_1,\cdots,X_m\}$满足（向量场版）Frobenius条件。
+
+设$[X_a,X_b]=C^i_{ab}X_i$，则Frobenius条件等价于
+\begin{equation*}
+C^{\alpha}_{jk}=0,\forall r+1\leqslant\alpha\leqslant m, 1\leqslant j,k\leqslant r
+\end{equation*}
+
+由引理\ref{lem8.1}，
+\begin{equation*}
+\dd\omega^c=-\frac{1}{2}C^c_{ab}\omega^a\wedge\omega^b,\forall a,b,c
+\end{equation*}
+
+于是
+\begin{equation*}
+\dd\omega^{\alpha}=-\frac{1}{2}C^{\alpha}_{ij}\omega^i\wedge\omega^j-C^{\alpha}_{\beta i}\omega^{\beta}\wedge\omega^i-\frac{1}{2}C^{\alpha}_{\beta\gamma}\omega^{\beta}\wedge\omega^{\gamma}
+\end{equation*}
+
+与Frobenius条件比较，得
+\begin{equation*}
+\dd\omega^{\alpha}=\theta^{\alpha}_{\beta}\wedge\omega^{\beta}=C^{\alpha}_{\beta i}\omega^i\wedge\omega^{\beta}+\frac{1}{2}C^{\alpha}_{\beta\gamma}\omega^{\gamma}\wedge\omega^{\beta}
+\end{equation*}
+
+于是$C^{\alpha}_{ij}=0$。
+\end{proof}
+\begin{rem}
+  Frobenius条件也可看作$\local{\dd\omega^{\alpha}}{E}=0$。
+\end{rem}
+
+\begin{defn}
+  设$X\in\Xf{M}$，定义算子
+\begin{align*}
+i_X\colon A^k(M)&\longrightarrow A^{k-1}(M)\\
+(i_X\omega)(Y_1,\cdots,Y_{k-1})&=\omega(X,Y_1,\cdots,Y_{k-1})
+\end{align*}
+称为\emph{\red 内置算子}\index{内置算子}。
+\end{defn}
+\begin{prop}
+  设$\omega^{r+1},\cdots,\omega^m$是$r$维切子空间场$E$的定义方程，则Frobenius条件等价于
+  \begin{equation*}
+    \local{i_X(\dd\omega^{\alpha})}{E}=0,\forall X\in E, r+1\leqslant\alpha\leqslant m
+  \end{equation*}
+\end{prop}
+\begin{proof}
+  $\Longrightarrow$：
+\begin{align*}
+\dd\omega^{\alpha}&=\theta^{\alpha}_{\beta}\wedge\omega^{\beta}=C^{\alpha}_{\beta i}\omega^i\wedge\omega^{\beta}+\frac{1}{2}C^{\alpha}_{\beta\gamma}\omega^{\gamma}\wedge\omega^{\beta}\\
+(i_X(\dd\omega^{\alpha}))(Y)&=\dd\omega^{\alpha}(X,Y)\\
+                            &=(\theta^{\alpha}_{\beta}\wedge\omega^{\beta})(X,Y)\\
+                            &=
+                \begin{vmatrix}
+                 \theta^{\alpha}_{\beta}(X) & \theta^{\alpha}_{\beta}(Y) \\
+                 \omega^{\beta}(X) & \omega^{\beta}(Y) \\
+                \end{vmatrix}=0
+\end{align*}
+
+$\Longleftarrow$：
+$i_X(\dd\omega^{\alpha})(Y)=0$中，取$X=X_i,Y=X_j$并将$\dd\omega^{\alpha}$代入得$C^{\alpha}_{ij}=0$。
+\end{proof}
+
+\begin{defn}
+  设$f\colon N\to M$是光滑映射，则如下定义的$f^{\ast}\colon A^k(M)\to A^k(N)$称为\emph{\red 拉回}\index{拉回}：
+   \begin{equation*}
+    (f^{\ast}\omega)(Y_1,\cdots,Y_k)\defeq\omega(f_{\ast}Y_1,\cdots,f_{\ast}Y_k)
+   \end{equation*}
+\end{defn}
+
+\begin{thm}
+  $f^{\ast}\circ\dd=\dd\circ f^{\ast}$
+\end{thm}
+\begin{proof}
+  取$M,N$上的坐标系$(x^i),(y^i)$，设$f=(f^1,\cdots,f^m)$。对于$\omega=\frac{1}{r!}\omega_I\dd x^I$有
+\begin{align*}
+  &(f^{\ast}\omega)(\pfrac{}{y^{j_1}},\cdots,\pfrac{}{y^{j_r}})\\
+ =&\omega(f_{\ast}\pfrac{}{y^{j_1}},\cdots,f_{\ast}\pfrac{}{y^{j_r}})\\
+ =&\pfrac{f^{i_1}}{y^{j_1}}\cdots\pfrac{f^{i_r}}{y^{j_r}}\omega(\pfrac{}{x^{i_1}},\cdots,\pfrac{}{x^{i_r}})\\
+ =&\frac{1}{r!}\pfrac{f^I}{y^J}\omega_K\dd x^K(\pfrac{}{x^I})\\
+ =&\frac{1}{r!}\omega_I(f(y))\dd f^I(\pfrac{}{y^J})
+\end{align*}
+故
+\begin{equation*}
+f^{\ast}\omega=\frac{1}{r!}\omega_I(f(y))\dd f^I
+\end{equation*}
+
+于是对$\eta\in A(M)$，设$\eta=\eta_I\dd x^I$，则
+\begin{align*}
+f^{\ast}(\dd\eta)&=f^{\ast}(\dd\eta_I\wedge\dd x^I)\\
+                 &=f^{\ast}(\dd\eta_I)\wedge f^{\ast}(\dd x^I)\\
+                 &=\dd(\eta_I\circ f)\wedge\dd f^I\\
+                 &=\dd((\eta_I\circ f)\dd f^I)\\
+                 &=\dd(f^{\ast}\eta)
+\end{align*}
+\end{proof}
+\begin{rem}
+$E$是$M$上的$r$维切子空间场，其积分子流形是指浸入$f\colon N\to M$满足：
+\begin{align*}
+  &f_{\ast}(T_pN)\subset E\\
+\Longleftrightarrow&\omega^{\alpha}(f_{\ast}v)=0, \forall v\in T_pN\\
+\Longleftrightarrow&f^{\ast}\omega^{\alpha}=0
+\end{align*}
+
+Frobenius定理说明：
+\begin{equation*}
+\{\omega^{r+1},\cdots,\omega^m\}=\{\dd x^{r+1},\cdots,\dd x^m\}
+\end{equation*}
+于是
+\begin{equation*}
+f^{\ast}(\dd x^{r+1})=\cdots=f^{\ast}(\dd x^{m})=0
+\end{equation*}
+即
+\begin{equation*}
+\dd f^{r+1}=\cdots=\dd f^{m}=0
+\end{equation*}
+\end{rem}
+\begin{exa}
+  求$f(x,y,z)$，使得
+\begin{equation*}
+\begin{cases}
+xf_x+f_y+x(1+y)f_z=0\\
+f_x+yf_z=0
+\end{cases}
+\end{equation*}
+令
+\begin{align*}
+X_1&=x\pfrac{}{x}+\pfrac{}{y}+x(1+y)\pfrac{}{z}\\
+X_2&=\pfrac{}{x}+y\pfrac{}{z}
+\end{align*}
+则
+\begin{equation*}
+[X_1,X_2]=\pfrac{}{z}-\pfrac{}{x}-(1+y)\pfrac{}{z}=-X_2
+\end{equation*}
+故$E=\spa\{X_1,X_2\}$满足Frobenius条件。
+
+再取$X_3=\pfrac{}{z}$以及$X_1,X_2,X_3$的对偶$\omega^1,\omega^2,\omega^3$，设
+\begin{equation*}
+\omega^3=P\dd x+Q\dd y+\dd z
+\end{equation*}
+有
+\begin{equation*}
+\begin{cases}
+xP+Q+x(1+y)=0\\
+P+y=0
+\end{cases}
+\end{equation*}
+故
+\begin{equation*}
+\omega^3=\dd z-y\dd x-x\dd y=\dd(z-xy)
+\end{equation*}
+
+可见$E$的积分子流形为
+\begin{equation*}
+z-xy=cst
+\end{equation*}
+故$f(x,y,z)=g(z-xy)$，$g$为任意函数、
+\end{exa}
+\begin{exa}
+  考虑$u=u(x,y)$的PDES：
+\begin{equation*}
+\begin{cases}
+u_x=\alpha(x,y,z)\\
+u_y=\beta(x,y,z)
+\end{cases}
+\end{equation*}
+在$\Real^3=\{(x,y,u)\}$中来看，相当于由
+\begin{equation*}
+\omega=\dd u-\alpha\dd x-\beta\dd y
+\end{equation*}
+定义的$2$维切子空间场的积分问题。
+
+\begin{align*}
+\dd\omega&=\alpha_y\dd x\wedge\dd y-\alpha_u\dd u\wedge\dd x-\beta_x\dd x\wedge\dd y+\beta_u\dd y\wedge\dd u\\
+          &(\because\dd u\equiv\alpha\dd x+\beta\dd y\mod \omega)\\
+          &\equiv(\alpha_y-\beta_x+\alpha_u\beta-\beta_u\alpha)\dd x\wedge\dd y\mod\omega
+\end{align*}
+
+注意到$\dd x\wedge\dd y\neq0$，故$\dd\omega\equiv0$等价于
+\begin{equation*}
+  \alpha_y-\beta_x+\alpha_u\beta-\beta_u\alpha=0
+\end{equation*}
+即当上式成立时此PDES有解。
+\end{exa}
+
+\begin{defn}
+  设$\dim M=m$，若$M$上存在处处非零的$\omega=f\dd x^1\wedge\cdots\wedge\dd x^m$，则称$M$\emph{\red 可定向}\index{可定向 }。
+\end{defn}
+
+\begin{thm}[单位分解定理]\index{单位分解定理}
+设$\Sigma$是光滑流形$M$的一个开覆盖，则$M$上存在一族光滑函数$\{g_{\alpha}\}$满足：
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item 对每个$\alpha$，有$0\leqslant g_{\alpha}\leqslant1$，支集$\supp g_{\alpha}$ 紧，且包含于某个$U_i\in\Sigma$；
+    \item 对每点$p$，存在一个邻域$U$，它只与有限个支集$\supp g_{\alpha}$相交；
+    \item $\sum_{\alpha}g_{\alpha}=1$。
+\end{enumerate}
+
+\end{thm}
+\begin{defn}
+  如下定义外微分式$\omega$的\emph{\red 积分}\index{外微分式的积分 }
+  \begin{equation*}
+    \int_{M}\omega=\sum_i\int_{U_i}g_{\alpha}\omega
+  \end{equation*}
+\end{defn}
+
+\begin{thm}[Stokes公式]\index{Stokes公式}
+\begin{equation*}
+\int_D\dd\omega=\int_{\partial D}\omega
+\end{equation*}
+\end{thm}
+
+\begin{defn}
+  外微分式$\omega$称为\emph{\red 闭的}\index{闭形式 }，如果$\dd\omega=0$，换而言之$\omega\in\ker\dd$；称为\emph{\red 恰当的}\index{恰当形式}，如果存在$\theta$使得$\omega=\dd\theta$，换而言之，$\omega\in\im\dd$。
+\end{defn}
+\begin{prop}
+  $\omega$是闭的$1$形式，当且仅当对于任意零伦闭路径$\gamma$，有
+\begin{equation*}
+\int_{\gamma}\omega=0
+\end{equation*}
+
+$\omega$是恰当的$1$形式，当且仅当对于任意闭路径$\gamma$，有
+\begin{equation*}
+\int_{\gamma}\omega=0
+\end{equation*}
+\end{prop}
+
+\section{李群}
+\subsection*{2012-11-8}
+\begin{defn}
+  若群$G$赋予了一个光滑结构，使得群运算是光滑映射，则称为\emph{\red 李群}\index{李群}。
+\end{defn}
+\begin{defn}
+  设$G$是李群，$\forall a\in G$，定义
+  \begin{center}
+  \parbox{0.4\linewidth}{\mapdes{L_a}{G}{G}{b}{ab}}
+  \parbox{0.4\linewidth}{\mapdes{R_a}{G}{G}{b}{ba}}
+  \end{center}
+则它们都是光滑同胚，分别称为\emph{\red 左移动}\index{左移动 }和\emph{\red 右移动}\index{右移动 }。
+\end{defn}
+\begin{exa}
+  $(\Real^n,+)$、$(S^1,\cdot)$是abel李群。
+\end{exa}
+\begin{exa}
+  若$G_1,G_2$是李群，则$G_1\times G_2$也是李群。特别地，$T^n=\underbrace{S^1\times S^1\times\cdots\times S^1}_{n\text{个}}$是abel李群，称为$n$维环面。
+\end{exa}
+\begin{exa}
+  $GL(n,\Real)=\{A\in\Real^{n\times n}\mid\det A\neq0\}$称为$n$阶{\red 一般线性群}\index{一般线性群}。
+\end{exa}
+\begin{exa}
+  $SL(n,\Real)=\{A\in\Real^{n\times n}\mid\det A=1\}$称为$n$阶{\red 特殊线性群}\index{特殊线性群}。
+\end{exa}
+\begin{exa}
+  $O(n,\Real)=\{A\in\Real^{n\times n}\mid AA^T=I_n\}$称为$n$阶{\red 正交群}\index{正交群 }。
+\end{exa}
+\begin{exa}
+  $SO(n,\Real)=SL(n,\Real)\cap O(n,\Real)$称为$n$阶{\red 特殊正交群}\index{特殊正交群 }。
+\end{exa}
+
+\begin{defn}
+  对李群$G$，若其子群$H$同时也是$G$的闭子流形，则称$H$为$G$的\emph{\red 李子群}\index{李子群 }。
+\end{defn}
+\begin{exa}
+  $G=T^2=S^1\times S^1$，取$H<G$如下
+  \begin{equation*}
+    H=\{(e^{i\theta},e^{ik\theta})\mid\theta\in\Real\}
+  \end{equation*}
+其中$k$为给定实数。
+
+当$k\notin\Q$时，$H$不是$G$的闭子流形（事实上$H$稠于$G$），因此不是$G$的李子群。
+\end{exa}
+
+\begin{defn}
+设$X\in\Xf{G}$，若$\forall a\in G$，
+\begin{equation*}
+(R_a)_{\ast}X=X
+\end{equation*}
+则称$X$是$G$上的\emph{\red 右不变向量场}\index{右不变向量场}。
+$G$上右不变向量场的全体，记作$\g$。
+\end{defn}
+
+\begin{prop}
+  $\g$是$\dim G$维的实线性空间，且
+\begin{equation*}
+X\mapsto X_1
+\end{equation*}
+给出$\g\to T_1G$的同构。
+\end{prop}
+\begin{proof}
+  $\forall v\in T_1G$，可构造右不变向量场$V$
+\begin{equation*}
+V_a=(R_a)_{\ast}v
+\end{equation*}
+反之，右不变向量场$X$满足$X_1=v$，则
+\begin{equation*}
+X_a=(R_a)_{\ast}X_1=V_a
+\end{equation*}
+故任一右不变向量场由其在$1$的值唯一确定。
+\end{proof}
+
+\begin{thm}
+  $\forall X,Y\in\g$，有$[X,Y]\in\g$。
+\end{thm}
+\begin{proof}
+  $\forall a\in G$，$(R_a)_{\ast}[X,Y]=[(R_a)_{\ast}X, (R_a)_{\ast}Y]=[X,Y]$。
+\end{proof}
+
+\begin{defn}
+  称$(\g,[,])$为李群$G$的\emph{\red 李代数}\index{李代数 }。
+\end{defn}
+\begin{rem}
+  有时也称$T_1G$为$G$的李代数。
+\end{rem}
+对于$v\in T_1G$，将满足$X_1=v$的右不变向量场记作$\widehat{v}$，并定义
+  \begin{equation*}
+    [v,w]\defeq[\widehat{v},\widehat{w}]_1
+  \end{equation*}
+
+\begin{defn}
+取$T_1G$的一组基$v_1,\cdots,v_n$，则可设
+\begin{equation*}
+[v_i,v_j]=C^k_{ij}v_k
+\end{equation*}
+其中$C^k_{ij}$称为$G$的\emph{\red 结构常数}\index{结构常数}。
+\end{defn}
+此时$\widehat{v}_1,\cdots,\widehat{v}_n$是$\g$的一组基，且
+\begin{equation*}
+[\widehat{v}_i,\widehat{v}_j]=C^k_{ij}\widehat{v}_k
+\end{equation*}
+\begin{thm}
+  结构常数满足方程组：
+\begin{equation*}
+  \begin{cases}
+    C^k_{ij}=-C^k_{ji}\\
+    C^i_{sj}C^s_{kl}+C^i_{sk}C^s_{lj}+C^i_{sl}C^s_{jk}=0
+  \end{cases}
+\end{equation*}
+\end{thm}
+\begin{rem}
+  反之，满足上述方程组的一组常数$C^k_{ij}$就定义了一个李代数$\g$，并有一个局部李群$G$ 以$\g$为李代数。
+\end{rem}
+
+\begin{defn}
+  对于$x\in G$，定义
+  \begin{equation*}
+    \alpha_x(a)=L_xR_{x^{-1}}(a)=xax^{-1}
+  \end{equation*}
+称为$G$的\emph{\red 内自同构}\index{内自同构}。此时，
+  \begin{equation*}
+    (\alpha_x)_{\ast1}\colon T_1G\longrightarrow T_1G
+  \end{equation*}
+是李代数的同构，记作$\Ad x$。
+\end{defn}
+\mapdes{\Ad}{G}{GL(T_1G)\cong GL(n,\Real)}{x}{\Ad x}
+\begin{defn}
+$\ad=\Ad_{\ast1}\colon T_1G\to gl(n,\Real)$，称为$G$的\emph{\red 伴随表示}\index{伴随表示}。
+\end{defn}
+
+\begin{defn}
+$\theta\in A^1(G)$，若$\forall a\in G, (R_a)^{\ast}\theta=\theta$，则称$\theta$为$G$上的\emph{\red 右不变$1$形式}\index{右不变$1$形式}。
+\end{defn}
+\begin{rem}
+右不变$1$形式全体与$T^{\ast}_1G$同构，恰是$\g$的对偶空间，记作$\g^{\ast}$。
+
+具体地，设$v_1,\cdots,v_n$是$T_1G$的一组基，则$\widehat{v}_1,\cdots,\widehat{v}_n$是$\g$的一组基，它们构成$G$的整体标架场。记它们的对偶为$\omega^1,\cdots,\omega^n$，则
+\begin{equation*}
+\dd\omega^i=-\frac{1}{2}C^i_{jk}\omega^j\wedge\omega^k
+\end{equation*}
+\end{rem}
+
+\begin{defn}
+  形式地定义一个$T_1G$值$1$形式
+  \begin{equation*}
+    \omega=v_i\omega^i
+  \end{equation*}
+  称为李群$G$的\emph{\red Maurer-Cartan形式}\index{Maurer-Cartan形式}。
+\end{defn}
+
+\begin{thm}
+  设$\omega^i$是$\g^{\ast}$的一组基，若$\sigma\colon G\to G$满足$\sigma^{\ast}\omega^i=\omega^i$，则$\sigma$是右移动。
+\end{thm}
+\begin{proof}[Cartan graph technique]\index{Cartan graph technique}
+考虑$G\times G$上$n$维切子空间场$E$，定义方程为
+\begin{equation*}
+\theta^i=\pi_1^{\ast}\omega^i-\pi_2^{\ast}\omega^i
+\end{equation*}
+其中$\pi_1,\pi_2$是$G\times G$到两个分量的技能。
+
+由于
+\begin{align*}
+\dd\theta^i&=\pi_1^{\ast}\dd\omega^i-\pi_2^{\ast}\dd\omega^i\\
+           &=\pi_1^{\ast}(-\frac{1}{2}C^i_{jk}\omega^j\wedge\omega^k)-\pi_2^{\ast}(-\frac{1}{2}C^i_{jk}\omega^j\wedge\omega^k)\\
+           &=-\frac{1}{2}C^i_{jk}(\pi_1^{\ast}\omega^j\wedge\pi_1^{\ast}\omega^k-\pi_2^{\ast}\omega^j\wedge\pi_2^{\ast}\omega^k)\\
+           &\equiv0\mod\theta^1,\cdots,\theta^n
+\end{align*}
+
+可见$E$满足Frobenius条件，过$G\times G$上任一点总存在唯一的极大积分子流形。
+
+注意到$\sigma$之图像$\{(x,\sigma(x))\mid x\in G\}$恰是$E$的一个积分子流形
+\begin{align*}
+f\colon N&\to G\times G\to \pi_1(G)\\
+f^{\ast}\theta^i&=f^{\ast}(\pi_1^{\ast}\omega^i)-f^{\ast}(\pi_2^{\ast}\omega^i)\\
+\theta^i(Y)&=\omega^i(\pi_{1\ast}Y)-\omega^i(\pi_{2\ast}Y)\\
+           &=\omega^i(X)-\omega^i(\sigma_{\ast}X)\\
+           &=\omega^i(X)-(\sigma^{\ast}\omega^i)(X)=0
+\end{align*}
+
+同理，$\forall a\in G$，$R_a$的图像也是$E$的积分子流形。
+
+取$a=\sigma(1)$，则$\sigma$与$R_a$的图像都经过$(1,a)$，故$\sigma=R_a$。
+\end{proof}
+
+\begin{exa}
+  $GL(n,\Real)$之Maurer-Cartan形式为
+  \begin{equation*}
+    \omega=(\dd A)A^{-1}
+  \end{equation*}
+\end{exa}
+
+\section{李群（续）}
+\subsection*{2012-11-15}
+\begin{defn}
+  取$T_1G$的一组基$v_1,\cdots,v_n$，并取$\widehat{v}_1,\cdots,\widehat{v}_n$的对偶$1$形式$\omega^1,\cdots,\omega^n\in A^1(G)$，形式地定义
+  \begin{equation*}
+    \omega=v_i\omega^i
+  \end{equation*}
+  称为李群$G$的\emph{\red 右基本微分式}\index{右基本微分式}，或\emph{\red Maurer-Cartan形式}。
+\end{defn}
+\begin{rem}
+$\omega(\widehat{v}_i)=v_i$。
+\end{rem}
+\begin{exa}
+$G=GL(n,\Real)$的李代数与右基本微分式：
+
+因为$G$中曲线$I+tA$在$t=0$处的切向量就是$A\in\Real^{n\times n}$，所以
+\begin{equation*}
+T_IG=\Real^{n\times n}
+\end{equation*}
+取$A\in T_IG$，注意到这里的$R_ax=xa$是线性变换，故
+\begin{align*}
+\widetilde{A_x}&=R_xA=Ax\in T_xG\\
+\widehat{A}(f)(x)&=\widehat{A}_x(f)\\
+                 &=\localt{\dt f(x+tAx)}
+\end{align*}
+\begin{align*}
+[\widehat{A},\widehat{B}](f)(x)&=\widehat{A}_x(\widehat{B}(f))-\widehat{B}_x(\widehat{A}(f))\\
+                               &=\localt{\dt\widehat{B}(f)(x+tAx)}-\local{\frac{\dd}{\dd s}\widehat{A}(f)(x+sBx)}{s=0}\\
+                               &=\local{\frac{\partial^2}{\partial s\partial t}(f(x+tAx+s(Bx+tBAx))-f(x+sBx+t(Ax+sABx)))}{t=s=0}\\
+                               &=\local{\frac{\partial^2}{\partial s\partial t}(f(x+stBAx)-f(x+stABx))}{t=s=0}\\
+                               &=\localt{\dt(f(x+t(BA-AB)x))}\\
+                               &=(BA-AB)^{\wedge}(f)(x)
+\end{align*}
+所以$[\widehat{A},\widehat{B}]=(BA-AB)^{\wedge}$。
+
+换言之，$T_IG$中的$[,]$运算由
+\begin{equation*}
+[A,B]=BA-AB
+\end{equation*}
+给出。
+
+右基本微分式为
+\begin{equation*}
+\omega=\dd x\cdot x^{-1}
+\end{equation*}
+其中$x=(x_{ij}), \dd x=(\dd x_{ij})$。
+
+这是因为
+\begin{align*}
+ \omega(\widehat{A})&=\dd x((Ax)_{ij}\pfrac{}{x_{ij}})x^{-1}\\
+                   &=(Ax)x^{-1}=A
+\end{align*}
+\end{exa}
+
+\begin{defn}
+  对李群$G$，称李群同态$\gamma\colon(\Real.+)\to G$为$G$的一个\emph{\red 单参数子群}\index{单参数子群 }。
+\end{defn}
+
+\begin{thm}
+  单参数子群$\gamma$由$\dot{\gamma}(0)\in T_1G$唯一决定。
+\end{thm}
+\begin{proof}
+  设$v=\dot{\gamma}(0)\in T_1G$，考虑$\widehat{v}$的流$\theta_t$，则
+\begin{equation*}
+\begin{cases}
+\theta_0=\id\\
+\theta_{t+s}=\theta_t\circ\theta_s
+\end{cases}
+\end{equation*}
+考虑$\widetilde{\gamma}(t)=\theta_t(1)$，则$\widetilde{\gamma}$是单参数子群。
+\begin{align*}
+\dot{\gamma}(t)&=\local{\frac{\dd}{\dd s}\gamma(t+s)}{s=0}\\
+               &=\local{\frac{\dd}{\dd s}(R_{\gamma(t)}\gamma(s))}{s=0}\\
+               &=(R_{\gamma(t)})_{\ast}\dot{\gamma}(0)
+\end{align*}
+
+可见$\gamma(t)$是右不变向量$\widehat{v}$的积分曲线。
+\end{proof}
+
+\begin{exa}
+$G=S^1=\{e^{it}\mid t\in\Real\}$，固定$k$，$\gamma(t)=e^{itk}$就是$S^1$的一个单参数子群，$\dot{\gamma}(0)=ik$。
+\end{exa}
+
+\begin{defn}
+  对于$v\in T_1G$，设$v$对应的单参数子群为$\gamma(t)$，定义
+  \mapdes{\exp}{T_1G}{G}{v}{\gamma(1)}
+称为\emph{\red 指数映射}\index{指数映射}。
+\end{defn}
+\begin{rem}
+  $\exp(kv)=\gamma(k),\forall k\in\Real$。
+\end{rem}
+
+\begin{exa}
+$G=GL(n,\Real)$
+\begin{equation*}
+\exp(A)=I+A+\frac{A^2}{2!}+\frac{A^3}{3!}+\cdots
+\end{equation*}
+\end{exa}
+\begin{exa}
+$G=S^1$
+\begin{equation*}
+\exp(t)=e^{it}
+\end{equation*}
+\end{exa}
+
+\begin{defn}
+  对于李群$G$和流形$M$，若光滑映射$\sigma\colon G\times M\to M$满足：
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\sigma(1,x)=x$；
+    \item $\sigma(a,\sigma(b,c))=\sigma(ab,c)$
+\end{enumerate}
+则称之为$G$在$M$上的一个\emph{\red （左）作用}\index{作用}。简记$\sigma(a,x)$为$ax$。
+\end{defn}
+
+\begin{exa}
+  $S^1$在$S^3$上的左作用
+\begin{equation*}
+\sigma(z,(\xi,\eta))=(z\xi,z\eta)
+\end{equation*}
+\end{exa}
+
+\begin{exa}
+  $SL(2,\Real)$在$S^2\cong\Complex\cup\{\infty\}$上的左作用：
+\begin{equation*}
+\sigma(\begin{pmatrix}
+         a & b \\
+         c & d \\
+       \end{pmatrix}
+,z)=\frac{az+b}{cz+d}
+\end{equation*}
+\end{exa}
+
+\begin{defn}
+  设李群G左作用在流形M上，
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item 若$\forall a\in G, a\neq1$，存在$x\in M$使得$ax\neq x$，则称为\emph{\red 有效的}\index{有效作用}；
+    \item 若$\forall a\in G, a\neq1, \forall x\in M$，都有$ax\neq x$，则称为\emph{\red 自由的}\index{自由作用}。
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+  设李群G左作用在流形M上，对$v\in T_1G$，单参数子群$\exp(tv)$在$M$上之作用形成一个流
+  \begin{equation*}
+    \theta_t(x)=\exp(tv).x
+  \end{equation*}
+将$\theta_t$在$M$上生成的向量场记作$\widetilde{v}$，称为（相应于$v$的）\emph{\red 基本向量场}\index{基本向量场 }。
+\end{defn}
+
+\begin{thm}
+  设李群$G$左作用在流形$M$上，则$M$上的全体基本向量场构成一个李代数，且这个李代数是$T_1G$的同态像。进一步，若该作用有效，则这个李代数同构于$T_1G$。
+\end{thm}
+\begin{proof}
+  在$\sigma\colon G\times M\to M$中固定$p\in M$，则得到
+\mapdes{\sigma_p}{G}{M}{a}{a.p}
+此时$(\sigma_p)_{\ast}\colon T_1G\to T_pM$满足$(\sigma_p)_{\ast1}v=\widetilde{v}_p$。（因为$\sigma_p(\exp(tv))=\exp(tv)p=\theta_t(p)$，而流在$t=0$处求导，即得$(\sigma_p)_{\ast1}v=\widetilde{v}_p$。）
+
+考虑$(\sigma_p)_{\ast a}\colon T_aG\to T_{a.p}M$，$\widehat{v}_a$是$\exp(tv)a$的切向量。
+
+所以$(\sigma_p)_{\ast a}(\widehat{v}_a)$是$\sigma_p(\exp(tv)a)$之切向量。其中$\exp(tv)a.p=\exp(tv).ap=\theta_t(ap)=\widetilde{v}_{ap}$。
+
+可见$(\sigma_p)_{\ast}\widehat{v}=\widetilde{v}$，故$[\widetilde{v},\widetilde{w}]=[\sigma_{p\ast}\widehat{v},\sigma_{p\ast}\widehat{w}]=\sigma_{p\ast}[\widehat{v},\widehat{w}]$。
+\end{proof}
+
+\begin{exa}
+  $SL(2,\Real)$在$S^2$上的作用：
+
+对于$v=\begin{pmatrix}
+  a & b \\
+  c & -a \\
+\end{pmatrix}\in \mathfrak{sl}(2,\Real)$
+有$
+\exp(tv)=\begin{pmatrix}
+  a(t) & b(t) \\
+  c(t) & d(t) \\
+\end{pmatrix}$
+，其中
+\begin{equation*}
+\begin{cases}
+a(0)=d(0)=1\\
+b(0)=c(0)=0\\
+\end{cases}
+\begin{cases}
+\dot{a}(0)=a&
+\dot{b}(0)=b\\
+\dot{c}(0)=c&
+\dot{d}(0)=-a
+\end{cases}
+\end{equation*}
+
+\begin{align*}
+\local{\widetilde{v}}{z}&=\localt{\dt\exp(tv).z}\\
+                        &=\localt{\dt\frac{a(t)z+b(t)}{c(t)z+d(t)}}\\
+                        &=\dot{a}(0)z+\dot{b}(0)-(a(0)z+b(0))(\dot{c}(0)z+\dot{d}(0))\\
+                        &=az+b-z(cz-a)\\
+                        &=-cz^2+2az+b
+\end{align*}
+\end{exa}
+
+\section{李氏变换群的应用}
+\subsection*{2012-11-22}
+\subsection{李型微分方程}
+\begin{defn}
+  给定李群$G$在$M$上的一个左作用，设$A\colon\Real\to T_1G$是光滑曲线，称$M$上的常微分方程
+  \begin{equation*}
+  \gamma'{t}=\widetilde{A(t)}(\gamma(t))
+  \end{equation*}
+  为\emph{\red 李型微分方程}\index{李型微分方程}。
+\end{defn}
+
+\begin{exa}[Ricatti方程]\index{Ricatti方程}
+\begin{equation*}
+x'(t)=a_0(t)+2a_1(t)x(t)+a_2(t)x(t)^2
+\end{equation*}
+其中$a_0,a_1,a_2$已知。
+\end{exa}
+\begin{proof}
+考虑$G=SL(2,\Real)$在$\RP^1$上的作用。此时，相应于
+$v=\begin{pmatrix}
+  a_1 & a_0 \\
+  -a_2 & -a_1 \\
+\end{pmatrix}\in\mathfrak{sl}(2,\Real)$的基本向量场为
+\begin{equation*}
+\widetilde{v}(x)=a_0+2a_1+a_2x^2
+\end{equation*}
+取$T_1G$中的曲线
+$A(t)=\begin{pmatrix}
+  a_1(t) & a_0(t) \\
+  -a_2(t) & -a_1(t) \\
+\end{pmatrix}$则
+\begin{align*}
+\gamma'(t)&=\widetilde{A(t)}(\gamma(t))\\
+          &=a_0(t)+2a_1(t)\gamma(t)+a_2(t)\gamma(t)^2
+\end{align*}
+是李型微分方程。
+\end{proof}
+
+\begin{exa}[一阶线性微分方程]\index{一阶线性微分方程 }
+\begin{equation*}
+x'(t)=a(t)x(t)+b(t)
+\end{equation*}
+这里$x(t),b(t)\in\Real^{n\times1}, a(t)\in\Real^{n\times n}$，而$a(t),b(t)$已知。
+\end{exa}
+\begin{proof}
+考虑
+\begin{equation*}
+G=\left\{\begin{pmatrix}
+            a & b \\
+            0 & 1 \\
+          \end{pmatrix}\in\Real^{(n+1)\times(n+1)}
+\middle| a\in GL(n,\Real), b\in\Real^{n\times1}\right\}
+\end{equation*}
+$G$在$\Real^n$上的左作用（\emph{仿射变换}\index{仿射变换}）如下：
+\begin{equation*}
+\begin{pmatrix}
+  a & b \\
+  0 & 1 \\
+\end{pmatrix}.x=ax+b
+\end{equation*}
+经计算得：
+\begin{equation*}
+T_1G=\left\{\begin{pmatrix}
+            a & b \\
+            0 & 0 \\
+          \end{pmatrix}\in\Real^{(n+1)\times(n+1)}
+\middle| a\in\Real^{n\times n}, b\in\Real^{n\times1}\right\}
+\end{equation*}
+对应于$A=\begin{pmatrix}
+            a & b \\
+            0 & 0 \\
+          \end{pmatrix}$的基本向量场是
+\begin{align*}
+  \widetilde{A}(x)&=\localt{\dt\exp(tA).x}\\
+                         &=\localt{\dt e^{tA}.x}\\
+                         &=ax+b
+\end{align*}
+因此，取$T_1G$中曲线$A(t)=\begin{pmatrix}
+            a(t) & b(t) \\
+            0 & 0 \\
+          \end{pmatrix}$，则微分方程
+\begin{align*}
+\gamma'(t)&=\widetilde{A(t)}(\gamma(t))\\
+          &=a(t)\gamma(t)+b(t)
+\end{align*}
+是李型微分方程。
+\end{proof}
+
+\begin{thm}
+  给定李型微分方程
+\begin{equation*}
+\gamma'{t}=\widetilde{A(t)}(\gamma(t))
+\end{equation*}
+设$S\colon\Real\to G$是微分方程
+\begin{equation*}
+S'(t)=(R_{s(t)})_{\ast}A(t)
+\end{equation*}
+的满足$S(0)=1$的唯一解，则
+\begin{equation*}
+\gamma'{t}=\widetilde{A(t)}(\gamma(t))
+\end{equation*}
+的满足$\gamma(0)=m\in M$的解是$\gamma(t)=S(t).m$，称$S(t)$为李型微分方程的{\red 基解}\index{基解}。
+\end{thm}
+\begin{proof}
+\begin{align*}
+\sigma\colon G\times M&\to M\\
+\sigma_p(g)&=g.p\\
+(\sigma_p)_{\ast}\widehat{v}_a&=\widetilde{v}_{a.p}
+\end{align*}
+由
+\begin{equation*}
+\gamma(t)=\sigma_m(S(t))
+\end{equation*}
+得
+\begin{align*}
+\gamma'(t)&=(\sigma_m)_{\ast}S'(t)\\
+          &=(\sigma_m)_{\ast}(R_{s(t)})_{\ast}A(t)\\
+          &=\widetilde{A(t)}(S(t).m)\\
+          &=\widetilde{A(t)}(\gamma(t))
+\end{align*}
+\end{proof}
+
+\begin{exa}
+  $x'(t)=a(t)x(t)+b(t)$的基解是$S(t)=\begin{pmatrix}
+  x(t) & y(t) \\
+  0 & 1 \\
+\end{pmatrix}$
+\end{exa}
+\begin{proof}
+\begin{align*}
+  S'(t)&=(R_{s(t)})_{\ast}A(t)\\
+\begin{pmatrix}
+  x'(t) & y(t) \\
+  0 & 0 \\
+\end{pmatrix}
+&=
+\begin{pmatrix}
+  a(t) & b(t) \\
+  0 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+  x(t) & y(t) \\
+  0 & 1 \\
+\end{pmatrix}\\
+\Longrightarrow&\begin{cases}
+x'(t)=a(t)x(t)\\
+x(0)=I
+\end{cases}\\
+\Longrightarrow&\begin{cases}
+y'(t)=a(t)y(t)+b(t)\\
+y(0)
+\end{cases}
+\end{align*}
+\end{proof}
+
+\subsubsection*{Lie的约化方法}（由Ricatti方程的研究得到）
+
+假设已有李型微分方程$\gamma'{t}=\widetilde{A(t)}(\gamma(t))$的一个特解$\gamma_0(t)$，且$\gamma_0(0)=m$。
+可取$g(t)\in G$，使$\gamma_0(t)=g(t).m$，但$g(t)$一般不是基解。
+
+设基解为$S(t)=g(t)h(t)$，其中$h(t)\in G_m\defeq\{g\in G\mid g.m=m\}$，则$h(t)$需满足
+\begin{align*}
+(g(t)h(t))'&=(R_{g(t)h(t)})_{\ast}A(t)\\
+(L_{g(t)})_{\ast}h'(t)+(R_{h(t)})_{\ast}g'(t)&=(R_{h(t)})_{\ast}(R_{g(t)})_{\ast}A(t)\\
+\Longrightarrow h'(t)&=(L_{g(t)})_{\ast}^{-1}(R_{h(t)})_{\ast}((R_{g(t)})_{\ast}A(t)-g'(t))\\
+                     &=(R_{h(t)})_{\ast}(L_{g(t)})_{\ast}^{-1}((R_{g(t)})_{\ast}A(t)-g'(t))\\
+\end{align*}
+令$B(t)=L_{g(t)\ast}^{-1}((R_{g(t)})_{\ast}A(t)-g'(t))$，则$B(t)\in T_1G_m=\ker\sigma_{m\ast}$。
+
+于是$h(t)$需满足
+\begin{equation*}
+h'(t)=R_{h(t)\ast}B(t)
+\end{equation*}
+这是$G_m$上的一个基解方程。
+
+\begin{exa}[Ricatti方程]
+设$x'=a_0+2a_1x+a_2x^2$有特解$x_0(t)$，取
+\begin{equation*}
+g(t)=\begin{pmatrix}
+  1 & x_0(t) \\
+  0 & 1 \\
+\end{pmatrix}\in SL(2,\Real)
+\end{equation*}
+则$x_0(t)=g(t).0$。
+
+\begin{align*}
+  G_0&=\left\{\begin{pmatrix}
+                a & b \\
+                c & d \\
+              \end{pmatrix}\in SL(2,\Real)
+              \middle|b=0,d\neq0\right\}
+              \\
+       &=\left\{\begin{pmatrix}
+                u & 0 \\
+                v & u^{-1} \\
+              \end{pmatrix}
+              \middle|u\in\Real^{\times}, v\in\Real\right\}
+\end{align*}
+
+设基解为$S(t)=g(t)h(t)=\begin{pmatrix}
+                     1 & x_0(t) \\
+                     0 & 1 \\
+                   \end{pmatrix}\begin{pmatrix}
+                    u & 0 \\
+                    v & u^{-1} \\
+                  \end{pmatrix}$，则
+\begin{align*}
+  B(t)&=L^{-1}_{g(t)\ast}(R_{g(t)\ast}A(t)-g'(t))\\
+       &=\begin{pmatrix}
+                     1 & -x_0 \\
+                     0 & 1 \\
+                   \end{pmatrix}
+            \left(\begin{pmatrix}
+               a_1 & a_0 \\
+               -a_2 & -a_1 \\
+             \end{pmatrix}
+                 \begin{pmatrix}
+                     1 & x_0 \\
+                     0 & 1 \\
+                   \end{pmatrix}
+             -\begin{pmatrix}
+                     0 & a_0+2a_1x_0+a_2x_0^2 \\
+                     0 & 0 \\
+                   \end{pmatrix}
+            \right)\\
+       &=\begin{pmatrix}
+               a_1+a_0x_0 & 0 \\
+               -a_2 & -(a_1+a_2x_0) \\
+             \end{pmatrix}
+\end{align*}
+
+由$h'(t)=R_{h(t)\ast}B(t)$得
+\begin{equation*}
+\begin{cases}
+u'(t)=u(t)(a_1+a_2x_0)\\
+v'(t)=-a_2u-(a_1+a_0x_0)v
+\end{cases}
+\end{equation*}
+可见$u,v$可积。
+\end{exa}
+
+\paragraph{问题}求基解之难度？
+\begin{exa}
+$G$是abel群，则
+\begin{align*}
+S'(t)&=R_{s(t)\ast}A(t)\\
+     &=A(t)
+\end{align*}
+\end{exa}
+
+\begin{exa}
+由交换的矩阵构成的李群$G$
+\begin{align*}
+&S'(t)=A(t)S(t)\\
+\Longrightarrow&S(t)=\exp(\int A(t)\dd t)
+\end{align*}
+\end{exa}
+
+\paragraph{参考文献}
+Peter.J.Olver ，Application of Lie groups to Differential Equations
+
+
+\section{习题一}
+\begin{xiti}
+  $f\colon M\to N,g\colon N\to K$都是光滑流形之间的光滑映射，证明：
+  \begin{equation*}
+    g_{\ast}\circ f_{\ast}=(g\circ f)_{\ast}
+  \end{equation*}
+\end{xiti}
+\begin{proof}
+  \emph{主要方法是取曲线并注意到切映射与曲线选取无关。}
+
+对于$p\in M$，设$f(p)=q,g(q)=r$，$\forall v\in T_pM$，设$\gamma(t)\subset M$在$t=0$处的切向量是$v$，则有$\widetilde{\gamma}(t)=f(\gamma(t))\subset N$在$t=0$处的切向量是$f_{\ast}v$。
+
+于是$g(f(\gamma(t)))\subset K$在$t=0$处的切向量，一方面是$(g\circ f)(\gamma(t))$的切向量，即$(g\circ f)_{\ast}v$；另一方面也是$g(\widetilde{\gamma})$的切向量，即$g_{\ast}(f_{\ast}v)$。
+
+于是$g_{\ast}\circ f_{\ast}=(g\circ f)_{\ast}$。
+\end{proof}
+
+\begin{xiti}
+  $f\colon\Real^{n\times n}\to\Real$是行列式函数$f(p)=\det(p)$，$p\in GL(n,\Real)$，$e$是单位矩阵，求
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\rank_pf$；
+    \item $f_{\ast e}$。
+\end{enumerate}
+\end{xiti}
+\begin{proof}
+  \emph{主要是注意到$f_{\ast p}(v)$是$f(p+tv)$在$f(p)$点的切向量。}
+
+  由于$\dim\Real=1$，所以$\rank_pf\leqslant1$，为使$\rank_pf=1$，只须在每点$p\in GL(n,\Real)$找到切向量$v$，使得$f_{\ast p}(v)\neq0$。
+
+  为此，取$v\in GL(n,\Real)$，则
+  \begin{equation*}
+  f(p+tv)=|v||pv^{-1}+te|=|v|P_{-pv^{-1}}(t)
+  \end{equation*}
+  其中$P_{-pv^{-1}}(t)$是关于$-pv^{-1}$的特征多项式。
+
+  特别地，取$v=p\in\Real^{n\times n}\cong T_p\Real^{n\times n}$，有
+  \begin{align*}
+  f_{\ast p}(p)&=\localt{\dt f(p+tp)}\\
+             &=|p|\localt{(1+t)^n}\neq0
+  \end{align*}
+
+这就证明了$\rank_pf=1$。
+
+由于$f_{\ast e}(v)$是曲线$f(e+tv)$在$t=0$处的切向量。
+\begin{align*}
+f_{\ast e}(v)&=\localt{\dt|e+tv|}\\
+\dt|e+tv|&=(-t)^n|v-\frac{1}{t}e|
+\end{align*}
+若$v$之特征多项式为$F(\lambda)$，则
+\begin{equation*}
+|e+tv|=(-t)^nF(\frac{1}{t})
+\end{equation*}
+由于
+\begin{equation*}
+F(\lambda)=\lambda^n-(\lambda_1+\cdots+\lambda_n)\lambda^{n-1}+\cdots
+\end{equation*}
+所以
+\begin{align*}
+|e+tv|&=(-t)^{n}((-\frac{1}{t})^n-\tr(v)(-\frac{1}{t})^{n-1}+\cdots)\\
+      &=1+\tr(v) t+o(t)
+\end{align*}
+所以$f_{\ast e}(v)=\tr(v)$。
+\end{proof}
+
+\begin{xiti}
+  证明$SU(2)$与$S^3$微分同胚。其中
+  \begin{align*}
+  SU(2)&=\left\{
+  \begin{pmatrix}
+  a & b \\
+  c & d \\
+  \end{pmatrix}
+  \in\Complex^{2\times2}
+  \middle|
+  |a|^2+|b|^2=1, |c|^2+|d|^2=1, ad-bc=1, a\bar{c}+b\bar{d}=0
+  \right\}\\
+  S^3&=\left\{(z_1,z_2)\in\Complex^2\mid |z_1|^2+|z_2|^2=1\right\}
+  \end{align*}
+\end{xiti}
+\begin{proof}
+  \emph{先通过解方程化简$SU(2)$的表达式，最后看出这个同胚来。}
+
+  \begin{equation*}
+  a\bar{c}+b\bar{d}=0\Longrightarrow ad|c|^2+bc|d|^2=0
+  \end{equation*}
+
+  将之代入$ad-bc=1$得
+  \begin{equation*}
+  ad(1+\frac{|c|^2}{|d|^2})=1
+  \end{equation*}
+  又$|c|^2+|d|^2=1$，故得
+  \begin{equation*}
+  a=\frac{\bar{d}}{|c|^2+|d|^2}=\bar{d}
+  \end{equation*}
+
+  同理可得$b=-\bar{c}$。于是
+  \begin{equation*}
+  SU(2)=\left\{
+  \begin{pmatrix}
+  a & b \\
+  -\bar{b} & \bar{a} \\
+  \end{pmatrix}
+  \in\Complex^{2\times2}
+  \middle|
+  |a|^2+|b|^2=1
+  \right\}
+  \end{equation*}
+
+  对应
+  \begin{equation*}
+  \begin{pmatrix}
+  a & b \\
+  -\bar{b} & \bar{a} \\
+  \end{pmatrix}
+  \in SU(2)
+  \longleftrightarrow
+  (a,b)\in S^3
+  \end{equation*}
+  显然是光滑的双射，于是$SU(2)\cong S^3$。
+\end{proof}
+
+\begin{xiti}
+  证明$SL(n,\Real), O(n,\Real)$是$GL(n,\Real)$的闭子流形。
+\end{xiti}
+\begin{proof}
+  \emph{运用正则值原像定理（\ref{正则值原像定理}）或者淹没原像定理（\ref{淹没原像}）。}
+
+  考虑
+\mapdes{f}{GL(n,\Real)}{\Real}{p}{\det(p)}
+
+则由于$\forall p\in GL(n,\Real),\rank_pf=1$，故$\forall c\neq0$，$f^{-1}(c)$是$GL(n,\Real)$的闭子流形。特别地，取$c=1$，则$SL(n,\Real)$是$GL(n,\Real)$的闭子流形。
+
+令$S$为实对称矩阵全体，考虑
+\mapdes{f}{GL(n,\Real)}{S}{A}{A^{T}A}
+
+下证$\forall p\in GL(n,\Real),\rank_pf=\dim S$。注意到对$f(p)=q$，有$T_qS\cong S$，于是$\forall v\in S$有
+\begin{align*}
+f_{\ast p}(v)&=\localt{\dt (p+tv)^{T}(p+tv)}\\
+             &=p^Tv+v^Tp
+\end{align*}
+
+故$\forall B\in S$，取$v=\frac{1}{2}(p^{-1})^TB$，则$f_{\ast p}(v)=B$。即$f_{\ast p}$是满射，故满秩。
+
+于是$O(n,\Real)=f^{-1}(I)$是$GL(n,\Real)$的闭子流形。
+\end{proof}
+
+\begin{xiti}
+  证明下述$M$是$\Real^{2n+2}$的闭子流形（$\Complex^{n+1}$与$\Real^{2n+2}$视为等同）。
+  \begin{equation*}
+  M=\{(z_0,z_1,\cdots,z_n)\in\Complex^{n+1}\mid z_0^2+z_1^2+\cdots+z_n^2=1\}
+  \end{equation*}
+\end{xiti}
+\begin{proof}
+  \emph{注意到$f_{\ast p}\colon T_pM\to T_pN$在基$\{\px{i}\}$和$\{\py{\alpha}\}$下的矩阵为Jacobi矩阵。}
+
+先将$\Complex^{n+1}$下的坐标改写为$\Real^{2n+2}$下的坐标：$z_j=x_j+iy_j$。则$M$的等式成为：
+\begin{equation*}
+\begin{cases}
+\sum_j(x_j^2-y_j^2)=1\\
+\sum_jx_jy_j=0
+\end{cases}
+\end{equation*}
+
+考虑
+\mapdes{f}{\Real^{2n+2}}{\Real^2}{(x_0,\cdots,x_n,y_0,\cdots,y_n)}{(\sum(x_j^2-y_j^2),\sum x_jy_j)}
+
+则
+\begin{equation*}
+\rank_pf=\rank
+    \begin{pmatrix}
+      2x_0 & \cdots & 2x_n & -2y_0 & \cdots & -2y_n \\
+      y_0 & \cdots & y_n & x_0 & \cdots & x_n \\
+    \end{pmatrix}
+=2
+\end{equation*}
+
+故$M=f^{-1}(1,0)$是$\Real^{2n+2}$的闭子流形。
+\end{proof}
+
+\begin{xiti}
+  证明上题中的$M$与$TS^n$（即$S^n$的切丛）微分同胚。
+\end{xiti}
+\begin{proof}
+  注意到：
+  \begin{equation*}
+  TS^n=\{(x,y)\in\Real^{n+1}\times\Real^{n+1}\mid |x|=1, x\cdot y=0\}
+  \end{equation*}
+
+  考虑
+  \begin{center}
+  \parbox{0.4\linewidth}{\mapdes{f}{M}{TS^n}{(x,y)}{(\frac{x}{\sqrt{1+|y|^2}},y)}}
+  \parbox{0.4\linewidth}{\mapdes{f^{-1}}{TS^n}{M}{(x,y)}{(x(1+|y|^2)^{\frac{1}{2}},y)}}
+  \end{center}
+
+  则$f$为微分同胚。
+\end{proof}
+
+\begin{xiti}
+  设$f\colon M\to N$是光滑映射，$X,Y\in\Xf{M}$，如果$f_{\ast}X$和$f_{\ast}Y$是$N$上的向量场，证明：$f_{\ast}[X,Y]$也是$N$上的向量场，且$f_{\ast}[X,Y]=[f_{\ast}X,f_{\ast}Y]$。
+\end{xiti}
+\begin{proof}
+  \emph{善用下面等式：}
+   \begin{equation*}
+     (f_{\ast}X)(g)(f(p))=f_{\ast p}(X_p)(g)=\localt{\dt g(f(\gamma(t)))}=X_p(g\circ f)
+   \end{equation*}
+
+  由Lie括号的定义（\ref{Lie括号}），由于$f_{\ast}X$和$f_{\ast}Y$是$N$上的向量场，故$[f_{\ast}X,f_{\ast}Y]$也是$N$上的向量场。于是只须证$f_{\ast}[X,Y]=[f_{\ast}X,f_{\ast}Y]$：
+  \begin{align*}
+    ([f_{\ast}X,f_{\ast}Y](g))\circ f&=(f_{\ast}X(f_{\ast}Y(g)))\circ f-(f_{\ast}Y(f_{\ast}X(g)))\circ f\\
+                                 &=X(f_{\ast}Y(g)\circ f)-Y(f_{\ast}X(g)\circ f)\\
+                                 &=X(Y(g\circ f))-(Y(X(g\circ f)))\\
+                                 &=[X,Y](g\circ f)\\
+                                 &=(f_{\ast}[X,Y](g))\circ f
+  \end{align*}
+\end{proof}
+
+\begin{xiti}
+  在$\Real^3$中，定义向量场$X=y\pfrac{}{z}-z\pfrac{}{y},Y=z\pfrac{}{x}-x\pfrac{}{z}$。请计算$Z=[X,Y]$，并证明$X,Y,Z$都与$\Real^3$的子流形$S^2$相切。
+\end{xiti}
+\begin{proof}
+  \emph{通过证明$X,Y,Z$是$SO(3)$的基本向量场，而$S^2$又是$SO(3)$在$\Real^3$上左作用的一个轨道，来证明$X,Y,Z$与$S^2$相切。}
+
+  首先计算$Z=[X,Y]$：
+  \begin{equation*}
+  Z=[X,Y]=XY-YX=y\pfrac{}{x}-x\pfrac{}{y}
+  \end{equation*}
+
+  考虑$SO(3)$的一组基
+  \begin{equation*}
+    e_1=
+         \begin{pmatrix}
+           0 &  &  \\
+            & 0 & 1 \\
+            & -1 & 0 \\
+         \end{pmatrix}
+    ,  e_2=
+         \begin{pmatrix}
+           0 &  & 1 \\
+            & 0 &  \\
+           -1 &  & 0 \\
+         \end{pmatrix}
+    ,  e_3=
+         \begin{pmatrix}
+           0 & 1 &  \\
+           -1 & 0 &  \\
+            &  & 0 \\
+         \end{pmatrix}
+  \end{equation*}
+
+  $\forall p=(x,y,z)^T$，有
+  \begin{align*}
+  \widetilde{e_1}(p)&=\localt{\dt(\exp(te_1).p)}\\
+                  &=\localt{\dt
+         \begin{pmatrix}
+           1 &  &  \\
+            & \cos t & \sin t \\
+            & -\sin t & \cos t \\
+         \end{pmatrix}
+         \begin{pmatrix}
+           x \\
+           y \\
+           z \\
+         \end{pmatrix}}\\
+                  &=
+         \begin{pmatrix}
+           0 \\
+           z \\
+           -y \\
+         \end{pmatrix}=z\pfrac{}{y}-y\pfrac{}{z}
+  \end{align*}
+
+  所以$\widetilde{e_1}=-X$同理可得$\widetilde{e_2}=-Y,\widetilde{e_3}=-Z$。
+
+  取$SO(3)$在$\Real^3$上的作用为：
+  \begin{equation*}
+  \sigma(A,X)=AX, \forall A\in SO(3),X\in\Real^3
+  \end{equation*}
+
+  则$S^2$是该作用的一个轨道，故$\forall p\in S^2,X(f(p))\in f_{\ast}(T_pS^2)$，其中$f$是嵌入，即$X,Y,Z$与$S^2$相切。
+\end{proof}
+\begin{proof}
+  \emph{直接验证$X$与$S^2$相切，余类似。}
+
+  设$X$生成的流为$\phi_t$，且
+  \begin{equation*}
+  \phi_t(x,y,z)=(a,b,c)
+  \end{equation*}
+
+由于
+\begin{equation*}
+X(x,y,z)=(0,-z,y)
+\end{equation*}
+
+故
+\begin{align*}
+\local{(\dot{a},\dot{b},\dot{c})}{t=s}&=\local{\dt\phi_t(x,y,z)}{t=s}\\
+                                      &=\localt{\dt\phi_{t+s}(x,y,z)}\\
+                                      &=\localt{\dt\phi_t(a(s),b(s),c(s))}\\
+                                      &=(0,-c(s),b(s))
+\end{align*}
+
+注意到$\phi_0=\id$，从而
+\begin{equation*}
+\phi_t(x,y,z)=(x,y\cos t+z\sin t,y\sin t-z\cos t)
+\end{equation*}
+
+故$\forall p\in S^2$，$\phi_t(p)$是$S^2$上的以$X_p$为切向量的曲线。
+\end{proof}
+\begin{proof}
+  用$\Real^3$的整体坐标，$S^2=\{(x,y,z)\mid x^2+y^2+z^2=1\}$的法向量\footnote{比如可以用梯度来求得。}表示为
+  \begin{equation*}
+    (x,y,z)
+  \end{equation*}
+
+  而$X,Y,Z$则表示为
+  \begin{equation*}
+    (0,-z,y), (z,0,-x),(y,-x,0)
+  \end{equation*}
+
+  易知$X,Y,Z$与$S^2$相切。
+\end{proof}
+
+\begin{xiti}
+  在$\Real^3$上定义向量场
+  \begin{equation*}
+  X=-y\pfrac{}{x}+x\pfrac{}{y}+(1+z^2)\pfrac{}{z}
+  \end{equation*}
+  试计算$X$生成的流。
+\end{xiti}
+\begin{proof}
+  设
+\begin{equation*}
+\phi_t(x,y,z)=(a,b,c)
+\end{equation*}
+
+由于
+\begin{equation*}
+X(x,y,z)=(-y,x,1+z^2)
+\end{equation*}
+
+故
+\begin{align*}
+\local{(\dot{a},\dot{b},\dot{c})}{t=s}&=\local{\dt\phi_t(x,y,z)}{t=s}\\
+                                      &=\localt{\dt\phi_{t+s}(x,y,z)}\\
+                                      &=\localt{\dt\phi_t(a(s),b(s),c(s))}\\
+                                      &=(-b,a,1+c^2)
+\end{align*}
+
+注意到$\phi_0=\id$，从而
+\begin{equation*}
+\phi_t(x,y,z)=(x\cos t+y\sin t,x\sin t-y\cos t,\tan(t+\arctan z))
+\end{equation*}
+\end{proof}
+
+\begin{xiti}
+  设向量场$X\in\Xf{M}$生成的流是$\phi_t$，$\psi\colon M\to M$是微分同胚，求证：$\psi_{\ast}X$生成的流是$\psi\circ\phi_t\circ\psi^{-1}$。
+\end{xiti}
+\begin{proof}
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\psi\circ\phi_t\circ\psi^{-1}$是流。
+    \item $\psi\circ\phi_t\circ\psi^{-1}$诱导的向量场是$\psi_{\ast}X$：
+  \begin{align*}
+     &\localt{\dt\psi\circ\phi_t\circ\psi^{-1}(p)}\\
+  =&\psi_{\ast}(\localt{\dt\phi_t(\psi^{-1}(p))})\\
+  =&\psi_{\ast}X_{\psi^{-1}(p)}
+  \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{xiti}
+  定义变换$\phi_t\colon\Real^2\to\Real^2$如下：
+  \begin{equation*}
+    \phi_t(x,y)=(x\cosh t+y\sinh t,x\sinh t+y\cosh t)
+  \end{equation*}
+  证明：$\phi_t$是$\Real^2$上的流，并求其诱导的向量场$X$。
+\end{xiti}
+\begin{proof}
+  首先证明$\phi_t$是$\Real^2$上的流。注意到
+  \begin{equation*}
+    \phi_t(x,y)=\begin{pmatrix}
+                  \cosh t & \sinh t \\
+                  \sinh t & \cosh t \\
+                \end{pmatrix}\begin{pmatrix}
+                               x \\
+                               y \\
+                             \end{pmatrix}
+  \end{equation*}
+
+  故只须证
+  \begin{equation*}
+      \begin{pmatrix}
+                  \cosh t & \sinh t \\
+                  \sinh t & \cosh t \\
+      \end{pmatrix}
+      \begin{pmatrix}
+                  \cosh s & \sinh s \\
+                  \sinh s & \cosh s \\
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+                  \cosh (t+s) & \sinh (t+s) \\
+                  \sinh (t+s) & \cosh (t+s) \\
+      \end{pmatrix}
+  \end{equation*}
+
+  \begin{align*}
+    X(x,y) &=\localt{\dt\phi_t(x,y)} \\
+     &=\localt{(x\sinh t+y\cosh t, x\cosh t+y\sinh t)}\\
+     &=(y,x)
+  \end{align*}
+
+  即$X=y\pfrac{}{x}+x\pfrac{}{y}$。
+\end{proof}
+
+\begin{xiti}
+  在$M:=\Real^3\backslash\{0\}$上定义如下$3$个向量场：
+  \begin{equation*}
+    X=2y\pfrac{}{x}+z\pfrac{}{y}, Y=-2x\pfrac{}{x}+2z\pfrac{}{z}, Z=x\pfrac{}{y}+2y\pfrac{}{z}
+  \end{equation*}
+  证明$\spa\{X,Y,Z\}$满足Frobenius条件，并找出积分子流形。
+\end{xiti}
+\begin{proof}
+  \emph{Frobenius条件：当$X_1,\cdots,X_k$是$E$的一组基时，$[X_i,X_j]\in E$。}
+
+  注意到$xX+yY=zZ$，故$\spa\{X,Y,Z\}=\spa\{X,Y\}$，而
+  \begin{equation*}
+    [X,Y]=XY-YX=-4y\pfrac{}{x}-2z\pfrac{}{y}=-2X
+  \end{equation*}
+
+  故$E$满足Frobenius条件。
+
+  将$X,Y$扩充为一组基并取其对偶$1$形式$\omega^1,\omega^2, \omega^3=P\dd x+Q\dd y+R\dd z$。
+  则
+  \begin{equation*}
+    \begin{cases}
+      2yP+zQ=0\\
+      -2xP+2zR=0
+    \end{cases}
+  \end{equation*}
+  故
+  \begin{equation*}
+  \omega^3=z\dd x-2y\dd y+x\dd z=\dd(xz-y^2)
+  \end{equation*}
+  即积分子流形为
+  \begin{equation*}
+    xz-y^2=cst
+  \end{equation*}
+\end{proof}
+
+\section{习题二}
+\begin{xiti}
+  在向量空间$V$中，$v_1,\cdots,v_k$和$\omega_1,\cdots,\omega_k$分别是子空间$V_1$和$V_2$的一组基，证明：$V_1=V_2$当且仅当存在非零实数$c$，使得
+  \begin{equation*}
+    v_1\wedge\cdots\wedge v_k=c\omega_1\wedge\cdots\wedge\omega_k
+  \end{equation*}
+\end{xiti}
+\begin{proof}
+  当$V_1=V_2$时，$\omega_i=a_i^jv_j$，故
+  \begin{align*}
+    \omega_1\wedge\cdots\wedge\omega_k &=a_1^{i_1}v_{i_1}\wedge a_2^{i_2}v_{i_2}\wedge\cdots\wedge a_k^{i_k}v_{i_k} \\
+     &=cv_1\wedge\cdots\wedge v_k
+  \end{align*}
+  其中$c=\sum\sgn(i_1\cdots i_k)a_1^{i_1}\cdots a_k^{i_k}=\det(a_i^j)$，由于$(a_i^j)$是过度矩阵，故$c\neq0$。
+
+  反之，由于
+  \begin{equation*}
+  \omega_i\wedge v_1\wedge\cdots\wedge v_k=\omega_i\wedge c\omega_1\wedge\cdots\wedge\omega_k=0
+  \end{equation*}
+  故$\omega_i\in V_1$，余同理，得$V_2\subset V_1$，反之亦然，故$V_1=V_2$。
+\end{proof}
+
+\begin{xiti}
+  在$\Real^3$中定义$2$形式$\omega=x\dd y\wedge\dd z+y\dd z\wedge\dd x+z\dd x\wedge\dd y$。设$f\colon S^2\to\Real^3$是标准嵌入，求$f^{\ast}\omega$，并证明$f^{\ast}\omega$在$S^2$上处处非零。
+\end{xiti}
+\begin{proof}
+  将$S^2$用极坐标表示，则
+  \begin{equation*}
+    f(\alpha,\beta)=(\cos\alpha\cos\beta,\cos\alpha\sin\beta,\sin\alpha)
+  \end{equation*}
+
+  故
+  \begin{equation*}
+    f^{\ast}\omega=-\cos\alpha\dd\alpha\wedge\dd\beta, \alpha\in(-\frac{\pi}{2},\frac{\pi}{2})
+  \end{equation*}
+\end{proof}
+
+\begin{xiti}
+  已知$\alpha,\beta$为闭微分式，证明$\alpha\wedge\beta$也是闭微分式；进一步地，若$\beta$还是恰当的，则$\alpha\wedge\beta$也是恰当的。
+\end{xiti}
+\begin{proof}
+  因为$\dd\alpha=\dd\beta=0$，故
+  \begin{equation*}
+    \dd(\alpha\wedge\beta)=\dd\alpha\wedge\beta+(-1)^{\deg\alpha}\alpha\wedge\dd\beta=0
+  \end{equation*}
+
+  设$\beta=\dd\omega$，则
+  \begin{equation*}
+    \dd(\alpha\wedge\omega)=\dd\alpha\wedge\omega+(-1)^{\deg\alpha}\alpha\wedge\dd\omega=(-1)^{\deg\alpha}\alpha\wedge\beta
+  \end{equation*}
+
+  故$\alpha\wedge\beta=\dd((-1)^{\deg\alpha}\alpha\wedge\omega)$。
+\end{proof}
+
+\begin{xiti}
+  在$S^3$上构造三个整体定义的$1$形式$\omega^1,\omega^2,\omega^3$，使得
+  \begin{equation*}
+    \dd\omega^1=-\omega^2\wedge\omega^3, \dd\omega^2=-\omega^3\wedge\omega^1, \dd\omega^3=-\omega^1\wedge\omega^2
+  \end{equation*}
+\end{xiti}
+\begin{proof}
+  首先求出
+  \begin{equation*}
+  S^3=SU(2)=\left\{\begin{pmatrix}
+                     z_1 & z_2 \\
+                     -\bar{z_2} & \bar{z_1} \\
+                   \end{pmatrix}
+                   \middle|
+                   |z_1|^2+|z_2|^2=1
+                   \right\}
+  \end{equation*}
+  的李代数。为此取$I$处的曲线
+  \begin{equation*}
+    \begin{cases}
+      |z_1(t)|^2+|z_2(t)|^2=1\\
+      z_1(0)=1\\
+      z_2(0)=0
+    \end{cases}
+  \end{equation*}
+
+  故求得李代数为
+  \begin{equation*}
+  \mathfrak{su}(2)=\left\{\begin{pmatrix}
+                     ki & a+bi \\
+                     -a+bi & -ki \\
+                   \end{pmatrix}
+                   \middle|
+                   k^2+a^2+b^2=1
+                   \right\}
+  \end{equation*}
+
+  其一组基为
+  \begin{equation*}
+    v_1=\begin{pmatrix}
+      i &  \\
+       & -i \\
+    \end{pmatrix}
+    , v_2=\begin{pmatrix}
+       & 1 \\
+      -1 &  \\
+    \end{pmatrix}
+    , v_3=\begin{pmatrix}
+       & i \\
+      i &  \\
+    \end{pmatrix}
+  \end{equation*}
+
+  它们对应的右不变向量场为$e_1,e_2,e_3$，则
+  \begin{align*}
+    [e_1,e_2] & = [v_1,v_2]^{\wedge} \\
+     & =(v_2v_1-v_1v_2)^{\wedge}\\
+     &=(-2v_3)^{\wedge}=-2e_3
+  \end{align*}
+
+  同理$[e_2,e_3]=-2e_1,[e_3.e_1]=-2e_2$。于是令$e_1,e_2,e_3$对偶的$1$形式是$\omega^1,\omega^2,\omega^3$，则由
+  \begin{equation*}
+    \dd\omega^k=-\frac{1}{2}C^k_{ij}\omega^i\wedge\omega^j
+  \end{equation*}
+  得
+  \begin{equation*}
+    \dd\omega^1=2\omega^2\wedge\omega^3, \dd\omega^2=2\omega^3\wedge\omega^1, \dd\omega^3=2\omega^1\wedge\omega^2
+  \end{equation*}
+
+  令$\widetilde{\omega}^i=-2\omega^i$，则$\widetilde{\omega}^i$符合要求。
+\end{proof}
+\begin{proof}
+  将$S^3$嵌入到$\Real^4$，并令
+  \begin{equation*}
+    \begin{pmatrix}
+       \theta^0 \\
+       \theta^1 \\
+       \theta^2 \\
+       \theta^3 \\
+     \end{pmatrix}
+     =
+     \begin{pmatrix}
+       x^1 & x^2 & x^3 & x^4 \\
+       -x^2 & x^1 & -x^4 & x^3 \\
+       -x^3 & x^4 & x^1 & -x^2 \\
+       -x^4 & -x^3 & x^2 & x^1 \\
+     \end{pmatrix}
+     \begin{pmatrix}
+       \dd x^1 \\
+       \dd x^2 \\
+       \dd x^3 \\
+       \dd x^4 \\
+     \end{pmatrix}
+  \end{equation*}
+
+  简记为$\theta=A\dd X$。从而有
+  \begin{equation*}
+    \dd\theta=\dd A\wedge\dd X=\dd A\wedge(A^{-1}\theta)=(\dd A)A^{-1}\wedge\theta
+  \end{equation*}
+
+  故
+  \begin{equation*}
+    f^{\ast}\dd\theta^1=2f^{\ast}\dd\theta^2\wedge f^{\ast}\dd\theta^3, f^{\ast}\dd\theta^2=2f^{\ast}\dd\theta^3\wedge f^{\ast}\dd\theta^1, f^{\ast}\dd\theta^3=2f^{\ast}\dd\theta^1\wedge f^{\ast}\dd\theta^2
+  \end{equation*}
+\end{proof}
+
+\begin{xiti}
+  在$\Real^5$中取坐标系$(x,y,u,p,q)$，并定义外微分式$\theta^1=\dd u-p\dd x-q\dd y, \theta^2=\dd p\wedge\dd q-\dd x\wedge\dd y$。对于二元函数$z(x,y)$，考虑由$f(x,y)=(x,y,z,z_x,z_y)$定义的浸入映射$f\colon\Real^2\to\Real^5$。证明：当且仅当$z$是方程$z_{xx}z_{yy}-z_{xy}^2=1$的解时，$f^{\ast}\theta^1=0, f^{\ast}\theta^2=0$。
+\end{xiti}
+\begin{proof}
+  \begin{align*}
+    f^{\ast}\theta^1&=\dd z-z_x\dd x-z_y\dd y \\
+    f^{\ast}\theta^2&=\dd z_x\wedge\dd z_y-\dd x\wedge\dd y\\
+                             &=(z_{xx}z_{yy}-z_{xy}^2-1)\dd x\wedge\dd y
+  \end{align*}
+\end{proof}
+
+\begin{xiti}
+  所设同上，定义$\omega^1=\dd u-p\dd x-q\dd y,\omega^2=\dd y\wedge\dd p-\dd x\wedge\dd q$。证明：当且仅当$z$是方程$z_{xx}+z_{yy}=0$的解时，$f^{\ast}\omega^1=0, f^{\ast}\omega^2=0$。
+\end{xiti}
+\begin{proof}
+  \begin{align*}
+    f^{\ast}\omega^1&=\dd z-z_x\dd x-z_y\dd y \\
+    f^{\ast}\omega^2&=\dd y\wedge\dd z_x-\dd x\wedge\dd z_y\\
+                               &=(z_{xx}+z_{yy})\dd y\wedge\dd x
+  \end{align*}
+\end{proof}
+
+\begin{xiti}
+  所设同上两题，考虑微分同胚$\phi\colon\Real^5\to\Real^5$如下
+  \begin{equation*}
+    \phi(x,y,u,p,q)=(x,q,u-qy,p,-y)
+  \end{equation*}
+  证明：$\phi^{\ast}\theta^1=\omega^1,\phi^{\ast}\theta^2=\omega^2$。这表明Monge-Ampere方程$z_{xx}z_{yy}-z_{xy}^2=1$与Laplace方程$z_{xx}+z_{yy}=0$的解之间有怎样的联系。
+\end{xiti}
+\begin{proof}
+  \begin{align*}
+    \phi^{\ast}\theta^1&=\dd (u-qy)-p\dd x-(-y)\dd q \\
+                                  &=\dd u-y\dd q-q\dd y-p\dd x+y\dd q\\
+                                  &=\dd u-p\dd x-q\dd y=\omega^1\\
+    \phi^{\ast}\theta^2&=\dd p\wedge\dd (-y)-\dd x\wedge\dd q\\
+                                  &=\dd y\wedge\dd p-\dd x\wedge\dd q=\omega^2
+  \end{align*}
+
+  可见Monge-Ampere方程$z_{xx}z_{yy}-z_{xy}^2=1$与Laplace方程$z_{xx}+z_{yy}=0$的解一一对应。
+\end{proof}
+
+\begin{xiti}
+  设$\omega\in A^1(M)$处处不为零。若有处处非零的函数$\mu\in C^{\infty}(M)$使得$\mu\omega$为恰当的$1$形式，则称$\mu$为$\omega$的一个{\red 积分因子}\index{积分因子}。证明：$\omega$有积分因子的充要条件是$\dd\omega\wedge\omega=0$。
+\end{xiti}
+\begin{proof}
+  设$\mu\omega=\dd f$，则
+  \begin{align*}
+    \omega &=\frac{1}{\mu}\dd f \\
+    \dd\omega &=\dd(\frac{1}{\mu})\wedge\dd f\\
+                      &=\dd(\frac{1}{\mu})\wedge(\mu\omega)\\
+    \Longrightarrow&\dd\omega\wedge\omega=0
+  \end{align*}
+
+  反之，$\dd\omega\wedge\omega=0$说明存在光滑函数$\mu$，使得$\dd\omega=\mu\omega$。
+\end{proof}
+
+\begin{xiti}
+  李群$G$的任意右不变向量场$X$都是{\red 完备}\index{完备向量场 }的，即它生成的流$\varphi_t=L_{\exp(tX)}$对任意$t\in\Real$都有定义（请特别注意：右不变向量场生成的流是左移动）。
+\end{xiti}
+\begin{proof}
+  考虑$v\in T_1G$对应的单参数子群$\exp(tv)$。
+
+  则$\varphi_t(a)=\exp(tv)a$相应的向量场为
+  \begin{equation*}
+    X_{(a)}=\localt{\dt\varphi_t(a)}=R_{a\ast}v
+  \end{equation*}
+
+  故满足$\dot{\gamma}(0)=X_1$的积分曲线$\gamma(t)$存在，设它的最大存在区间为$[0,\varepsilon)$，定义
+   \begin{equation*}
+     \widetilde{\gamma}=
+     \begin{cases}
+       \gamma(t) & t\in[0,\varepsilon)\\
+       \gamma(t-\frac{\varepsilon}{2})\gamma(\frac{\varepsilon}{2}) & t\in[\varepsilon,\frac{3\varepsilon}{2})
+     \end{cases}
+   \end{equation*}
+   则$\widetilde{\gamma}(t)$也是$X$的积分曲线：
+
+   由
+   \begin{equation*}
+     \dot{\widetilde{\gamma}}(t)=R_{\gamma(\frac{\varepsilon}{2})\ast}\dot{\gamma}(t-\frac{\varepsilon}{2})=R_{\gamma(\frac{\varepsilon}{2})\ast}X(\gamma(t-\frac{\varepsilon}{2}))
+   \end{equation*}
+   及右不变性，得证。
+\end{proof}
+
+\begin{xiti}
+  证明李群$G$的指数映射$\exp\colon T_1G\to G$是光滑映射。
+\end{xiti}
+\begin{proof}
+  \emph{只须证明存在$T_1G\times G$上的向量场$Y$，它的流为$\phi_t(v,a)=(v,\exp(tv)a)$，从而$\exp$可写成光滑映射的复合$\pi_2(\phi_1(v,1))$。注意此时不能直接验证$\phi$是流，因为还未证明指数映射是李群同态。}
+
+  注意到$\exp(tv)=\gamma(t)$，其中$\gamma(t)$是由$\dot{\gamma}(0)=v$决定的单参数子群，于是
+  \begin{align*}
+    \localt{\dt\phi_t(v,a)}&=\localt{\dt(v,\exp(tv)a)}\\
+                                   &=(0,\localt{\dt\exp(tv)a})\\
+                                   &=(0,R_{a\ast1}(\localt{\dt\gamma(t)}))\\
+                                   &=(0,R_{a\ast1}v)\in T_v(T_1G)\times T_aG\cong T_{(v,a)}(T_1G\times G)
+  \end{align*}
+
+  故令$Y_{(v,a)}=(0,R_{a\ast1}v)$即可。
+\end{proof}
+
+\begin{xiti}
+  证明指数映射满足等式$x\exp(v)x^{-1}=\exp(\Ad_xv), \forall v\in T_1G,x\in G$，并由此说明$\tr(\exp(v))\geqslant2, \forall v\in\mathfrak{sl}(2,\Real)$。
+\end{xiti}
+\begin{proof}[提示]
+  考虑$v\in\mathfrak{sl}(2,\Real)$的相似标准型。
+\end{proof}
+\begin{proof}
+  设$\gamma(t)=x\exp(tv)x^{-1}, \widetilde{\gamma}(t)=\exp(\Ad_x(tv))$，则它们都是单参数子群。由于
+  \begin{align*}
+     \dot{\gamma}(0)&=(L_{x}R_{x^{-1}})_{\ast1}v\\
+     \dot{\widetilde{\gamma}}(0)&=\localt{\dt\exp((L_{x}R_{x^{-1}})_{\ast1}tv)}\\
+                            &=(L_{x}R_{x^{-1}})_{\ast1}v
+  \end{align*}
+
+  故$\gamma(t)=\widetilde{\gamma}(t)$。
+
+  \begin{align*}
+    \mathfrak{sl}(2,\Real)&=\{v\in\Real^{2\times 2}\mid\tr(v)=0\}\\
+    \tr(\exp(v))&=\tr(x\exp(v)x^{-1})\\
+                    &=\tr(\exp(\Ad_xv))\\
+                    &=\tr(\exp(xvx^{-1}))
+  \end{align*}
+
+  特别地，可选取$x$使得$xvx^{-1}$化为相似下的标准型
+  \begin{align*}
+    \tr(\exp\begin{pmatrix}
+       \lambda &  \\
+        & -\lambda \\
+     \end{pmatrix})
+     &=\tr(\begin{pmatrix}
+        e^{\lambda} &  \\
+         & e^{-\lambda} \\
+      \end{pmatrix})
+      =2\cosh\lambda\geqslant2\\
+    \tr(\exp\begin{pmatrix}
+       0 & \lambda \\
+        & 0 \\
+     \end{pmatrix})
+     &=\tr(\begin{pmatrix}
+        1 & \lambda \\
+         & 1 \\
+      \end{pmatrix})
+      =1+1\geqslant2
+  \end{align*}
+\end{proof}
+
+\begin{xiti}
+  考虑$SL(2,\Complex)$中形如
+  $\begin{pmatrix}
+     x\sec t & y\tan t \\
+     \bar{y}\tan t & \bar{x}\sec t \\
+   \end{pmatrix}
+  $的所有矩阵，其中$t\in(0,\frac{\pi}{2}), x,y\in\Complex$，且$|x|=|y|=1$。证明这些矩阵构成一个李群$G$，并求$T_1G$的一组基$e_1,e_2,e_3$。
+\end{xiti}
+\begin{proof}
+  只须证$G$对乘法封闭：
+  \begin{equation*}
+   \begin{pmatrix}
+     p & q \\
+     \bar{q} & \bar{p} \\
+   \end{pmatrix}
+   \begin{pmatrix}
+     a & b \\
+     \bar{b} & \bar{a} \\
+   \end{pmatrix}
+   =\begin{pmatrix}
+     pa+q\bar{b} & q\bar{a}+pb \\
+     \bar{q}a+\bar{p}\bar{b} & \bar{p}\bar{a}+\bar{q}b \\
+   \end{pmatrix}
+  \end{equation*}
+
+  令$x=y=1$，则$e_1=
+  \begin{pmatrix}
+     & 1 \\
+    1 &  \\
+  \end{pmatrix}
+  $；
+
+  $t=0$，则$e_2=
+  \begin{pmatrix}
+    i &  \\
+     & -i \\
+  \end{pmatrix}
+  $；
+
+  $x=1,t=\frac{\pi}{4}$，则$e_3=
+  \begin{pmatrix}
+     & i \\
+    -i &  \\
+  \end{pmatrix}
+  $。
+\end{proof}
+
+\begin{xiti}
+  设$D\defeq\{z\in\Complex\mid|z|<1\}$。考虑上题中的李群$G$在$D$上的左作用
+  \begin{equation*}
+    \begin{pmatrix}
+     x\sec t & y\tan t \\
+     \bar{y}\tan t & \bar{x}\sec t \\
+    \end{pmatrix}.z\defeq
+    \frac{zx\sec t+y\tan t}{z\bar{y}\tan t+\bar{x}\sec t}
+  \end{equation*}
+  求相应于$e_1,e_2,e_3$的基本向量场。
+\end{xiti}
+\begin{proof}
+  设相应于$e_1,e_2,e_3$的基本向量场为$X, Y, Z$，则
+  \begin{align*}
+    X(z) &=\localt{\dt\exp(te_1).z} \\
+     &=\localt{\dt\frac{z\cosh t+\sinh t}{z\sinh t+\cosh t}}\\
+     &=\localt{\frac{(1-z^2)e^t}{(z\sinh t+\cosh t)^2}}\\
+     &=1-z^2\\
+    Y(z) &=\localt{\dt\exp(te_2).z} \\
+     &=\localt{\dt\frac{ze^{it}}{e^{-it}}}\\
+     &=\localt{-2z\sin 2t+2zi\cos 2t}\\
+     &=2zi\\
+    Z(z) &=\localt{\dt\exp(te_3).z} \\
+     &=\localt{\dt\frac{z\cos t+i\sin t}{-zi\sin t+\cos t}}\\
+     &=\localt{\frac{i(1-z^2)(\cos t^2-\sin t^2)}{(-zi\sin t+\cos t)^2}}\\
+     &=i(1-z^2)
+  \end{align*}
+\end{proof}
+
+\begin{rem}
+  计算$\exp\begin{pmatrix}
+            & z \\
+           z &  \\
+         \end{pmatrix}$。
+  \begin{align*}
+    \sum_{k=0}^{\infty}\frac{z^{2k}}{(2k)!}&=\cosh z=\frac{e^z+e^{-z}}{2} \\
+    \sum_{k=0}^{\infty}\frac{z^{2k+1}}{(2k+1)!}&=\sinh z=\frac{e^z-e^{-z}}{2}\\
+    \exp\begin{pmatrix}
+            & z \\
+           z &  \\
+         \end{pmatrix}
+         &=\begin{pmatrix}
+            \cosh z & \sinh z \\
+            \sinh z & \cosh z \\
+          \end{pmatrix}
+  \end{align*}
+\end{rem}
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Index}
+\printindex
+\end{document}

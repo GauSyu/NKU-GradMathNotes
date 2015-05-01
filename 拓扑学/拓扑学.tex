@@ -1,0 +1,1187 @@
+%%% LAYOUT %%%
+
+\documentclass[UTF-8,11pt,fancyhdr,hyperref,titlepage]{ctexart}
+
+\usepackage[text={170mm,250mm},centering]{geometry}   %调整页面布局
+
+%%%%%%%%%Color%%%%%%%%%%%
+\usepackage{color}
+\newcommand{\red}{\color{red}}
+%%%%% Theorems and references %%%%%
+
+\usepackage{amsmath,amsthm}
+
+\newtheoremstyle{question}{1.5ex plus 1ex minus .2ex}{1.5ex plus 1ex minus .2ex}{\large\itshape}{}{\songti\bfseries}{}{1em}{}
+\theoremstyle{question}
+\newtheorem{timu}{题目}
+\theoremstyle{theorem}
+\newtheorem{thm}{定理}
+\newtheorem{cor}[thm]{推论}
+\newtheorem{lem}[thm]{引理}
+\newtheorem{prop}[thm]{命题}
+\newtheorem{axiom}{公理}
+\newtheorem{exa}[thm]{例}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{定义}
+\theoremstyle{remark}
+\newtheorem*{rem}{注}
+\newtheorem*{note}{约定}
+%\numberwithin{equation}{section}
+\renewcommand{\proofname}{\bf  证明}
+
+%%%%% Table of Contents; Index %%%%%
+\usepackage[titles]{tocloft}
+% \setlength{\cftsecnumwidth}{15ex}
+
+\usepackage{makeidx}
+\makeindex
+%\newcommand{\emindexing}[1]{{\em #1}\index{#1}}
+%\newcommand{\indexing}[1]{#1\index{#1}}
+
+\newcommand{\Chapter}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+\newcommand{\Section}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+\newcommand{\SubSection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
+
+
+%%% MATRICES %%%
+
+%\usepackage{multirow}
+%\usepackage{rotating}
+%\usepackage{arydshln} % for block matrices
+
+\usepackage{enumerate}  %高级列表
+%%% GRAPHICS %%%
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,decorations.pathreplacing,decorations.markings,shapes.geometric,calc,positioning,chains,matrix,scopes}
+
+\tikzset{%
+singly/.style={postaction={decorate},decoration={markings,mark=at position .6 with {\arrow{>}}}},%
+doubly/.style={double, double distance=1.5pt,postaction={decorate},decoration={markings,mark=at position .6 with {\arrow{>}}}},%
+}
+\usepackage[all]{xy}                                    %交换图表。
+\usepackage{epic}															%增强绘图。
+\usepackage{graphicx}														%图像增强
+
+%%% SYMBOLS %%%
+
+\usepackage{amssymb,amsfonts,bbm,mathrsfs}%,stmaryrd}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+%%%%% Letters %%%%%
+
+\def\Aa{{\cal A}}
+\def\Bb{{\cal B}}
+\def\Cc{{\cal C}}
+\def\Dd{{\cal D}}
+\def\Ee{{\cal E}}
+\def\Ff{{\cal F}}
+\def\Gg{{\cal G}}
+\def\Hh{{\cal H}}
+\def\Ii{{\cal I}}
+\def\Jj{{\cal J}}
+\def\Kk{{\cal K}}
+\def\Ll{{\cal L}}
+\def\Mm{{\cal M}}
+\def\Nn{{\cal N}}
+\def\Oo{{\cal O}}
+\def\Pp{{\cal P}}
+\def\Qq{{\cal Q}}
+\def\Rr{{\cal R}}
+\def\Ss{{\cal S}}
+\def\Tt{{\cal T}}
+\def\Uu{{\cal U}}
+\def\Vv{{\cal V}}
+\def\Ww{{\cal W}}
+\def\Xx{{\cal X}}
+\def\Yy{{\cal Y}}
+\def\Zz{{\cal Z}}
+
+\def\AA{{\mathbb A}}
+\def\BB{{\mathbb B}}
+\def\CC{{\mathbb C}}
+\def\DD{{\mathbb D}}
+\def\EE{{\mathbb E}}
+\def\FF{{\mathbb F}}
+\def\GG{{\mathbb G}}
+\def\HH{{\mathbb H}}
+\def\II{{\mathbb I}}
+\def\JJ{{\mathbb J}}
+\def\KK{{\mathbb K}}
+\def\LL{{\mathbb L}}
+\def\MM{{\mathbb M}}
+\def\NN{{\mathbb N}}
+\def\OO{{\mathbb O}}
+\def\PP{{\mathbb P}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\SS{{\mathbb S}}
+\def\TT{{\mathbb T}}
+\def\UU{{\mathbb U}}
+\def\VV{{\mathbb V}}
+\def\WW{{\mathbb W}}
+\def\XX{{\mathbb X}}
+\def\YY{{\mathbb Y}}
+\def\ZZ{{\mathbb Z}}
+
+\def\Aaa{\mathscr{A}}
+\def\Bbb{\mathscr{B}}
+\def\Ccc{\mathscr{C}}
+\def\Ddd{\mathscr{D}}
+\def\Eee{\mathscr{E}}
+\def\Fff{\mathscr{F}}
+\def\Ggg{\mathscr{G}}
+\def\Hhh{\mathscr{H}}
+\def\Iii{\mathscr{I}}
+\def\Jjj{\mathscr{J}}
+\def\Kkk{\mathscr{K}}
+\def\Lll{\mathscr{L}}
+\def\Mmm{\mathscr{M}}
+\def\Nnn{\mathscr{N}}
+\def\Ooo{\mathscr{O}}
+\def\Ppp{\mathscr{P}}
+\def\Qqq{\mathscr{Q}}
+\def\Rrr{\mathscr{R}}
+\def\Sss{\mathscr{S}}
+\def\Ttt{\mathscr{T}}
+\def\Uuu{\mathscr{U}}
+\def\Vvv{\mathscr{V}}
+\def\Www{\mathscr{W}}
+\def\Xxx{\mathscr{X}}
+\def\Yyy{\mathscr{Y}}
+\def\Zzz{\mathscr{Z}}
+
+\def\aa{{\frak a}}
+\def\bb{{\frak b}}
+\def\cc{{\frak c}}
+\def\dd{{\frak d}}
+\def\ee{{\frak e}}
+\def\ff{{\frak f}}
+\def\gg{{\frak g}}  % Knuth uses $\gg$ for ``>>''.
+\def\hh{{\frak h}}
+\def\ii{{\frak i}}
+\def\jj{{\frak j}}
+\def\kk{{\frak k}}
+\def\ll{{\frak l}}  % Knuth uses $\ll$ for ``<<''.
+\def\mm{{\frak m}}
+\def\nn{{\frak n}}
+\def\oo{{\frak o}}
+\def\pp{{\frak p}}
+\def\qq{{\frak q}}
+\def\rr{{\frak r}}
+\def\ss{{\frak s}}
+\def\tt{{\frak t}}
+\def\uu{{\frak u}}
+\def\vv{{\frak v}}
+\def\ww{{\frak w}}
+\def\xx{{\frak x}}
+\def\yy{{\frak y}}
+\def\zz{{\frak z}}
+
+\def\aaa{{a}}
+\def\bbb{{b}}
+\def\ccc{{c}}
+\def\ddd{{d}}
+
+
+\def\RP{\mathbb{R}\mathbf{P}}
+
+%%%%% Math characters %%%%%
+
+\def\<{\langle}
+\def\>{\rangle}
+\def\anti{\mathpzc{S}}
+\def\ctimes{\textrm{\c{$\otimes$}}}
+\def\sminus{\smallsetminus}
+\def\Wedge{\mbox{$\bigwedge$}}
+\def\lrtimes{\Join}
+
+%%%%% Arrows %%%%%
+\def\acts{\curvearrowright}
+\def\epi{\twoheadrightarrow}
+\def\from{\leftarrow}
+\def\isom{\overset{\sim}{\to}}
+\def\longto{\longrightarrow}
+\def\mono{\hookrightarrow}
+\def\onto{\twoheadrightarrow}
+\def\then{\Rightarrow}
+\def\To{\longto}
+\def\tofrom{\leftrightarrow}
+\def\tto{\rightrightarrows}
+
+%%%%% Combinations %%%%%
+\def\defined{\overset{\textrm{\upshape def}}{=}}
+\def\dzero{\left. \frac{d}{dt} \right|_{t=0}}
+\def\pt{\{{\rm pt}\}}
+
+
+
+\newcommand{\cat}[1]{\textsc{#1}}
+%\newcommand{\interior}[1]{\overset{\circ}{#1}}
+\newcommand{\open}[1][\subseteq]{\underset{\textrm{open}}{#1}}
+%\newcommand{\widegrave}[1]{#1^{\grave{\left.\right.}}}
+
+%%%%%%Functions%%%%%%%
+\newcommand{\local}[2]{\left.{#1}\right|_{#2}}
+
+\newcommand{\defeq}{\stackrel{{\mathrm{def}}}{=}}
+\newcommand{\mapsim}[1]{\stackrel{{\mathrm{#1}}}{\sim}}
+
+\newcommand{\mapdes}[5]
+  {
+    \begin{align*}
+      #1\colon\  #2 & \longrightarrow  #3 \\
+            #4 & \longmapsto  #5
+    \end{align*}
+    %多于两个对齐点，align会出问题。换用alignat。
+  }
+\newcommand{\markar}[1]{\stackrel{{#1}}{\longrightarrow}}%带标号箭头（定长，与\xleftarrow不同）
+
+
+\newcommand{\rH}[1]{\widetilde{H}_{#1}}
+%%%%% Words %%%%%
+
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Forget}{Forget}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\prim}{prim}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Span}{span} % Annoyingly, \span is already a command in TeX, and redefining it leads to other problems.
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Vect}{Vect}
+
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\GO}{O}
+\DeclareMathOperator{\SP}{Sp}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\SU}{SU}
+%\DeclareMathOperator{\U}{U}
+\DeclareMathOperator{\Pt}{Pt}
+
+
+\def\gl{\gg\ll}
+\def\sl{\ss\ll}
+\def\so{\ss\oo}
+\def\sp{\ss\pp}
+\def\su{\ss\uu}
+
+\def\st{\textrm{ s.t. }}
+\def\op{{\textrm{\upshape op}}}
+
+%\def\TikZ{Ti{\em k}Z}
+
+%%% MISCELLANEOUS %%%
+%\usepackage{ifthen}
+
+% END PREAMBLE, and BEGIN CONTENT %
+
+%\renewcommand{\thepage}{\roman{page}}
+
+\title{拓扑学（I）复习题}
+\author{Made By \emph{\textbf{Gau Syu}}}
+\date{最近更新：\today}
+
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\Section{Preface}
+{\kaishu 这是2012年下半年南开大学数学科学学院研究生课程“\textbf{拓扑学（I）}”的期末复习材料及复习题解答，基于本人和一些同学的笔记、资料和解答整理而成，如有疏漏，还望海涵。
+
+该课程由\textbf{王向军}老师讲授。}
+
+\bigskip
+\bigskip
+\bigskip
+
+
+\tableofcontents
+\newpage
+\part{知识略览及补充}
+
+\section{同伦与基本群}
+\subsection{基本知识}
+\begin{defn}
+  子集$A\subset X$称为$X$的\emph{\red 收缩核}，如果含入映射$i\colon A\To X$存在左逆$j\colon X\To A$，即$j\circ i=\id_{A}$；如果还有$i\circ j\simeq\id_{X}$，则称为\emph{\red 形变收缩核}；若还有$i\circ j\simeq_{A}\id_{X}$，则称为\emph{\red 强形变收缩核}。
+\end{defn}
+
+\begin{defn}
+  \emph{\red 空间偶的映射}$f\colon(X,A)\To(Y,B)$是指映射$f\colon X\To Y$满足$f(A)\subset B$。\emph{\red 空间偶的映射的伦移}是指空间偶的映射$f,g$之间的伦移$F\colon X\times I\To Y$，满足$F(A\times I)\subset B$。
+\end{defn}
+\begin{rem}
+  即使$X\simeq Y, A\simeq B$也不一定有$(X,A)\simeq(Y,B)$。例如题目（\ref{27}）。
+\end{rem}
+
+\begin{prop}[{{\red 基本群的直积}}]\label{基本群}
+  $\pi_1(X\times Y,(x_0,y_0))\cong\pi_1(X,x_0)\times\pi_1(Y,y_0)$。
+\end{prop}
+
+\subsection{Van Kampen定理及其推论}
+\begin{thm}[{{\red Van Kampen定理}}]\label{VK}
+  设$U,V$是空间$(X,x_0)$的两个开集，满足$U\cup V=X, x_0\in U\cap V$，并且$U\cap V, U,V$都是道路连通的。则
+  \begin{equation*}
+    \pi_1(X,x_0)\cong\pi_1(U,x_0)\ast\pi_1(V,x_0)/N
+  \end{equation*}
+  其中$N$是$\pi_1(U,x_0)\ast\pi_1(V,x_0)$中所有$i_1([\sigma])^{-1}\circ i_2([\sigma])$生成的正规子群。这里$i_1,i_2$分别是由含入映射$U\cap V\hookrightarrow U$和$U\cap V\hookrightarrow V$诱导的同态。
+\end{thm}
+\begin{cor}\label{VK单连通}
+  若$V$是单连通的，则
+  \begin{equation*}
+    \pi_1(X,x_0)\cong\pi_1(U,x_0)/\<\im i_1\>
+  \end{equation*}
+\end{cor}
+\begin{cor}\label{VKCf}
+  设$X$道路连通，$Cf$是映射$f\colon X\To Y$的映射锥（定义见后文），则
+  \begin{equation*}
+    \pi_1(Cf,x_0)\cong\pi_1(Y)/\<\im f_{\ast}\>
+  \end{equation*}
+\end{cor}
+\begin{cor}\label{VKS^1}
+  设$X$道路连通，$\widetilde{\sigma}\colon(S^1,x_0)\To(X,x_0)$对应于道路$\sigma\colon I\To S^1\To X$，则空间$Y=X\cup_{\widetilde{\sigma}}e^2$的基本群为$\pi_1(Y,x_0)=\pi_1(X,x_0)/\<[\sigma]\>$。
+\end{cor}
+
+\section{同调}
+\subsection{简约同调群}
+\begin{defn}
+  设$X$是拓扑空间，从$X$到单点集$\Pt$唯一的映射诱导同调群的同态$H_q(X)\To H_q(\Pt)$，这一同态的核称为$X$的$q$维\emph{\red 简约同调群}，记作$\rH{q}(X)$。
+\end{defn}
+由于单点集除$0$维外的各维同调群平凡，故有
+\begin{prop}\label{简约同调群}
+  若$X$非空，则当$q>0$时，$\rH{q}(X)=H_q(X)$。此外$H_0(X)\cong\rH{0}(X)\oplus\ZZ$。
+\end{prop}
+\begin{proof}
+  考虑映射$f\colon X\To\Pt$和$g\colon\Pt\To X$所诱导的同态
+  \begin{equation*}
+    f_{\ast}\colon H_0(X)\To H_0(\Pt),\ g_{\ast}\colon H_0(\Pt)\To H_0(X)
+  \end{equation*}
+  由于$f\circ g=\id_{\Pt}$，故$f_{\ast}\circ g_{\ast}=\id_{H_0(\Pt)}$，从而由分裂引理得$H_0(X)\cong\rH{0}(X)\oplus H_0(\Pt)$。
+\end{proof}
+\subsection{低维同调群}
+\begin{thm}[{{\red 同调群的直和}}]
+  设$X=\cup X_i$是$X$的道路连通分支分解，则其同调群有直和分解：
+  \begin{equation*}
+    H_{\ast}(X)=\bigoplus H_{\ast}(X_i)
+  \end{equation*}
+\end{thm}
+\begin{proof}
+  以$\Sigma_X$记$X$中全体奇异单形之集合，则它可分解为$\Sigma=\bigsqcup \Sigma_{X_i}$，因而有直和分解：
+  \begin{equation*}
+    S_{\ast}(X)=\bigoplus S_{\ast}(X_i)
+  \end{equation*}
+  于是得到所需结论。
+\end{proof}
+\begin{prop}
+  拓扑空间$X$是道路连通的，则$H_0(X)=\ZZ$。
+\end{prop}
+\begin{cor}[{{\red 0维同调群的几何意义}}]
+  拓扑空间$X$恰有$n$个道路连通分支，当且仅当
+  \begin{equation*}
+  H_0(X)=\underbrace{\ZZ\oplus\ZZ\oplus\cdots\oplus\ZZ}_{n\text{个}\ZZ}
+  \end{equation*}
+\end{cor}
+
+\begin{thm}[{{\red 1维同调群与基本群的关系}}]\label{H1}
+  若$X$是道路连通的拓扑空间，则$H_1(X)$是$\pi_1(X,x_0)$的交换化。
+\end{thm}
+
+
+\subsection{相对同调群}
+\begin{rem}
+  相对同调群的简约同调群与之完全一致，而不仅是在$q>0$时。
+\end{rem}
+\begin{thm}[{{\red 相对同调群的长正合列}}]
+  设$(X,A)$是空间偶，则下面的同调序列正合：
+  \begin{multline*}
+    \cdots\To H_q(A)\markar{i_{\ast}}H_q(X)\markar{j_{\ast}}H_q(X,A)\markar{\delta_q}H_{q-1}(A)\To\cdots \\
+    \cdots\To H_1(X,A)\markar{\delta_1}H_0(A)\markar{i_{\ast}}H_0(X)\markar{j_{\ast}}H_0(X,A)\To 0
+  \end{multline*}
+\end{thm}
+\begin{prop}[{{\red 相对同调群的长正合列的自然性}}]
+  若$f\colon(X,A)\To(Y,B)$是空间偶的映射，则下图交换：
+  \begin{displaymath}
+  \xymatrix{
+    \cdots \ar[r] & H_q(A) \ar[d]_{f_{\ast}} \ar[r] & H_q(X) \ar[d]_{f_{\ast}} \ar[r] & H_q(X,A) \ar[d]_{f_{\ast}} \ar[r] & H_{q-1}(A) \ar[d]_{f_{\ast}} \ar[r] & \cdots \\
+    \cdots \ar[r] & H_q(B) \ar[r] & H_q(Y) \ar[r] & H_q(Y,B) \ar[r] & H_{q-1}(B) \ar[r] & \cdots   }
+  \end{displaymath}
+\end{prop}
+
+\begin{thm}[{{\red 切除定理}}]
+  设$(X,A)$是一个空间偶，若子集$U\subset A$满足$\overline{U}\subset\Int A$，则含入映射$i\colon(X\backslash U, A\backslash U)\To(X, A)$诱导相对同调群的同构
+  \begin{equation*}
+    i_{\ast}\colon H_{\ast}(X\backslash U,A\backslash U)\To H_{\ast}(X, A)
+  \end{equation*}
+\end{thm}
+\begin{cor}
+  设$V\subset U\subset A$，其中$\overline{V}\subset\Int A$，且$(X\backslash U, A\backslash U)$是$(X\backslash V, A\backslash V)$的形变收缩核，则
+  \begin{equation*}
+    H_{\ast}(X\backslash U, A\backslash U)\markar{i_{\ast}}H_{\ast}(X\backslash V, A\backslash V)\markar{j_{\ast}}H_{\ast}(X,A)
+  \end{equation*}
+  是同构。
+\end{cor}
+
+\subsection{Mayer-Vietoris序列}
+\begin{defn}
+  称$(X,A,B)$为\emph{\red 正合三元组}，如果$A\cup B=X$，且
+  \begin{equation*}
+    i_{\ast}\colon H_{\ast}(A, A\cap B)\To H_{\ast}(X,B),\  j_{\ast}\colon H_{\ast}(B,A\cap B)\To H_{\ast}(X,A)
+  \end{equation*}
+  都是切除同构。
+\end{defn}
+\begin{thm}[{{\red Mayer-Vietoris序列}}]
+  若$(X,A,B)$是正合三元组，则有同调群的长正合列：
+  \begin{multline*}
+    \cdots\To H_q(A\cap B)\markar{(i_1,i_2)}H_q(A)\oplus H_q(B)\markar{j_1-j_2}H_q(X)\markar{\delta}H_{q-1}(A\cap B)\To\cdots \\
+    \cdots\To H_1(X)\markar{\delta}H_0(A\cap B)\markar{(i_1,i_2)}H_0(A)\oplus H_0(B)\markar{j_1-j_2}H_0(X)\To 0
+  \end{multline*}
+\end{thm}
+\begin{prop}[{{\red Mayer-Vietoris序列的自然性}}]
+  若$f\colon(X,A,B)\To(Y,C,D)$是正合三元组的映射，即$f(A)\subset C, f(B)\subset D$，则下图交换：
+  \begin{displaymath}
+  \xymatrix{
+    \cdots \ar[r] & H_q(A\cap B) \ar[d]_{f_{\ast}} \ar[r] & H_q(A)\oplus H_q(B) \ar[d]_{f_{\ast}\oplus f_{\ast}} \ar[r] & H_q(X) \ar[d]_{f_{\ast}} \ar[r] & H_{q-1}(A\cap B) \ar[d]_{f_{\ast}} \ar[r] & \cdots \\
+    \cdots \ar[r] & H_q(C\cap D) \ar[r] & H_q(C)\oplus H_q(D) \ar[r] & H_q(Y) \ar[r] & H_{q-1}(C\cap D) \ar[r] & \cdots   }
+  \end{displaymath}
+\end{prop}
+
+\subsection{映射锥的同调序列}
+\begin{defn}
+  映射$f\colon X\To Y$的\emph{\red 映射锥形}$Cf$定义如下：
+  \begin{equation*}
+    Cf\defeq Y\cup_fCX=Y\sqcup CX/\sim
+  \end{equation*}
+  其中的等价关系是$f(x)\sim(x,0)$。
+
+  此外再定义：
+  \begin{align*}
+    C_{-}f &\defeq Y\cup_f(X\times [0,\frac{1}{2}])\\
+    C_{+}f &\defeq X\times [\frac{1}{2}]/(X\times \{1\})
+  \end{align*}
+\end{defn}
+\begin{prop}
+  $(Cf,C_-f,C_+f)$是正合三元组。
+\end{prop}
+\begin{proof}
+  由切除定理推论易得。
+\end{proof}
+
+\begin{thm}[{{\red 映射锥的同调序列}}]\label{映射锥}
+  设$f\colon X\To Y$是拓扑空间的映射，则有同调群的长正合列：\footnote{用简约同调群只是为了写得少一点。}
+  \begin{equation*}
+    \cdots\To\rH{q}(X)\markar{f_{\ast}}\rH{q}(Y)\markar{i_{\ast}}\rH{q}(Cf)\markar{\delta}\rH{q-1}(X)\To\cdots
+  \end{equation*}
+  其中$i_{\ast}$是从$Y$到$Cf$的嵌入映射诱导的同态。
+\end{thm}
+\begin{proof}
+  由Mayer-Vietoris序列即得。
+\end{proof}
+\begin{cor}
+  设$A\subset X$，则有同调群的长正合列：
+  \begin{equation*}
+    \cdots\To\rH{q}(A)\markar{f_{\ast}}\rH{q}(X)\markar{i_{\ast}}\rH{q}(X\cup CA)\markar{\delta}\rH{q-1}(A)\To\cdots
+  \end{equation*}
+\end{cor}
+\begin{proof}
+  取$f$为含入映射$A\hookrightarrow X$即可。
+\end{proof}
+
+\begin{prop}[{{\red 映射锥的同调序列的自然性}}]\label{映射锥的自然性}
+  若有拓扑空间映射的交换图
+  \begin{displaymath}
+    \xymatrix{
+      X \ar[d]^{g} \ar[r]^{f} & Y \ar[d]^{h} \\
+      X' \ar[r]^{f'} & Y'  }
+  \end{displaymath}
+  则下图交换：
+  \begin{displaymath}
+  \xymatrix{
+    \cdots \ar[r] & \rH{q}(X) \ar[d]_{g_{\ast}} \ar[r] & \rH{q}(Y) \ar[d]_{h_{\ast}} \ar[r] & \rH{q}(Cf) \ar[d]_{C_{\ast}} \ar[r] & \rH{q-1}(X) \ar[d]_{g_{\ast}} \ar[r] & \cdots \\
+    \cdots \ar[r] & \rH{q}(X') \ar[r] & \rH{q}(Y') \ar[r] & \rH{q}(Cf') \ar[r] & \rH{q-1}(X) \ar[r] & \cdots   }
+  \end{displaymath}
+\end{prop}
+
+\subsection{粘贴胞腔的同调群}
+\begin{thm}\label{粘贴胞腔}
+  设$n$维胞腔$D^n$通过映射$f$粘贴到拓扑空间$X$上，即$D^n\supset S^{n-1}\markar{f}X$，则
+    \begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\rH{q}(X\cup_fD^n)\cong\rH{q}(X)$，如果$q\neq n,n-1$。
+    \item 有如下正合列：
+    \begin{equation*}
+      0\To\rH{n}(X)\markar{i_{\ast}}\rH{n}(X\cup_fD^n)\markar{\delta}\rH{n-1}(S^{n-1})\markar{f_{\ast}}\rH{n-1}(X)\markar{i_{\ast}}\rH{n-1}(X\cup_fD^n)\To 0
+    \end{equation*}
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  由于$CS^{n-1}\cong D^n$，故$X\cup_fD^n=Cf$，然后用映射锥的同调序列即得。
+\end{proof}
+
+\subsection{映射度}
+\begin{defn}
+  对于映射$f\colon S^n\To S^n$，由于$H_n(S^n)=\ZZ$，设$[a]$是其生成元，则存在$k\in\ZZ$使$f_{\ast}([a])=k[a]\in H_n(S^n)$。$k$称为$f$的\emph{\red 映射度}，记作$\deg f=k$。
+\end{defn}
+\begin{prop}
+    \begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item 若$c\colon S^n\To S^n$是常值映射，则$\deg c=0$。
+    \item 若$f\simeq g\colon S^n\To S^n$，则$\deg f=\deg g$；
+    \item 若$f,g\colon S^n\To S^n$是两个映射，则$\deg g\circ f=\deg g\cdot\deg f$；
+    \item 若$f\colon S^n\To S^n$是同伦等价，则$\deg f=\pm1$。
+  \end{enumerate}  
+\end{prop}
+
+\newpage
+\part{复习题}
+
+\begin{timu}\label{1}
+  试举例说明空间可以是连通的但不是道路连通的。
+\end{timu}
+\begin{proof}
+  在$\RR^2$中考虑$A=\{(x,\sin\frac{1}{x})\mid x\in(0,1]\},B=\{(0,y)\mid -1\leqslant y\leqslant 1\}$，则$\overline{A}=A\cup B$。显然$A$是连通的，于是连通集的闭包也是连通的，故$A\cup B$是连通的。但它不是道路连通的：否则若存在道路连接$(1,\sin1)$和$B$上某点，则取该道路与$B$的第一个交点$(0,a)$为端点做成一条道路$f, f(0)=(0,a), f(1)=(1,\sin1)$，然而取$t_n=\frac{1}{n\pi+\frac{\pi}{2}}$，则$t_n\to0$但$f(t_n)=(t_n,(-1)^n)$不收敛，与$f$连续矛盾。
+\end{proof}
+
+\begin{timu}\label{2}
+  记$\SO(n)$为所有行列式等于$1$的$n$阶正交矩阵构成的拓扑空间。试证明$\SO(n)$是道路连通的。
+\end{timu}
+\begin{proof}
+  对任何$A\in\SO(n)$，存在$v\in\GO(n)$使得$A=v\Lambda v^T$，其中$\Lambda$是标准型：
+  \begin{equation*}
+    \begin{pmatrix}
+       I_{n-2k} &  &  &  \\
+         & M_1 &  &  \\
+         &  & \ddots &  \\
+         &  &  & M_k \\
+    \end{pmatrix}
+  \end{equation*}
+  
+  其中$M_i=\begin{pmatrix}
+           \cos\theta_i & \sin\theta_i \\
+           -\sin\theta_i & \cos\theta_i \\
+         \end{pmatrix}
+         , \theta_i\in[0,2\pi), i=1,2,\cdots,k  $。
+
+  于是可构做$\SO(n)$上的道路$\sigma$为
+  \begin{equation*}
+    \sigma(t)=v    \begin{pmatrix}
+       I_{n-2k} &  &  &  \\
+         & M_1(t) &  &  \\
+         &  & \ddots &  \\
+         &  &  & M_k(t) \\
+    \end{pmatrix}v^T
+  \end{equation*}
+  其中$M_i(t)=\begin{pmatrix}
+           \cos\theta_it & \sin\theta_it \\
+           -\sin\theta_it & \cos\theta_it \\
+         \end{pmatrix}
+         , i=1,2,\cdots,k$。
+
+  则由于$M_i(0)=I_2,M_i(1)=M_i, i=1,2,\cdots,k$，所以$\sigma(0)=I_n, \sigma(1)=A$，即$\sigma$是连接$I_n$和$A$的道路。从而对$\SO(n)$中任何两点$A,B$，设其各自连接$I$的道路为$\sigma_A, \sigma_B$，则连接$A,B$的道路$\sigma$为：
+  \begin{equation*}
+    \sigma(t)=
+    \begin{cases}
+      \sigma_A(1-2t)& t\in[0,\frac{1}{2}]\\
+      \sigma_B(2t-1)& t\in[\frac{1}{2},1]
+    \end{cases}
+  \end{equation*}
+\end{proof}
+
+\begin{timu}\label{3}
+  证明：实直线$\RR$不与$2$维平面$\RR^2$同胚。
+\end{timu}
+\begin{proof}
+  若存在同胚映射
+  \begin{equation*}
+    f\colon\RR\To\RR^2, g\colon\RR^2\To\RR, g\circ f=\id_{\RR}, f\circ g=\id_{\RR^2}
+  \end{equation*}
+  
+  并且$f(0)=x_0$，则考虑$X=\RR\backslash\{0\}$和$Y=\RR^2\backslash\{x_0\}$以及映射：
+  \begin{equation*}
+    \local{f}{X}\colon X\To Y, \local{g}{Y}\colon Y\To X
+  \end{equation*}
+
+  显然$\local{g}{Y}\circ\local{f}{X}=\id_{X}, \local{f}{X}\circ\local{g}{Y}=\id_{Y}$，于是$X$与$Y$同胚。然而$X$不连通，而$Y$是相交道路连通集的并故而连通。由于连通性是拓扑不变性，故矛盾。故$\RR$ 与$\RR^2$ 不同胚。
+\end{proof}
+
+\begin{timu}\label{4}
+  试证明：$3$维实射影空间$\RP^3$与$\SO(3)$是同胚的。
+\end{timu}
+\begin{proof}
+  首先
+  \begin{equation*}
+    \SO(3)=\frac{\{(v,\theta)\mid v\in S^2, \theta\in[0,\pi]\}}{(v,\pi)\sim(-v,\pi), (u,0)\sim(v,0)}
+  \end{equation*}
+  
+  考虑$X=D^3/\sim'$，这里的等价关系是粘合$D^3$的表面$S^2$上的对径点。显然有同胚
+  \begin{align*}
+    \SO(3) &\stackrel{\cong}{\longleftrightarrow} X \\
+    (v,\theta) &\longleftrightarrow (v,\frac{\theta}{\pi})
+  \end{align*}
+  
+  而$X\cong\RP^3$。故$\RP^3\cong\SO(3)$。
+\end{proof}
+
+
+\begin{timu}\label{5}
+  证明：$n+1$维欧式空间$\RR^{n+1}$中挖去一个点$\RR^{n+1}\backslash\{0\}$与球面$S^n$同伦等价。
+\end{timu}
+\begin{proof}
+  构做映射
+  \begin{center}
+  \parbox{0.4\linewidth}{\mapdes{f}{\RR^{n+1}\backslash\{0\}}{S^n}{x}{\frac{x}{||x||}}}
+  \parbox{0.4\linewidth}{\mapdes{g}{S^n}{\RR^{n+1}\backslash\{0\}}{x}{x}}
+  \end{center}
+  
+  由于$x\neq0$，故映射是连续的。进一步有
+  \begin{align*}
+    f\circ g (x) &=f(x)=\frac{x}{||x||}=x \\
+    g\circ f(x) &=g(\frac{x}{||x||})=\frac{x}{||x||}
+  \end{align*}
+  所以$f\circ g=\id_{S^n}$。
+
+  构做伦移$H\colon(\RR^{n+1}\backslash\{0\})\times I\To \RR^{n+1}\backslash\{0\}$如下
+  \begin{equation*}
+    H(x,t)=tx+(1-t)\frac{x}{||x||}
+  \end{equation*}
+  
+  则
+  \begin{align*}
+    H(x,0)&=\frac{x}{||x||}=g\circ f(x)\\
+    H(x,1)&=x=\id_{\RR^{n+1}\backslash\{0\}}
+  \end{align*}
+  所以$g\circ f\simeq\id_{\RR^{n+1}\backslash\{0\}}$。于是$\RR^{n+1}\backslash\{0\}\simeq S^n$。
+\end{proof}
+
+\begin{timu}\label{6}
+  记$S^n$为$n$维标准球面。如果映射$f\colon S^n\To S^n$满足：对任何$x\in S^n, f(x)\neq x$。证明：$f$同伦于对径映射$\beta\colon S^n\To S^n$。对任何$x\in S^n, \beta(x)=-x$。
+\end{timu}
+\begin{proof}
+  构做伦移$H\colon S^n\times I\To S^n$如下
+  \begin{equation*}
+    H(x,t)=\frac{(1-t)f(x)+t\beta(x)}{||(1-t)f(x)+t\beta(x)||}
+  \end{equation*}
+  
+  注意到$||(1-t)f(x)+t\beta(x)||=0$当且仅当$(1-t)f(x)=tx$而由于$||f(x)||=||x||=1$，这就要求$1-t=t$即$t=\frac{1}{2}$。然而此时分母为$\frac{1}{2}||f(x)-x||$，由条件又有$f(x)\neq x$，故分母总不为零，此伦移定义良好。因为
+  \begin{equation*}
+     H(x,0)=f(x),  H(x,1)=\beta(x)
+  \end{equation*}
+  所以$f\simeq\beta$。
+\end{proof}
+
+\begin{timu}\label{7}
+  记$\GL_n(\RR)$为所有$n$阶实可逆矩阵组成的$\RR^{n\times n}$的子空间。证明：$\GL_n(\RR)$不是道路连通的。
+\end{timu}
+\begin{proof}
+  构做映射
+  \mapdes{f}{\GL_n(\RR)}{\RR}{A}{\det A}
+  则由于$f$的值域$\im f=(-\infty,0)\cup(0,+\infty)$是不连通的，故$\GL_n(\RR)$不连通，从而不道路连通。
+\end{proof}
+
+\begin{timu}\label{8}
+  记$\SO(2)$为行列式等于$1$的$2$阶正交矩阵构成的拓扑空间，$\RP^2$为$2$维实射影平面。求$\SO(2)\times\RP^2$的基本群$\pi_1(\SO(2)\times\RP^2,x_0)$。
+\end{timu}
+\begin{proof}
+  注意到$\forall A\in\SO(2)$，$A$可以写成$\begin{pmatrix}
+                                   \cos\theta & \sin\theta \\
+                                   -\sin\theta & \cos\theta \\
+                                 \end{pmatrix}$，故有同胚
+    \begin{align*}
+            \SO(2) & \longleftrightarrow  S^1 \\
+            \begin{pmatrix}
+                \cos\theta & \sin\theta \\
+               -\sin\theta & \cos\theta \\
+             \end{pmatrix}
+             & \longleftrightarrow  (\cos\theta, \sin\theta)
+    \end{align*}
+
+    于是$\pi_1(\SO(2),x_0)=\ZZ$。
+
+    而$\RP^2$可看成赤道$S^1$通过映射$2$粘合上半球面粘合对径点这个拓扑空间（同胚于$e^2$），其中
+    \begin{equation*}
+      2\colon I\To S^1\To S^1/\sim\cong S^1
+    \end{equation*}
+    
+    代表$\pi_1(S^1,x_0)\cong\ZZ$中的$2$，从而$\RP^2=S^1\cup_2e^2$，所以由Van Kampen定理的推论\ref{VKS^1}得
+    \begin{equation*}
+    \pi_1(\RP^2,x_0)\cong\pi_1(S^1,x_0)/\<2\>=\ZZ/2
+    \end{equation*}
+
+    所以由定理\ref{基本群}，$\pi_1(\SO(2)\times\RP^2,x_0)\cong\ZZ\times\ZZ/2$。
+\end{proof}
+
+\begin{timu}\label{9}
+  求：在环面$T=S^1\times S^1$中挖去一个三角形所得空间$X$的基本群$\pi_1(X,x_0)$。
+\end{timu}
+\begin{proof}
+  考虑空间$T'=I\times I/\sim$，其中等价关系定义为$(x,0)\sim(x,1), (0,y)\sim(1,y)$，易知$T\cong T'$。记$\partial T'=\{[x,y]\in X\mid xy=0\}$为$T'$的边界，则由于$\partial (I\times I)$是$I\times I$中挖去一个三角形所得空间$Y$的形变收缩核，故$\partial T'$是$T'$挖去一个三角形所得空间$X'$的形变收缩核。由于$\partial T'\cong S^1\vee S^1$，故$\pi_1(X,x_0)\cong\pi_1(X',x_0)\cong\pi_1(\partial T',x_0)\cong\pi_1(S^1\vee S^1,x_0)=F(a,b)$。
+\end{proof}
+
+\begin{timu}\label{10}
+  试构做拓扑空间$X$使$\RP^2\times X$的基本群为$\pi_1(\RP^2\times X,x_0)=\ZZ/6$。
+\end{timu}
+\begin{proof}
+  由于题目（\ref{8}）中已求得$\pi_1(\RP^2,x_0)\cong\ZZ/2$，又由于$\ZZ/6\cong\ZZ/2\times\ZZ/3$，故只须构做$X$使得$\pi_1(X,x_0)=\ZZ/3$。
+
+  为此考虑$\widetilde{\sigma}\colon(S^1,x_0)\To(S^1,x_0)$如下（这里将$S^1$视为复平面上的单位圆周$\{e^{2\pi ti}\mid t\in[0,1)\}$）：
+  \begin{equation*}
+    \widetilde{\sigma}(e^{2\pi ti})=e^{6\pi ti}
+  \end{equation*}
+  
+  则道路$\sigma\colon I\To S^1\To S^1$是绕圆周$3$圈，即$\pi_1(S^1,x_0)$中的$3$，于是令$X=S^1\cup_{\widetilde{\sigma}}e^2$，则$\pi_1(X,x_0)\cong\pi_1(S^1,x_0)/\<3\>=\ZZ/3$。
+\end{proof}
+
+\begin{timu}\label{11}
+  试构做拓扑空间$X$使其基本群$\pi_1(X,x_0)=\ZZ/12$。
+\end{timu}
+\begin{proof}
+  考虑$\widetilde{\sigma}\colon(S^1,x_0)\To(S^1,x_0)$如下：
+  \begin{equation*}
+    \widetilde{\sigma}(e^{2\pi ti})=e^{24\pi ti}
+  \end{equation*}
+  
+  则道路$\sigma\colon I\To S^1\To S^1$是绕圆周$12$圈，即$\pi_1(S^1,x_0)$中的$12$，于是令$X=S^1\cup_{\widetilde{\sigma}}e^2$，则$\pi_1(X,x_0)\cong\pi_1(S^1,x_0)/\<12\>=\ZZ/12$。
+\end{proof}
+
+\begin{timu}\label{12}
+  设$n>1$。证明：$n$维欧式空间$\RR^n$不与$n+1$维欧式空间$\RR^{n+1}$同胚。
+\end{timu}
+\begin{proof}
+  反之，若$\RR^n\cong\RR^{n+1}$，并记同胚映射为$f$，则与题目（\ref{3}）同样的讨论可知$\RR^n\backslash\{x_0\}\cong\RR^{n+1}\backslash\{f(x_0)\}$，所以$H_{\ast}(\RR^n\backslash\{x_0\})\cong H_{\ast}(\RR^{n+1}\backslash\{f(x_0)\})$。然而$\RR^n\backslash\{x_0\}\cong S^{n-1}, \RR^{n+1}\backslash\{f(x_0)\}\cong S^n$，故$H_n(\RR^n\backslash\{x_0\})=0$，但$H_n(\RR^{n+1}\backslash\{f(x_0)\})=\ZZ$，故矛盾，所以$\RR^n\ncong\RR^{n+1}$。
+\end{proof}
+
+\begin{timu}\label{13}
+  证明：$\SO(3)$不与$S^1\vee S^1$同胚。
+\end{timu}
+\begin{proof}
+  由题目（\ref{4}），$\SO(3)\cong\RP^3$，所以$\pi_1(\SO(3),x_0)\cong\pi_1(\RP^3,x_0)$
+
+  下面计算$\RP^3$的基本群：
+
+  由于$\RP^3\cong\RP^2\cup_pe^3$，其中$p\colon S^2\To S^2/\sim\cong\RP^2$是粘合对径点映射，故
+  \begin{equation*}
+    \pi_1(\RP^3,x_0)\cong\pi_1(\RP^2,x_0)/\<\im p_{\ast}\>=\ZZ/2
+  \end{equation*}
+
+  可见然而$\pi_1(S^1\vee S^1,x_0)=F(a,b)\neq\ZZ/2$，故$\SO(3)$不与$S^1\vee S^1$同胚。
+\end{proof}
+
+\begin{timu}\label{14}
+  求$n$维球面与$m$维球面一点和$S^n\vee S^m$的各维同调群。
+\end{timu}
+\begin{proof}
+  $(S^n\vee S^m,S^n,S^m)$是正合三元组，故有Mayer-Vietoris序列：
+  \begin{equation*}
+    \cdots\To \rH{q}(\Pt)\markar{(i_1,i_2)} \rH{q}(S^n)\oplus\rH{q}(S^m) \markar{j_1-j_2} \rH{q}(S^n\vee S^m) \markar{\delta} \rH{q-1}(\Pt) \To \cdots
+  \end{equation*}
+  
+  由于$\rH{q}(\Pt)=0$，故$\rH{q}(S^n\vee S^m)\cong\rH{q}(S^n)\oplus\rH{q}(S^m)$。利用命题\ref{简约同调群}回到通常的同调群有
+  \begin{equation*}
+    H_q(S^n\vee S^m)=\delta_q^n\ZZ\oplus\delta_q^m\ZZ\oplus\delta_q^0\ZZ
+  \end{equation*}
+\end{proof}
+
+\begin{timu}\label{15}
+  求两个射影空间$\RP^3$的一点和$\RP^3\vee\RP^3$的各维同调群。
+\end{timu}
+\begin{proof}
+  $(\RP^3\vee \RP^3,\RP^3,\RP^3)$是正合三元组，故有Mayer-Vietoris序列：
+  \begin{equation*}
+    \cdots\To \rH{q}(\Pt)\markar{(i_1,i_2)} \rH{q}(\RP^3)\oplus\rH{q}(\RP^3) \markar{j_1-j_2} \rH{q}(\RP^3\vee \RP^3) \markar{\delta} \rH{q-1}(\Pt) \To \cdots
+  \end{equation*}
+  
+  由于$\rH{q}(\Pt)=0$，故$\rH{q}(\RP^3\vee \RP^3)\cong\rH{q}(\RP^3)\oplus\rH{q}(\RP^3)$。从题目（\ref{16}）求得$\rH{q}(\RP^3)$。利用命题\ref{简约同调群}回到通常的同调群有
+  \begin{equation*}
+    H_q(\RP^3\vee \RP^3)=
+    \begin{cases}
+      \ZZ & q=0\\
+      \ZZ/2\oplus\ZZ/2 & q=1\\
+      \ZZ\oplus\ZZ & q=3\\
+      0 & q\neq 0,1,3
+    \end{cases}
+  \end{equation*}
+\end{proof}
+
+\begin{timu}\label{16}
+  求$\SO(3)$的各维同调群。
+\end{timu}
+\begin{proof}
+  由于$\SO(3)\cong\RP^3$，故只须计算$\RP^3$的同调群。
+
+  首先，$\RP^1\cong S^1$，于是$\rH{q}(\RP^1)=0,(q\neq1), \rH{1}(\RP^1)=\ZZ$。
+
+  注意到$\RP^2\cong\RP^1\cup_fD^2$，故由定理\ref{粘贴胞腔}得到正合列：
+  \begin{equation*}
+    0\To \rH{2}(\RP^2)\markar{\delta} \rH{1}(S^1)\markar{f_{\ast}} \rH{1}(\RP^1) \markar{i_{\ast}} \rH{1}(\RP^2)\To 0
+  \end{equation*}
+
+  注意到$f$诱导的基本群映射将$S^1$中的单位闭路映到$\pi_1(\RP^1,x_0)$中的$2$，于是$f_{\ast}$是单射。由上面的正合列可知：
+  \begin{align*}
+    \rH{2}(\RP^2) &\cong\im\delta=\ker f_{\ast}=0 \\
+    \ker i_{\ast} &=\im f_{\ast}=2\ZZ \\
+    \rH{1}(\RP^2) &=\im i_{\ast} \cong \rH{1}(\RP^1)/\ker i_{\ast} = \ZZ/2
+  \end{align*}
+
+  所以
+  \begin{equation*}
+    \rH{q}(\RP^2)=
+    \begin{cases}
+      \ZZ/2 & q=1\\
+      0 & q\neq1
+    \end{cases}
+  \end{equation*}
+
+  由于$\RP^3\cong\RP^2\cup_fD^3$，故如法炮制得到正合列：
+  \begin{equation*}
+    0\To \rH{3}(\RP^3)\markar{\delta} \rH{2}(S^2)\markar{f_{\ast}} \rH{2}(\RP^2) \markar{i_{\ast}} \rH{2}(\RP^3)\To 0
+  \end{equation*}
+
+  由于$\rH{2}(\RP^2)=0$，故$\rH{3}(\RP^3)=\rH{2}(S^2)=\ZZ$且又由$\rH{1}(S^2)=0$得到$\rH{2}(\RP^3)=0$。其余维数则有$\rH{q}(\RP^3)\cong H_q(\RP^2)$。利用命题\ref{简约同调群}回到通常的同调群有
+  \begin{equation*}
+    H_q(\RP^3)=
+    \begin{cases}
+      \ZZ/2 & q=1\\
+      \ZZ & q=0,3\\
+      0 & q\neq 0,1,3
+    \end{cases}
+  \end{equation*}
+\end{proof}
+\begin{proof}
+  计算$H_1(\RP^3)$时也可由题目（\ref{13}）以及$1$维同调群是基本群的交换化得到。
+\end{proof}
+
+
+
+
+\begin{timu}\label{17}
+  试利用基本群证明$\SO(2)$不与$\SO(3)$同胚。
+\end{timu}
+\begin{proof}
+  因为$\SO(2)\cong S^1$，故$\pi_1(\SO(2),x_0)\cong\pi_1(S^1,x_0)=\ZZ$。而由题目（\ref{13}），$\pi_1(\SO(3),x_0)=\ZZ/2$。所以$\pi_1(\SO(2),x_0)\ncong\pi_1(\SO(3),x_0)$，故$\SO(2)$不与$\SO(3)$同胚。
+\end{proof}
+
+\begin{timu}
+  设$A,B$是$n$维球面$S^n$的两个道路连通的开集，$n>1,A\cup B=S^n$。试利用$0$维同调群证明：$A\cap B$是道路连通的。
+\end{timu}
+\begin{proof}
+  $(S^n,A,B)$是正合三元组，故有Mayer-Vietoris序列：
+  \begin{equation*}
+    \cdots\To \rH{1}(S^n)\markar{\delta} \rH{0}(A\cap B)\markar{(i_1,i_2)} \rH{0}(A)\oplus \rH{0}(B) \markar{j_1-j_2} \rH{0}(S^n) \To 0
+  \end{equation*}
+  
+  由于$n>1$，故$\rH{1}(S^n)=0$；由于$A,B,S^n$道路连通，故$\rH{0}(A)=\rH{0}(B)=\rH{0}(S^n)=0$。从而$\rH{0}(A\cap B)=0$，即$H_0(A\cap B)=\ZZ$，由$0$维同调群的几何意义，$A\cap B$道路连通。
+\end{proof}
+
+\begin{timu}\label{19}
+  证明：任何连续映射$f\colon D^n\To D^n$都有不动点，即存在$x_0\in D^n$使$f(x_0)=x_0$。其中$D^n=\{(x_1,x_2,\cdots,x_n)\mid  \sum x_i^2\leqslant 1\}$为$n$维圆盘。
+\end{timu}
+\begin{proof}
+  若不然，可构造$g\colon D^n\To S^{n-1}$如下：
+  \begin{equation*}
+    g(x)\defeq\frac{x-f(x)}{||x-f(x)||}
+  \end{equation*}
+  
+  则$g_0=\local{g}{S^{n-1}}$满足$g_0(x)\neq-x$（若不然，有$x_0\in S^{n-1}$使$g_0(x_0)=-x_0$，则$f(x_0)=x_0(1+||x_0-f(x_0)||)$，但左边点的范数不大于$1$而右边则大于$1$，矛盾。），由题目（\ref{22}），它同伦于恒等映射$\id_{S^{n-1}}$。 由于$g_0=g\circ i$ 其中$i\colon S^{n-1}\To D^n$ 是零伦的，故$g_0$ 是零伦的，从而$\id_{S^{n-1}}$ 是零伦的，于是其所诱导的自同构$\id_{\ast}\colon H_{n-1}(S^{n-1})\To H_{n-1}(S^{n-1})$与常值映射所诱导的平凡同态相同。而$H_{n-1}(S^{n-1})\cong\ZZ$，故其自同构不可能平凡，故矛盾，从而映射$f\colon D^n\To D^n$有不动点。
+\end{proof}
+\begin{proof}
+  若不然，可构造$g\colon D^n\To S^{n-1}$为把$x$映到射线$\overrightarrow{f(x),x}$与$S^{n-1}$之交点，则$g\circ i=\id_{S^{n-1}}$其中$i\colon S^{n-1}\To D^n$是含入映射。于是它们诱导出同调群的同态$g_{\ast}\circ i_{\ast}=\id_{H_q(S^{n-1})}$。
+  \begin{equation*}
+    H_q(S^{n-1}) \markar{i_{\ast}} H_q(D^n) \markar{g_{\ast}} H_q(S^{n-1})
+  \end{equation*}
+  
+  然而当$q=n-1$时，$H_{n-1}(S^{n-1})\cong\ZZ, H_{n-1}(D^n)\cong 0$，其复合不可能是恒等，矛盾。故映射$f\colon D^n\To D^n$有不动点。
+\end{proof}
+
+\begin{timu}\label{20}
+  记$T$为空间中的三角形，
+  \begin{equation*}
+  T=\{(x,y,z)\in\RR^3\mid x+y+z=1,x,y,z\geqslant0\}
+  \end{equation*}
+  \begin{enumerate}[a)]
+    \setlength{\itemindent}{2ex}
+    \item 证明：任何映射$f\colon T\To T$都有不动点。
+    \item 设$A$是一个$3\times3$矩阵，其所有元素都是正数。证明：$A$有一个正的特征值$\lambda_0$，且属于$\lambda_0$的特征向量的坐标全非负。
+  \end{enumerate}
+\end{timu}
+\begin{proof}
+  \begin{enumerate}[a)]
+    \setlength{\itemindent}{2ex}
+    \item 同上题。或者利用同胚$g\colon D^2\To T$，得到$D^2$上的映射$g^{-1}\circ f\circ g$，由于它有不动点$x_0$，故$f$有不动点$g(x_0)$。
+    \item 定义$f\colon T\To T$为复合$p\circ A$在$T$上的限制。其中
+    \begin{equation*}
+      p(x,y,z)\defeq\frac{1}{x+y+z}(x,y,z),\ \forall(x,y,z)\in\RR^3_{+}
+    \end{equation*}
+    这里$\RR^3_{+}$表示$\{(x,y,z)\in\RR^3\mid x,y,z\geqslant0, (x,y,z)\neq0\}$。
+    
+    则$p(A(T))\subset T$且在$T$是连续的，故由a)，$f$有不动点$\alpha$，即
+    \begin{equation*}
+      \alpha=f(\alpha)=\lambda_0 A(\alpha)
+    \end{equation*}
+    
+    其中$\lambda_0$是$A(\alpha)$的坐标和。由定义显然有$\alpha$各坐标非负且不全为零，由于$A$的所有元素都是正数，故$A(\alpha)$各坐标非负且不全为零，从而$\lambda_0>0$。这样就找到了$A$的一个正的特征值$\lambda_0$且属于$\lambda_0$的特征向量$\alpha$的坐标全非负。
+  \end{enumerate}
+\end{proof}
+
+\begin{timu}\label{21}
+  设映射$f\colon S^n\To S^n$同伦于常值映射。证明$f$有不动点$x_0$使$f(x_0)=x_0$。
+\end{timu}
+\begin{proof}
+  若不然，由题目（\ref{6}），$f$必同伦于对径映射，从而由题目（\ref{30}）知$\deg f=(-1)^{n+1}$。然而，由$f$同伦于常值映射得$\deg f=0$，矛盾。
+\end{proof}
+
+\begin{timu}\label{22}
+  设映射$f\colon S^n\To S^n$同伦于常值映射。证明：在$S^n$中存在$x_0$使$f(x_0)=-x_0$。
+\end{timu}
+\begin{proof}
+  若不然，构做伦移$H\colon S^n\times I\To S^n$如下
+  \begin{equation*}
+    H(x,t)=\frac{(1-t)f(x)+tx}{||(1-t)f(x)+tx||}
+  \end{equation*}
+  
+  注意到$||(1-t)f(x)+tx||=0$当且仅当$(1-t)f(x)=-tx$而由于$||f(x)||=||x||=1$，这就要求$1-t=t$即$t=\frac{1}{2}$。然而此时分母为$\frac{1}{2}||f(x)+x||$，由假设又有$f(x)\neq -x$，故分母总不为零，此伦移定义良好。因为
+  \begin{equation*}
+     H(x,0)=f(x),  H(x,1)=x
+  \end{equation*}
+  所以$f\simeq\id_{S^n}$，于是$\deg f=1$。但由条件$f$同伦于常值映射，故$\deg f=0$，矛盾，故在$S^n$中存在$x_0$使$f(x_0)=-x_0$。
+\end{proof}
+
+\begin{timu}\label{23}
+  设$U\subset\RR^m$和$V\subset\RR^n$分别是$\RR^m$和$\RR^n$的开子集。试证明：如果$U$与$V$同胚，则$m=n$。
+\end{timu}
+\begin{proof}
+  设同胚映射为$f\colon U\To V$。
+
+  令$x_0\in U$，则显然$\overline{\RR^m\backslash U}\subset\Int \RR^m\backslash\{x_0\}$，故由切除定理知
+  \begin{equation*}
+    l_{\ast}\colon H_q(U,U\backslash\{x_0\}) \To H_q(\RR^m,\RR^m\backslash\{x_0\})
+  \end{equation*}
+  是同构。
+
+  对空间偶$(\RR^m, \RR^m\backslash\{x_0\})$有相对同调群的长正合列：
+  \begin{equation*}
+    \cdots\To \rH{q}(\RR^m) \markar{j_{\ast}} \rH{q}(\RR^m, \RR^m\backslash\{x_0\}) \markar{\delta} \rH{q-1}(\RR^m\backslash\{x_0\}) \markar{i_{\ast}} \rH{q-1}(\RR^m) \To \cdots
+  \end{equation*}
+  
+  其中$\rH{q}(\RR^m)=0$。由于$\RR^m\backslash\{x_0\}\cong S^{m-1}$，故$\rH{q}(\RR^m\backslash\{x_0\})\cong\delta_q^{m-1}\ZZ$。于是
+  \begin{equation*}
+    \begin{cases}
+      \rH{q}(\RR^m,\RR^m\backslash\{x_0\})\cong\rH{q-1}(\RR^m\backslash\{x_0\})\cong\delta_{q-1}^{m-1}\ZZ& q>0\\
+      \rH{0}(\RR^m,\RR^m\backslash\{x_0\})=0
+    \end{cases}
+  \end{equation*}
+
+  利用命题\ref{简约同调群}回到通常的同调群，并注意到相对同调群的简约同调群与之完全一致，得
+  \begin{equation}\label{23.1}
+    H_q(\RR^m,\RR^m\backslash\{x_0\})=
+    \begin{cases}
+      \delta_{q-1}^{m-1}\ZZ & q>0\\
+      0 & q=0
+    \end{cases}
+  \end{equation}
+
+  对$V\subset\RR^n$作类似讨论可得
+  \begin{equation}\label{23.2}
+    H_q(\RR^n,\RR^n\backslash\{f(x_0)\})=
+    \begin{cases}
+      \delta_{q-1}^{n-1}\ZZ & q>0\\
+      0 & q=0
+    \end{cases}
+  \end{equation}
+
+  由于$f$是空间偶同胚$(U,U\backslash\{x_0\})\To(V,V\backslash\{f(x_0)\})$，故
+  \begin{equation*}
+    H_q(\RR^m,\RR^m\backslash\{x_0\}) \cong H_q(\RR^n,\RR^n\backslash\{f(x_0)\})
+  \end{equation*}
+
+  比较(\ref{23.1})和(\ref{23.2})即得$m=n$。
+\end{proof}
+
+\begin{timu}\label{24}
+  设$X$是一个道路连通的拓扑空间，记$\Sigma X$为$X$的双角锥（在$X\times I$中分别粘合$X\times\{0\}$和$X\times\{1\}$成一个点所得的空间）。证明：对于$q>0$，$H_q(X)\cong H_{q+1}(\Sigma X)$。
+\end{timu}
+\begin{proof}
+  考虑映射$f\colon X\To\Pt$，易知$Cf=\Sigma X$，于是由定理\ref{映射锥}得到同调群的长正合列：
+  \begin{equation*}
+    \cdots\To H_{q+1}(\Pt)\markar{i_{\ast}} H_{q+1}(\Sigma X)\markar{\delta} H_q(X)\markar{f_{\ast}} H_q(\Pt)\To\cdots
+  \end{equation*}
+  
+  当$q>0$时，由于$H_q(\Pt)=0$，故得正合列：
+  \begin{equation*}
+    0\To H_{q+1}(\Sigma X)\markar{\delta} H_q(X)\To 0
+  \end{equation*}
+  于是$H_q(X)\cong H_{q+1}(\Sigma X)$。
+\end{proof}
+
+\begin{timu}\label{25}
+  求环面$T=S^1\times S^1$的各维同调群。
+\end{timu}
+\begin{proof}
+  由于$T=S^1\vee S^1\cup_fD^2$，其中$f$是粘合映射，则由定理\ref{粘贴胞腔}得$\rH{q}(T)\cong\rH{q}(S^1\vee S^1)=0$（当$q\neq 1,2$时）。而且有正合列：
+  \begin{equation*}
+    0\To \rH{2}(S^1\vee S^1)\To \rH{2}(T)\To \rH{1}(S^1) \markar{f_{\ast}} \rH{1}(S^1\vee S^1)\To \rH{1}(T) \To 0
+  \end{equation*}
+  
+  下面计算$f_{\ast}$。为此先计算由$f$诱导的基本群同态$f_{\pi}\colon\pi_1(S^1,x_0)\To\pi_1(S^1\vee S^1,x_0)$。考虑$S^1$上的单位闭路$\sigma$，粘合映射将其映到$aba^{-1}b^{-1}$其中$a, b, a^{-1}, b^{-1}$分别是$S^1\vee S^1$中的两个圆周的单位闭路及其反向，所以$f_{\pi}$恰将$\pi_1(S^1,x_0)$的生成元映到$\pi_1(S^1\vee S^1,x_0)$的换位子群的生成元。由于$H_1$是基本群的交换化（定理\ref{H1}），故$f_{\ast}$是零映射。
+
+  又由于$\rH{2}(S^1\vee S^1)=0$，故有正合列：
+  \begin{equation*}
+    0\To \rH{2}(T)\To \rH{1}(S^1)\To 0,\ \
+    0\To \rH{1}(S^1\vee S^1)\To \rH{1}(T) \To 0
+  \end{equation*}
+
+  所以$\rH{2}(T)\cong\rH{1}(S^1)=\ZZ, \rH{1}(T)=\rH{1}(S^1\vee S^1)=\ZZ\oplus\ZZ$。
+
+  由于$T$是道路连通的，故$H_0(T)=\ZZ$。
+
+  总结：
+  \begin{equation*}
+    H_q(T)=
+    \begin{cases}
+      \ZZ\oplus\ZZ & q=1\\
+      \ZZ & q=0,2\\
+      0 & q>2
+    \end{cases}
+  \end{equation*}
+\end{proof}
+
+\begin{timu}\label{26}
+  令$A=\{x_0,-x_0\}$为球面$S^n$中两个点，$n>1$。求$(S^n,A)$的各维相对同调群$H_q(S^n,A)$。
+\end{timu}
+\begin{proof}
+  对空间偶$(S^n,A)$有相对同调群的长正合列：
+  \begin{equation*}
+    \cdots\To \rH{q}(A) \markar{i_{\ast}} \rH{q}(S^n) \markar{j_{\ast}} \rH{q}(S^n,A) \markar{\delta} \rH{q-1}(A) \To \cdots
+  \end{equation*}
+  
+  其中当$q>0$时，$\rH{q}(A)=0$。故得当$q>1$时
+  \begin{equation*}
+    \rH{q}(S^n,A)\cong \rH{q}(S^n)=\delta_q^n\ZZ
+  \end{equation*}
+
+  当$q\leqslant1$时则有
+  \begin{equation*}
+    \cdots\To \rH{1}(S^n) \markar{j_{\ast}} \rH{1}(S^n,A) \markar{\delta} \rH{0}(A) \markar{i_{\ast}} \rH{0}(S^n) \markar{j_{\ast}} \rH{0}(S^n,A) \To 0
+  \end{equation*}
+
+  由于$n>1$，故$\rH{1}(S^n)=0, \rH{0}(S^n)=0$，所以
+  \begin{equation*}
+    \rH{1}(S^n,A)\cong \rH{0}(A) =\ZZ, \  \rH{0}(S^n,A)=0
+  \end{equation*}
+
+   利用命题\ref{简约同调群}回到通常的同调群，并注意到相对同调群的简约同调群与之完全一致，得
+   \begin{equation*}
+     H_q(S^n,A)=
+     \begin{cases}
+       \ZZ & q=1,n\\
+       0 & q\neq 1,n
+     \end{cases}
+   \end{equation*}
+\end{proof}
+
+\begin{timu}\label{27}
+  记$M$为M\"{o}bius带，它的边界是$S^1$。求$(M,S^1)$的各维相对同调群$H_q(M,S^1)$。
+\end{timu}
+\begin{proof}
+  对空间偶$(M,S^1)$有相对同调群的长正合列：
+  \begin{equation*}
+    \cdots\To \rH{q}(S^1) \markar{i_{\ast}} \rH{q}(M) \markar{j_{\ast}} \rH{q}(M,S^1) \markar{\delta} \rH{q-1}(S^1) \To \cdots
+  \end{equation*}
+  
+  其中当$q\neq1$时$\rH{q}(S^1)=0$。由于$M$通过收缩映射$r\colon M\To S^1$同伦等价于其赤道$S^1$，故$\rH{q}(M)\cong\rH{q}(S^1)$。从而当$q\neq1,2$时$\rH{q}(M,S^1)\cong\rH{q}(M)$。
+  
+  现只需考虑：
+  \begin{equation*}
+    0\To \rH{2}(M,S^1) \markar{\delta} \rH{1}(S^1) \markar{i_{\ast}} \rH{1}(M) \markar{j_{\ast}} \rH{1}(M,S^1) \To 0
+  \end{equation*}
+    
+  考虑$S^1$里的单位闭路的同调类，它通过$i_{\ast}$映到$M$的边界，而该边界通过$r_{\ast}$映到$M$的赤道上的$2$倍闭路，从而$\ker i_{\ast}=0, \im i_{\ast}=2\ZZ$。于是
+  \begin{equation*}
+    \rH{2}(M,S^1)\cong\ker i_{\ast}=0, \ \rH{1}(M,S^1)\cong \rH{1}(M)/\im i_{\ast}=\ZZ/2
+  \end{equation*}
+  
+   利用命题\ref{简约同调群}回到通常的同调群，并注意到相对同调群的简约同调群与之完全一致，得
+   \begin{equation*}
+     H_q(M,S^1)=
+     \begin{cases}
+       \ZZ/2 & q=1\\
+       0 & q\neq 1
+     \end{cases}
+   \end{equation*}
+\end{proof}
+
+\begin{timu}\label{28}
+  记$S^1=\{e^{it}\mid t\in[-\pi,\pi]\}$为复平面上的单位圆。映射$f\colon S^1\To S^1$定义为：对任何$e^{it}\in S^1, f(e^{it})=e^{-it}$。证明：$f$的映射度为$-1$，即：
+  \begin{equation*}
+  f=-1\colon H_1(S^1)\cong\ZZ\To H_1(S^1)
+  \end{equation*}
+\end{timu}
+\begin{proof}
+  考察$S^1$中单位闭路$\sigma$，由于$f\circ\sigma(t)=e^{-2\pi it}$是$\sigma$的反向道路，故$f_{\ast}[\sigma]=-[\sigma]$。而$[\sigma]$是$H_1(S^1)$的生成元，故$\deg f=-1$。
+\end{proof}
+
+\begin{timu}\label{29}
+  利用（\ref{24}）题结论证明：如果$f\colon S^n\To S^n$的映射度为$k$，则
+  \begin{equation*}
+  \Sigma f\colon \Sigma S^n=S^{n+1}\To \Sigma S^n
+  \end{equation*}
+的映射度也为$k$，其中对$[x,t]\in\Sigma S^n=S^n\times I/\sim, \Sigma f([x,t])=[f(x),t]$。
+\end{timu}
+\begin{proof}
+  对于$q>0$的情况，由映射锥的同调序列的自然性（命题\ref{映射锥的自然性}），得下图交换：
+  \begin{displaymath}
+    \xymatrix{
+      \rH{q+1}(\Sigma X) \ar[d]_{(\Sigma f)_{\ast}} & \rH{q}(X) \ar[l]_-{\Sigma_{\ast}} \ar[d]^{f_{\ast}} \\
+      \rH{q+1}(\Sigma Y) & \rH{q}(Y) \ar[l]_-{\Sigma_{\ast}}  }
+  \end{displaymath}
+  于是$\Sigma_{\ast}\circ f_{\ast}=(\Sigma f)_{\ast}\circ \Sigma_{\ast}$。设$\deg f=k,\deg \Sigma f=d$，则$\forall [a]\in\rH{q}(X)$，有
+  \begin{align*}
+    \Sigma_{\ast}( f_{\ast} ([a]))& =\Sigma_{\ast}(k[a])=k\Sigma_{\ast}[a] \\
+    (\Sigma f)_{\ast}( \Sigma_{\ast} ([a]))& =d\Sigma_{\ast}[a]
+  \end{align*}
+  从而$k=d$，即$\deg f=\deg \Sigma f$。
+\end{proof}
+
+\begin{timu}\label{30}
+  证明：对径映射$\beta\colon S^n\To S^n$的映射度为$(-1)^{n+1}$。
+\end{timu}
+\begin{proof}
+  我们先证明一个引理：
+  \begin{quote}
+    \emph{定义{\red 镜面反射}$\gamma^n\colon S^n\To S^n$为$\gamma^n(x_0,x_1,\cdots,x_n)=(-x_0,x_1,\cdots,x_n)$，则$\deg \gamma^n=-1$。}
+  \end{quote}
+
+  用归纳法，首先在题目（\ref{28}）中已证明对$\gamma^1\colon S^1\To S^1$结论成立。若对$S^n$结论成立，则由题目（\ref{29}）及$\Sigma S^n=S^{n+1}$，得到$\deg r^{n+1}=\deg r^n=-1$。
+
+  对径映射是$n+1$次镜面反射$S^n\To S^n$的复合。
+\end{proof}
+
+
+
+
+
+\newpage
+\phantomsection
+\printindex
+\end{document}

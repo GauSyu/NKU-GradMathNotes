@@ -1,0 +1,877 @@
+%\documentclass[UTF8]{ctexart}
+%基本文件设置，Ctex中文+UTF8编码。需要XeTex编译。
+%用这个生成中文索引USE：cctmkind -o 泛函分析.ind -s cct.ist -C pinyin 泛函分析.idx
+%备选USE：cctmkind -o 泛函分析.ind -s cct.ist -C stroke 泛函分析.idx
+%备选USE：cctmkind -o 泛函分析.ind -s cct.ist -C mixed 泛函分析.idx
+%------------------文件设置-----------------
+\documentclass[winfonts,UTF8,c5size,a4paper,fancyhdr,hyperref,titlepage,nocap]{ctexart}
+%winfonts=使用Windows 的字体设置，默认为六种中易字体：宋体、仿宋、黑体、楷体、隶书、幼圆（在使用XeTEX时只有前四种）。该选项的结果将和老版本ctex宏包完全一致。这是默认设置。
+%cs4size=使用小四字号为缺省字体大小。
+%a4paper=页面大小为A4。
+%fancyhdr=保持和fancyhdr宏包的兼容性。该选项将使得fancyhdr宏包被自动调用。
+%hyperref=自动判断调用fancyhdr宏包的正确参数以避免产生乱码。该选项将使得hyperref宏包被自动调用。
+%------------------整体格式-----------------
+%\usepackage[xetex]{hyperref}%让生成的文章目录有链接和标签。
+%\usepackage{ifthen}
+%条件分支
+%\ifthenelse{test}{then_text}{else_text}%
+%测试test，如果为真，执行then_text语句；如果为假，执行else_text。
+%\whiledo{test}{do_text}
+%测试test，为真则执行do_text语句，为假则不执行。
+\usepackage{amsmath,amsthm,amssymb,amsfonts,bm}         %AMS数学包。
+\usepackage[all]{xy}                                    %交换图表。
+\usepackage{epic}															%增强绘图。
+\usepackage{graphicx}														%图像增强
+\usepackage{mathrsfs,mathtools}
+\usepackage{cite}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{upgreek}%直立的小写希腊字母
+\usepackage[text={170mm,250mm},centering]{geometry}   %调整页面布局
+%\CTEXsetup[number={},indent={-1ex}]{section}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{color}
+\CTEXoptions[today=small]
+\renewcommand{\labelitemii}{\textbullet}
+\renewcommand{\labelitemiii}{\textbullet}
+\renewcommand{\labelitemiv}{\textbullet}
+%-----------------定理命题-----------------
+\newtheoremstyle{question}{1.5ex plus 1ex minus .2ex}{1.5ex plus 1ex minus .2ex}
+     {\large\itshape}{}{\songti\bfseries}{}{1em}{}
+\theoremstyle{question}
+\newtheorem{Qut}{题目}
+\theoremstyle{theorem}
+\newtheorem{thm}{定理}
+\newtheorem{cor}[thm]{推论}
+\newtheorem{lem}[thm]{引理}
+\newtheorem{prop}[thm]{命题}
+\newtheorem{axiom}{公理}
+\newtheorem{exa}[thm]{例}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{定义}
+\theoremstyle{remark}
+\newtheorem*{rem}{注}
+\newtheorem*{note}{约定}
+\numberwithin{equation}{subsection}
+\renewcommand{\proofname}{\bf  证明}
+% THEOREM Environments --------------------------------------------------------
+%\newtheorem{thm}{Theorem}[subsection]
+%\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{prop}[thm]{Proposition}
+%\theoremstyle{definition}
+%\newtheorem{defn}[thm]{Definition}
+%\theoremstyle{remark}
+%\newtheorem{rem}[thm]{Remark}
+%\numberwithin{equation}{subsection}
+%-----------------页眉页脚-----------------
+%\usepackage{fancyhdr}                       %页眉页脚包
+%\pagestyle{fancy}                           %设置页眉
+%-----------------制定命令-----------------
+% MATH ------------------------------------------------------------------------
+\DeclareMathOperator{\RE}{Re}
+\DeclareMathOperator{\IM}{Im}
+\DeclareMathOperator{\ess}{ess}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\s}{\mathcal{S}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+%\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\BOP}{\mathbf{B}}
+\newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+\newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Field}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\RPlus}{\Real^{+}}
+\newcommand{\pp}{\mathcal{P}}
+\newcommand{\Polar}{\mathcal{P}_{\s}}
+\newcommand{\Poly}{\mathcal{P}(E)}
+\newcommand{\EssD}{\mathcal{D}}
+\newcommand{\Lom}{\mathcal{L}}
+\newcommand{\States}{\mathcal{T}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\seq}[1]{\left<#1\right>}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+\newcommand{\ob}{\mathrm{ob}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\base}[1]{\mathrm{base}(\mathscr{#1})}
+\newcommand{\bun}[1]{\mathrm{bun}\mathcal{#1}}
+\newcommand{\fib}{\mathrm{fib}}
+\newcommand{\RP}{\mathbb{R}\mathbf{P}}
+\newcommand{\red}{\color{red}}
+\newcommand{\dd}{\operatorname{d}}
+\newcommand{\dt}{\frac{\operatorname{d}}{\operatorname{d}t}}
+\newcommand{\pfrac}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\px}[1]{\left.\pfrac{}{x^{#1}}\right|_p}
+\newcommand{\py}[1]{\left.\pfrac{}{y^{#1}}\right|_q}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\spa}{\operatorname{span}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Xf}[1]{\mathfrak{X}(#1)}
+\newcommand{\local}[2]{\left.{#1}\right|_{#2}}%Local #1 at #2
+\newcommand{\localt}[1]{\local{#1}{t=0}}%Local #1 at  t=0
+\newcommand{\localp}[1]{\local{#1}{p}}%Local #1 at  p
+%==================================================
+\newcommand{\defen}{\mathop{\iff}\limits^{\mathclap{\text{\scriptsize def}}}}%s上标箭头
+\newcommand{\markar}[1]{\stackrel{{#1}}{\longrightarrow}}%带标号箭头（定长，与\xleftarrow不同）
+\newcommand{\defeq}{\stackrel{{\mathrm{def}}}{=}}
+\newcommand{\mexseq}[2]{\cdots \longrightarrow {#1}_{n-1} \markar{{#2}_{n-1}} {#1}_n \markar{{#2}_n} {#1}_{n+1} \longrightarrow \cdots}
+  %middle exact sequence
+\newcommand{\schain}[2]{{#1}_0 \markar{{#2}_0} {#1}_1 \markar{{#2}_1} {#1}_2 \longrightarrow \cdots}
+  %起始链
+\newcommand{\fchain}[2]{\cdots \longrightarrow {#1}_{n-2} \markar{{#2}_{n-2}} {#1}_{n-1} \markar{{#2}_{n-1}} {#1}_n}
+  %结束链
+\newcommand{\lchain}[2]{{#1}_0 \markar{{#2}_0} {#1}_1 \markar{{#2}_1} {#1}_2 \longrightarrow \cdots \longrightarrow {#1}_{n-2} \markar{{#2}_{n-2}} {#1}_{n-1} \markar{{#2}_{n-1}} {#1}_n}
+  %完整长链
+\newcommand{\mapdes}[5]
+  {
+    \begin{align*}
+      #1\colon\  #2 & \longrightarrow  #3 \\
+            #4 & \mapsto  #5
+    \end{align*}
+    %多于两个对齐点，align会出问题。换用alignat。
+  }
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Inv}{\operatorname{Inv}}
+%------------------标题作者-----------------
+\title{泛函分析复习}
+\author{Gau Syu}
+%\setcounter{secnumdepth}{1}
+\makeindex
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\section*{Preface}
+\addcontentsline{toc}{section}{Perface}
+这是2012年下半年南开大学数学科学学院研究生课程“泛函分析”的期末复习五道题目。该课程由安桂梅老师讲授。
+\tableofcontents
+\newpage
+\section{半范数与局部凸空间}
+\begin{Qut}
+设$\{p_{\alpha}\}_{\alpha\in\Lambda}$是$X$上分离点的半范数族，则由其生成的拓扑是Hausdorff的。
+\end{Qut}
+\begin{defn}
+  $X$是域$\K$（$\Real$或$\Complex$）上的线性空间，$X$上的实值函数$p$满足
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item （次可加性）$p(x + y) \leqslant p(x) + p(y), \forall x, y\in X$；
+    \item （绝对齐性）$p(\lambda x)=|\lambda|p(x), \forall\lambda\in\K, x\in X$
+\end{enumerate}
+则称$p$是$X$上的一个\emph{\red 半范数}\index{半范数 }。
+\end{defn}
+
+\begin{prop}
+  设$p$是线性空间$X$上的半范数，则
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $p(0)=0$；
+    \item $|p(x)-p(y)|\leqslant p(x-y)$；
+    \item $p(x)\geqslant 0$；
+    \item $\ker p$是$X$的子空间。
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $p(0)=p(0x)=|0|p(x)=0$；
+    \item 因为$p(x)=p(x-y+y)\leqslant p(x-y)+p(y)$，且$p(y-x)=p(x-y)$；
+    \item $p(x)\geqslant|p(x)-P(0)|\geqslant0$；
+    \item $\forall \alpha,\beta\in\K, x,y\in\ker p$，
+             \begin{equation*}
+             p(\alpha x+\beta y)\leqslant p(\alpha x)+p(\beta y)=|\alpha|p(x)+|\beta|p(y)=0+0=0
+             \end{equation*}
+\end{enumerate}
+\end{proof}
+\begin{rem}
+可见半范数就是范数定义中去掉$p(x)=0\Rightarrow x=0$这一条。
+\end{rem}
+
+\begin{defn}
+  对于线性空间$X$中的集合$M$，
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item 若$\forall x,y\in M, 0\leqslant\alpha\leqslant1, \alpha x+(1-\alpha)y\in M$，则称$M$是\emph{\red 凸的}\index{凸集}；
+    \item 若$\forall x\in M,|\lambda|\leqslant1, \lambda x\in M$，则称$M$是\emph{\red 平衡的}\index{平衡集}；
+    \item 若$M=-M$，则称$M$是\emph{\red 对称的}\index{对称集}；
+    \item 若$\forall x\in X$，存在$\varepsilon>0$，使得当$0<|\alpha|\leqslant\varepsilon$时，$\alpha x\in M$，则称$M$是\emph{\red 吸收的}\index{吸收集}。
+\end{enumerate}
+\end{defn}
+
+\begin{prop}\label{M1}
+  对任给的半范数$p$和实数$r>0$，
+\begin{equation*}
+M=\{x\in X\mid p(x)<r\},
+M'=\{x\in X\mid p(x)<= r\}
+\end{equation*}
+均是平衡的、吸收的凸集。
+\end{prop}
+\begin{proof}
+  先证$M$是\emph{凸集}：
+  $\forall x,y\in M, 0\leqslant\alpha\leqslant1$，
+  \begin{equation*}
+  p(\alpha x+(1-\alpha)y)\leqslant|\alpha|p(x)+|1-\alpha|p(y)<\alpha r+(1-\alpha)r=r
+  \end{equation*}
+  所以$\alpha x+(1-\alpha)y\in M$。
+
+  再证$M$是\emph{平衡集}：
+  $\forall x\in M,|\lambda|\leqslant1$，
+  \begin{equation*}
+  p(\lambda x)=|\lambda|p(x)\leqslant p(x)<r
+  \end{equation*}
+  所以$\lambda x\in M$。
+
+  最后证$M$是\emph{吸收集}：
+  $\forall x\in X$，不妨设$p(x)>0$，则
+  \begin{equation*}
+  p(\frac{rx}{2p(x)})=\frac{r}{2p(x)}p(x)=\frac{r}{2}<r
+  \end{equation*}
+  即$\frac{r}{2p(x)}x\in M$。
+
+  对$M'$的证明类似。
+\end{proof}
+
+\begin{defn}
+  设$K$是线性空间$X$中的子集，则
+  \begin{equation*}
+    \mu_K(x)\defeq\inf\left\{\alpha\middle|\alpha>0,\frac{1}{\alpha}x\in K\right\}
+  \end{equation*}
+  称为$K$的\emph{\red Minkowski泛函}\index{Minkowski泛函}。
+\end{defn}
+由定义可知$K\subset L\Rightarrow\mu_K\geqslant\mu_L$。
+
+\begin{prop}
+  线性空间$X$中的平衡吸收凸集$K$的Minkowski泛函$\mu_K$是$X$上的半范数。
+\end{prop}
+
+\begin{defn}
+  一个线性空间$X$上赋予一个使得加法和数乘运算连续的拓扑$\tau$，则称$(X,\tau)$为\emph{\red 拓扑线性空间}\index{拓扑线性空间}。
+\end{defn}
+\begin{rem}
+拓扑线性空间的拓扑基可由$0$点的邻域基平移得到，故称$0$点的邻域基称为\emph{\red 局部基}\index{局部基}。
+\end{rem}
+
+\begin{rem}
+设$X$是一个拓扑线性空间，$U$是$0$点的一个\emph{凸}邻域，则$U$包含一个$0$点的\emph{平衡的}、\emph{吸收的}\emph{凸}邻域。
+\end{rem}
+
+\begin{defn}
+  设$(X,\tau)$是拓扑线性空间，如果$\tau$的局部基全由凸集组成，则称为\emph{\red 局部凸拓扑线性空间}\index{局部凸拓扑线性空间}，简称\emph{\red 局部凸空间}\index{局部凸空间}。
+\end{defn}
+
+\begin{thm}
+  设$P$是线性空间$X$上的半范数族，对每个$p\in P$及自然数$n$，记
+\begin{equation*}
+V(p,n)\defeq\left\{x\in X\middle|p(x)<\frac{1}{n}\right\}
+\end{equation*}
+其所有有限交构成的集合记为$\mathscr{B}$，则$\mathscr{B}$是平衡的凸的局部基。这样就由$P$诱导出一个$X$上的局部凸拓扑，称为由半范数族$P${\red 生成}\index{半范数诱导的拓扑}的拓扑。
+\end{thm}
+\begin{proof}
+  首先，由命题\ref{M1}，每个$V(p,n)$都是$0$点的平衡的凸邻域，进一步地，它们的有限交也是$0$点的平衡的凸邻域。
+
+  然后证明加法运算连续：注意到加法运算在$0$处是连续的当且仅当对于任何$0$的邻域$U$存在另一个$0$的邻域$V$使得$V + V$ 被包含在$U$中。
+
+  设$U$是$0$点的一个邻域，则存在$p_i\in P,n_i\in\N,i=1,2,\cdots,k$，使得
+  \begin{equation*}
+  U\supset V(p_1,n_1)\cap\cdots\cap V(p_k,n_k)
+  \end{equation*}
+  令$V=V(p_1,2n_1)\cap\cdots\cap V(p_k,2n_k)$，则由次可加性得$V+V\subset U$。
+
+  最后证明乘法运算连续：即$\forall x\in X,\alpha\in\K, U\in N(0)$，存在$\varepsilon$和$V\in N(0)$，当$|\beta-\alpha|<\varepsilon,y-x\in V$时，$\beta y-\alpha x\in U$。
+
+  取$V$同上，由于$V$平衡，所以当$s\geqslant1,x\in sV, t=s(1+|\alpha|s)^{-1},|\beta-\alpha|<s^{-1},y\in x+tV\in N(x)$时就有
+  \begin{align*}
+    \beta y-\alpha x &=\beta(y-x)+(\beta-\alpha)x \\
+                             &\in\beta tV+s^{-1}sV\\
+                             &\subset V+V\subset U
+  \end{align*}
+\end{proof}
+
+\begin{prop}
+  设$(X,\tau)$是局部凸空间，则必有一族$X$上的半范数$P$使得$V(p,n)$是$\tau$的局部基。
+\end{prop}
+\begin{proof}
+  设$U$是$0$点的一个凸邻域，则$U$包含一个$0$点的平衡的吸收的凸邻域$V$，令$\mu_V$为其Minkowski泛函，则$\mu_V$是半范数，所有这样的半范数构成的半范数族生成该局部凸拓扑。
+\end{proof}
+
+\begin{defn}
+  设$\{p_{\alpha}\}_{\alpha\in\Lambda}$是线性空间$X$上的一族半范数，如果
+  \begin{equation*}
+  \forall\alpha\in\Lambda, p_{\alpha}(x)=0\Longrightarrow x=0
+  \end{equation*}
+  则称$\{p_{\alpha}\}_{\alpha\in\Lambda}$\emph{\red 分离}\index{分离点 }$X$ 中的点。
+\end{defn}
+
+\begin{thm}
+  由分离点的半范数族决定的的局部凸空间是Hausdorff的，反之亦然。
+\end{thm}
+\begin{proof}
+  首先证明$\forall x\neq0\in X$，$x$和$0$可由开集分离：
+
+  事实上，因为$x\neq0$，由于$P$分离点，故存在$p\in P$使得$p(x)>0$，取自然数$n$使得$np(x)>2$，则
+  \begin{equation*}
+  V(p,n)\cap(x+V(p,n))=\left\{y\in X\middle| p(y)<\frac{1}{n}, p(y-x)<\frac{1}{n}\right\}
+  \end{equation*}
+  然而
+\begin{equation*}
+    \begin{cases}
+    p(y)<\frac{1}{n}\\
+    p(y-x)<\frac{1}{n}
+    \end{cases}
+    \Longrightarrow
+    p(x)\leqslant p(y)+p(y-x)<2n
+\end{equation*}
+  与$np(x)>2$矛盾，故$V(p,n)\cap(x+V(p,n))=\varnothing$。
+
+  对于$x\neq y$，若已有开集$U,V$分离$0$和$x-y$，则
+  \begin{align*}
+  \begin{cases}
+  0\in U\\
+  x-y\in V
+  \end{cases}
+  &\Longrightarrow
+  \begin{cases}
+  x\in y+V\\
+  y\in y+U
+  \end{cases}\\
+  U\cap V=\varnothing&\Longrightarrow(y+U)\cap(y+V)=\varnothing
+  \end{align*}
+
+  反之，若$X$是Hausdorff的局部凸空间，则取半范数族$P$为其局部基的Minkowski泛函。$\forall x\neq0$，由Hausdorff性，存在$0$点邻域$U$，使得$x\notin U$。进一步地，可取为邻域基中的元$V$，使得$x\notin V$，于是$\mu_V\neq 0$，这就证明了半范数族$P$分离$X$中的点。
+\end{proof}
+
+
+\section{值域定理}
+\begin{Qut}
+设$T$为从赋范线性空间$E$到$E_1$内的线性算子，且有$\overline{\mathcal{D}(T)}=E$，那么，为了$T^{-1}$存在且连续（即$T\in\Inv(\mathcal{B}(\mathcal{D}(T),E_1))$）必须且只须$\mathcal{W}(T^{\ast})=E^{\ast}$，即$T^{\ast}$ 满值域。
+\end{Qut}
+\begin{proof}
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item ``$\Longrightarrow$''：
+    如果$T^{-1}$存在且连续，须证对任意的$f\in E^{\ast}$，存在$g\in E_1^{\ast}$，使得$T^{\ast}(g)=f$。
+
+  首先定义$\mathcal{W}(T)\subset E_1$上的有界线性泛函
+  \begin{equation*}
+  g_0(y)\defeq f(T^{-1}(y)), y\forall y\in\mathcal{W}(T)
+  \end{equation*}
+  从而由Hahn-Banach定理，可得到$g_0$的一个保范延拓$g\in g\in E_1^{\ast}$。又由于
+  \begin{equation*}
+  g(T(x))=g_0(T(x))=f(T^{-1}(T(x)))=f(x), \forall x\in \mathcal{D}(T)
+  \end{equation*}
+  故$g\in\mathcal{D}(T^{\ast}),T^{\ast}(g)=f$。
+  \item ``$\Longleftarrow$''：
+  为证$T^{-1}$存在，只须证$T$是$1-1$对应的。
+
+若$T(x)=0$，则任取$f\in E^{\ast}$，由假设$\mathcal{W}(T^{\ast})=E^{\ast}$，故存在$g\in\mathcal{D}(T^{\ast})$，使得$f=T^{\ast}(g)$，于是
+\begin{equation*}
+f(x)=(T^{\ast}(g))(x)=g(T(x))=g(0)=0
+\end{equation*}
+故$x=0$。
+
+为证$T^{-1}$是连续的，只须证$T^{-1}$是有界线性算子：
+
+$\forall y\in\mathcal{W}(T), ||y||\leqslant1$，任取$f\in E^{\ast}$，由假设$\mathcal{W}(T^{\ast})=E^{\ast}$，故存在$g\in E_1^{\ast}$，使得$f=T^{\ast}(g)$。由于
+\begin{align*}
+|f(T^{-1}(y))|&=|(T^{\ast}(g))(T^{-1}(y))|\\
+              &=|g(TT^{-1}(y))|\\
+              &=|g(y)|\leqslant||g||
+\end{align*}
+
+故由共鸣定理\footnote{注意到共轭空间$E^{\ast}$一定是Banach空间，将$T^{-1}(y)$视为$E^{\ast}$上的连续线性泛函。}得
+\begin{equation*}
+\sup\{||T^{-1}(y)||\mid||y||\leqslant1, y\in\mathcal{W}(T)\}<\infty
+\end{equation*}
+\end{enumerate}
+\end{proof}
+
+\begin{Qut}
+设$T$是从赋范线性空间$E$到$E_1$内的线性算子，且有$\overline{\mathcal{D}(T)}=E$，那么，为了$(T^{\ast})^{-1}$存在，必须且只须有$\overline{\mathcal{W}(T)}=E_1$。
+\end{Qut}
+\begin{proof}
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item ``$\Longrightarrow$''：
+    反之，假如存在$y_1\in E_1$且$y_1\notin\overline{\mathcal{W}(T)}$，则注意到$\overline{\mathcal{W}(T)}$是$E_1$内的一个闭线性子空间，因此由分割性定理可知，存在$g_1\in E_1^{\ast}$，使得
+    \begin{equation*}
+    g_1(y_1)=1, g_1(y)=0, \forall y\in\overline{\mathcal{W}(T)}
+    \end{equation*}
+    由此得
+    \begin{equation*}
+    g_1(T(x))=0,\forall x\in\mathcal{D}(T)
+    \end{equation*}
+    于是
+    \begin{equation*}
+    g_1\in\mathcal{D}(T^{\ast}), T^{\ast}(g_1)=0
+    \end{equation*}
+    由假设，$T^{\ast}$存在线性逆算子，故$T^{\ast}$是$1-1$对应的，于是$g_1=0$，与前面取法矛盾。
+    \item ``$\Longleftarrow$''：
+    只须证$T^{\ast}$是$1-1$对应的。
+
+    如果存在泛函$g_0\in E_1^{\ast}$，使得
+    \begin{equation*}
+    T^{\ast}(g_0)=0
+    \end{equation*}
+    则
+    \begin{equation*}
+    g_0(T(x))=(T^{\ast}(g_0))(x)=0, \forall x\in\mathcal{D}(T)
+    \end{equation*}
+    即$\local{g_0}{\mathcal{W}(T)}=0$。由假设$\overline{\mathcal{W}(T)}=E_1$以及$g_0$在$E_1$上连续，故$g_0=0$。
+\end{enumerate}
+\end{proof}
+
+\begin{Qut}
+设$T$是从赋范线性空间$E$到$E_1$内的线性算子，且有$\overline{\mathcal{D}(T)}=E$，那么，当$E_1$为``第二纲''赋范线性空间且有$\mathcal{W}(T)=E_1$时，$(T^{\ast})^{-1}$存在且连续。
+\end{Qut}
+\begin{proof}
+  首先，由前一题可知$(T^{\ast})^{-1}$存在。下证$(T^{\ast})^{-1}$有界：
+
+若不然，则由于$(T^{\ast})^{-1}$非有界，故存在列$\{g_n\}\subset E_1^{\ast}$，使得
+\begin{equation*}
+||g_n||=1,||T^{\ast}(g_n)||\to 0(n\to\infty)
+\end{equation*}
+于是，可定义：
+\begin{equation*}
+g'_n=\frac{g_n}{||T^{\ast}(g_n)||}(n\in\N)
+\end{equation*}
+此时
+\begin{equation}\label{4.1}
+\lim_{n\to\infty}||g'_n||=\lim_{n\to\infty}\frac{||g_n||}{||T^{\ast}(g_n)||}=\lim_{n\to\infty}\frac{1}{||T^{\ast}(g_n)||}=\infty
+\end{equation}
+
+另外，由定理假设$E_1=\mathcal{W}(T)$知，$\forall y\in E_1$，存在$x\in E$使得$y=T(x)$。于是
+\begin{align*}
+|g'_n(y)|&=|g'_n(T(x))|=|(T^{\ast}g'_n)(x)|\\
+         &\leqslant||T^{\ast}g'_n||||x||=||x||<\infty, \forall y\in E_1
+\end{align*}
+
+由$E_1$第二纲以及推广的共鸣定理，得$\{||g'_n||\}$是有界数列，与式\ref{4.1}矛盾。
+\end{proof}
+
+\begin{defn}
+  从赋范线性空间$E$到$E_1$内的线性算子$T$称为\emph{\red 有界的}\index{有界线性算子}，如果存在$\lambda>0$使得
+  \begin{equation*}
+  ||Tx||\leqslant\lambda||x||, \forall x\in E
+  \end{equation*}
+\end{defn}
+\begin{rem}
+  等价的条件是将有界集映到有界集。
+\end{rem}
+\begin{rem}
+  反之，若算子$T$非有界，则存在$E$中的点列$\{x_n\}$，使得
+  \begin{equation*}
+    ||Tx_n||=1,||x_n||\to 0(n\to\infty)
+  \end{equation*}
+\end{rem}
+
+\begin{defn}
+  从赋范线性空间$E$到$E_1$内的全体有界线性算子构成的赋范空间记为$\mathcal{B}(E,E_1)$。特别地，$\mathcal{B}(E,\K)$称为$E$的\emph{\red 共轭空间}\index{共轭空间}，记作$E^{\ast}$。
+\end{defn}
+
+\begin{thm}
+  赋范线性空间$\mathcal{B}(E,E_1)$完备，当且仅当$E_1$完备。
+\end{thm}
+\begin{cor}
+  赋范线性空间$E$的对偶空间$E^{\ast}$是Banach空间。
+\end{cor}
+
+\begin{defn}
+线性空间$E$上的泛函$p(x)$称为
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item \emph{\red 次加的}\index{次加泛函}，如果
+        \begin{equation*}
+        p(x+y)\leqslant p(x)+p(y),\forall x,y\in E
+        \end{equation*}
+    \item \emph{\red 正齐性的}\index{正齐性的}，如果
+        \begin{equation*}
+        p(\alpha x)=\alpha p(x), \forall\alpha\geqslant0,x\in E
+        \end{equation*}
+\end{enumerate}
+\end{defn}
+
+
+
+
+\begin{thm}[Hahn-Banach 延拓定理]\index{Hahn-Banach 延拓定理}
+若
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $E$是实线性空间，$E_0\subset E$是其线性子空间；
+    \item $p(y)$是$E$上的次加正齐性泛函，$f_0(y)$是定义在子空间$E_0$上的实线性泛函，且满足
+      \begin{equation*}
+        f_0(y)\leqslant p(y), \forall y\in E_0
+      \end{equation*}
+\end{enumerate}
+则必存在定义在整个空间$E$上的实线性泛函$f(y)$，满足
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $f(y)=f_0(y), \forall y\in E_0$；
+    \item $f(y)\leqslant p(y),\forall y\in E$。
+\end{enumerate}
+\end{thm}
+\begin{rem}
+  将定理中的``次加正齐性''控制泛函$p(x)$换成凸泛函时结论任成立。其中\emph{\red 凸泛函}\index{凸泛函}是指
+  \begin{equation*}
+  p(\lambda x+(1-\lambda)y)\leqslant\lambda p(x)+(1-\lambda)p(y), \forall\lambda\in[0,1],x,y\in E
+  \end{equation*}
+\end{rem}
+
+\begin{defn}
+线性空间$E$上的泛函$p(x)$称为\emph{\red 绝对齐性的}\index{绝对齐性的}，如果
+        \begin{equation*}
+        p(\alpha x)=|\alpha|p(x), \forall\alpha\in\K,x\in E
+        \end{equation*}
+\end{defn}
+
+\begin{thm}[Hahn-Banach 延拓定理]\index{Hahn-Banach 延拓定理}
+若
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $E$是复线性空间，$E_0\subset E$是其复线性子空间；
+    \item $p(y)$是$E$上的次加绝对齐性泛函，$f_0(y)$是定义在子空间$E_0$上的复线性泛函，且满足
+      \begin{equation*}
+        |f_0(y)|\leqslant p(y), \forall y\in E_0
+      \end{equation*}
+\end{enumerate}
+则必存在定义在整个空间$E$上的复线性泛函$f(y)$，满足
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $f(y)=f_0(y), \forall y\in E_0$；
+    \item $|f(y)|\leqslant p(y),\forall y\in E$。
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[Hahn-Banach 保范延拓定理]\index{Hahn-Banach 保范延拓定理}
+设$E$为赋范线性空间，$E_0$为其线性子空间，$f_0$为$E_0$上定义的\emph{连续}线性泛函，则在$E$上必存在\emph{连续}线性泛函$f$，使得
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\local{f}{E_0}=f_0$；
+    \item $||f||=||f_0||$。
+\end{enumerate}
+\end{thm}
+
+\begin{prop}[足够多有界线性泛函存在]
+设$E$为赋范线性空间，则$\forall x_0\in E,||x_0||\neq0$，存在$f_1\in E^{\ast}$，使得
+\begin{equation*}
+f_1(x_0)=||x_0||, ||f_1||=1
+\end{equation*}
+\end{prop}
+\begin{cor}
+  设$E$为赋范线性空间，$x,y\in E$，则为使$x=y$必须且只须$\forall f\in E^{\ast}$，均有$f(x)=f(y)$。
+\end{cor}
+
+\begin{thm}[分割性定理]\index{分割性定理}
+  设$E$是赋范线性空间，$E_0\subset E$是其线性子空间，则$\forall x_1\in E$,若
+  \begin{equation*}
+  d=d(x_1,E_0)\defeq\inf_{y\in E_0}||x_1-y||>0
+  \end{equation*}
+  则存在$f_1\in E^{\ast}$，使得
+  \begin{equation*}
+   f_1(x)=
+    \begin{cases}
+    1&x=x_1\\
+    0&x\in E_0
+    \end{cases}
+  \end{equation*}
+且$||f_1||=\frac{1}{d}$。
+\end{thm}
+
+\begin{thm}[Banach-Steinhaus定理（共鸣定理）]\index{Banach-Steinhaus定理}\index{共鸣定理}
+  给定赋范线性空间$X$和$Y$，其中$X$是完备的，若算子族$\{T_{\alpha}\}_{\alpha\in\Lambda}\subset \mathcal{B}(X,Y)$是{\red 逐点连续}\index{逐点连续}的（即$\forall x\in X$，$\{||T_{\alpha}(x)||\}_{\alpha\in\Lambda}$都是有界数集），
+  则必是{\red 一致连续}\index{一致连续}的（即$\{||T_{\alpha}||\}_{\alpha\in\Lambda}$是有界数集）。
+\end{thm}
+
+\begin{defn}
+  $(X,d)$为距离空间，$A\subset X$， 若$\forall$开集$G\subset X$，存在开集$G_0\subset G$使得$G_0\cap A=\varnothing$，则称$A$在$X$中\emph{\red 稀疏}\index{稀疏集}。集合$A$称为\emph{\red 第一纲的}\index{第一纲集}，如果它是可数个稀疏集的并，否则称为\emph{\red 第二纲}\index{第二纲集}的。
+\end{defn}
+
+\begin{thm}[推广的Banach-Steinhaus定理（共鸣定理）]\index{Banach-Steinhaus定理}\index{共鸣定理}
+  给定赋范线性空间$X$和$Y$，其中$X$是{\red 第二纲的}，若算子族$\{T_{\alpha}\}_{\alpha\in\Lambda}\subset \mathcal{B}(X,Y)$在$X$的一个第二纲的子集上是{\red 逐点连续}的，则必{\red 一致连续}。
+\end{thm}
+
+\section{可分性}
+\begin{Qut}
+  可分距离空间$X$的任意非空子集$X_0$必可分。
+\end{Qut}
+\begin{proof}
+  由$X$可分，故存在可数稠密子集$\{x_n\}$。
+
+  由于是距离空间，故可作一列开球$\{O(x_n,\frac{1}{m})\mid n,m\in\N\}$，并且
+  \begin{equation*}
+  X=\bigcup_{n,m}O(x_n,\frac{1}{m})
+  \end{equation*}
+
+  对于任意非空子集$X_0\subset X$，有
+  \begin{equation*}
+  X_0=\bigcup_{n,m}(X_0\cap O(x_n,\frac{1}{m}))
+  \end{equation*}
+
+  于是可从每个非空的$X_0\cap O(x_n,\frac{1}{m})$中取出一元。显见这些元的全体$\{y_k\}$至多可数。
+
+  下面只须证$\{y_k\}$稠于$X_0$：
+
+  $\forall y\in X_0,\varepsilon>0$，由于$\{x_n\}$在$X$中稠密，故存在$x_{n_0}$及$m_0>\frac{2}{\varepsilon}$，使$y\in O(x_{n_0},\frac{1}{m_0})$。
+
+  因此，$X_0\cap O({n_0},\frac{1}{m_0})\neq\varnothing$，故必存在$y_{k_0}\in\{y_k\}$，使得$y_{k_0}\in X_0\cap O({n_0},\frac{1}{m_0})$
+
+  于是
+  \begin{equation*}
+  d(y,y_{k_0})\leqslant d(y,x_{n_0})+d(x_{n_0},y_{k_0})<\frac{1}{m_0}+\frac{1}{m_0}<\varepsilon
+  \end{equation*}
+
+  即$\{y_k\}$在$X_0$中稠密。故$X_0$可分。
+\end{proof}
+
+\begin{defn}
+  $(X,d)$为一个距离空间，$A,B\subset(X,d)$，若$B$的每一个点的每一个邻域中均含有$A$中的点，则称$A$在$B$中\emph{\red 稠密}\index{稠密}。
+\end{defn}
+
+\begin{prop}
+  $A$在$B$中稠密$\Longleftrightarrow \overline{A}\supset B\Longleftrightarrow\forall x\in B$，存在$\{x_n\}\subset A$，使得$x_n\stackrel{d}{\to}x$
+
+  $\Longrightarrow\forall\varepsilon>0,\bigcup_{x\in A}O(x,\varepsilon)\supset B$
+\end{prop}
+
+\begin{defn}
+  $(X,d)$为一个距离空间，若$(X,d)$中存在可数的稠密子集，则称$(X,d)$\emph{\red 可分}\index{可分空间}。
+\end{defn}
+
+\section{内积空间与正交补}
+\begin{Qut}
+  $A$是内积空间$U$的子集，则$A^{\bot}$是$U$的闭子空间。
+\end{Qut}
+
+\begin{defn}
+  设$E$是线性空间，在乘积空间$E\times E$上定义有有序二元泛函$(,)$，如果$\forall x,y,z\in E,\alpha,\beta\in\K$，其满足
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $(x,x)>=0$，且$(x,x)=0$当且仅当$x=0$；
+    \item $(x,y)=(y,x)$；
+    \item $(\alpha x+\beta y,z)=\alpha(x,z)+\beta(y,z)$
+\end{enumerate}
+则称$(,)$为$E$上的\emph{\red 内积}\index{内积}，称定义了内积的线性空间$E$为\emph{\red 内积空间}\index{内积空间}。
+\end{defn}
+
+\begin{thm}[Cauchy-Schwarz不等式]\index{Cauchy-Schwarz不等式}
+设$E$为内积空间，则$\forall x,y\in E$，有
+\begin{equation*}
+|(x,y)|^2\leqslant(x,x)(y,y)
+\end{equation*}
+且等号成立当且仅当$x,y$线性相关。
+\end{thm}
+
+\begin{defn}
+  令$||x||=\sqrt{(x,x)}$，则$||x||$成为$E$上的范数。若$E$在该范数下成为Banach空间，则称为\emph{\red Hilbert空间}\index{Hilbert空间}。
+\end{defn}
+
+\begin{prop}
+  内积$(x,y)$是关于$x$和$y$的二元连续函数，即
+  \begin{equation*}
+  \lim_{n\to\infty}x_n=x, \lim_{n\to\infty}y_n=y\Longrightarrow\lim_{n\to\infty}(x_n,y_n)=(x,y)
+  \end{equation*}
+\end{prop}
+
+\begin{prop}[勾股定理]\index{勾股定理}
+  设$U$是内积空间，$x,y\in U$。若$x\bot y$，则
+  \begin{equation*}
+  ||x+y||^2=||x||^2+||y||^2
+  \end{equation*}
+\end{prop}
+
+\begin{defn}
+  设$U$是内积空间
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item 对于$x,y\in U$，如果$(x,y)=0$，则称$x$与$y$\emph{\red 正交}\index{正交}，记作$x\bot y$；
+    \item 设$\varnothing\neq A\subset U, x\in U$，如果$\forall y\in A, (x,y)=0$，则称$x$与$A$\emph{\red 正交}，记作$x\bot A$；
+    \item 类似可定义两个子集的\emph{\red 正交}；
+    \item 设$\varnothing\neq A\subset U$，把与$A$\emph{\red 正交}的元全体记为$A^{\bot}$，称为$A$的\emph{\red 正交补}\index{正交补}。
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+  若$x\bot y_i(i=1,2,\cdots,n)$，则$\forall\alpha_i\in\K$，有$x\bot \sum\alpha_iy_i$。
+\end{prop}
+\begin{proof}
+$(x,\sum\alpha_iy_i) =\sum\overline{\alpha_i}(x,y_i) =\sum\overline{\alpha_i}0=0$，故$x\bot \sum\alpha_iy_i$。
+\end{proof}
+
+\begin{prop}
+  若$x\bot y_i(n\in\N)$，且$\lim_{n\to\infty}y_n=y$，则$x\bot y$。
+\end{prop}
+\begin{proof}
+  $(x,y)=\lim_{n\to\infty}(x,y_n)=\lim_{n\to\infty}0=0$，故$x\bot y$。
+\end{proof}
+
+\begin{proof}[题目的证明]
+由前面两个命题立得。
+\end{proof}
+
+\section{闭算子}
+\begin{Qut}
+  闭算子的定义与等价定义。
+\end{Qut}
+\begin{defn}
+  令$X,Y$为$\K$上的两个赋范线性空间，$T$是从$X$到$Y$内的线性算子，对$X\times Y$赋予范数$||(x,y)||=||x||_X+||y||_Y$，如果$T$的图像$G(T)\subset$是闭集，
+  则称算子$T$是\emph{\red 闭算子}\index{闭算子}。
+\end{defn}
+
+\begin{prop}
+  $T$是闭算子，当且仅当：
+
+  $\forall\{x_n\}\subset\mathcal{D}(T)$满足
+  \begin{equation*}
+  \lim_{n\to\infty}x_n=x, \lim_{n\to\infty}Tx_n=y
+  \end{equation*}
+  都有$x\in\mathcal{D}(T)$且$Tx=y$。
+\end{prop}
+\begin{proof}
+  一方面，如果$x_n\to x,Tx_n\to y$，即$(x_n,Tx_n)\to(x,y)$，则由于$T$是闭算子，故$(x,y)\in G(T)$。由$G(T)$的定义知$x\in\mathcal{D}(T)$且$Tx=y$。
+
+ 另一方面，对于$G(T)$中任何收敛列$\{(x_n,y_n)\}$，设其极限为$(x,y)$，则$x_n\to x,Tx_n\to y$，由于$y_n=Tx_n$，从而由假设条件知$x\in\mathcal{D}(T)$且$Tx=y$，于是$(x,y)=(x,Tx)\in G(T)$。
+\end{proof}
+
+\begin{prop}
+  设$T$是从$X$到$Y$内的{\red 有界}线性算子,且$\mathcal{D}(T)$是闭集，则$T$是闭算子。
+\end{prop}
+\begin{proof}
+  $\forall\{x_n\}\subset\mathcal{D}(T)$，如果$\lim_{n\to\infty}x_n=x, \lim_{n\to\infty}Tx_n=y$，则由$\mathcal{D}(T)$闭得$x\in\mathcal{D}(T)$，由$T$连续得$\lim_{n\to\infty}Tx_n=Tx$，故由极限的唯一性，得$y=Tx$，即$(x,y)\in G(T)$。
+\end{proof}
+
+\section{补充}
+\subsection{准范数}
+\begin{defn}
+范数的定义：零元、三角不等式、绝对齐性。
+
+准范数的定义：将范数定义中的绝对齐性换成：
+\begin{enumerate}[a)]
+    \setlength{\itemindent}{2ex}
+    \item $||-x||=||x||$
+    \item $||a_nx||\to0(a_n\to0)$
+    \item $||\alpha x_n||\to0(||x_n||\to0)$
+\end{enumerate}
+\end{defn}
+
+\subsection{商空间}
+\begin{thm}
+设$E$为一赋范线性空间，$E_0$为其闭线性子空间，在商空间$E/E_0$定义
+\begin{equation*}
+||\widetilde{x}||\defeq\inf_{x\in\widetilde{x}}||x||
+\end{equation*}
+则其必为一范数，从而使$E/E_0$成为赋范空间。
+\end{thm}
+
+\begin{thm}
+设$E$为一赋范线性空间，$E_0$为其闭线性子空间，则$E$完备当且仅当$E_0$和$E/E_0$均完备。
+\end{thm}
+
+\subsection{Hilbert空间上的伴随算子}
+\begin{defn}
+  对于$T\in\mathcal{B}(H)$，若$(Tx,y)=(x,y')$，则$T^{\ast}\colon y\to y'$称为$T$的\emph{\red 伴随算子}\index{伴随算子}。
+\end{defn}
+\begin{prop}
+设$A,B$是Hilbert空间上的线性算子，则
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $(\alpha A+\beta B)^{\ast}=\overline{\alpha}A^{\ast}+\overline{\beta}B^{\ast}$
+    \item $A^{\ast\ast}=A$
+    \item $(AB)^{\ast}=B^{\ast}A^{\ast}$
+    \item $I^{\ast}=I$
+    \item 若$A^{-1}$存在，则$(A^{-1})^{\ast}=(A^{\ast})^{-1}$。
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+$T\in\mathcal{B}(H,H')$，则
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $\ker T=(\im T^{\ast})^{\bot}$
+    \item $\overline{\im T}=(\ker T^{\ast})^{\bot}$
+\end{enumerate}  
+\end{prop}
+
+\begin{defn}
+设$T\in\mathcal{B}(H)$，若$T=T^{\ast}$，则称$T$是\emph{\red 自伴的}\index{自伴算子}。
+\end{defn}
+
+\begin{prop}
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item 设$A,B$自伴，则$A+B$自伴；
+    \item 设$A$自伴，$\alpha\in\Real$，则$\alpha T$自伴；
+    \item 设$A,B$自伴，则$AB$自伴，且$AB=BA$；
+    \item 设$T_n$自伴，且$||T_n-T||\to0$，则$T$自伴。
+\end{enumerate} 
+\end{prop}
+
+\begin{prop}
+$T$是自伴算子当且仅当$\forall x\in H,(Tx,x)\in\Real$，且
+\begin{equation*}
+||T||=\sup_{||x||=1}|(Tx,x)|
+\end{equation*}
+\end{prop}
+
+\begin{defn}
+设$T\in\mathcal{B}(H)$，令
+\begin{equation*}
+A=\frac{T+T^{\ast}}{2}, B=\frac{T-T^{\ast}}{2}
+\end{equation*}
+则$A,B\in\mathcal{B}(H)$均为自伴算子，且$T=A+iB,T^{\ast}=A-iB$，分别称$A,B$为$T$的\emph{\red 实部}\index{实部}和\emph{\red 虚部}\index{虚部}。
+\end{defn}
+
+\begin{defn}
+设$T\in\mathcal{B}(H)$，若$TT^{\ast}=T^{\ast}T$，则称$T$为\emph{\red 正规算子}\index{正规算子}。
+\end{defn}
+
+\begin{prop}
+  $T\in\mathcal{B}(H)$为正规算子当且仅当$||Tx||=||T^{\ast}x||,\forall x\in H$。
+\end{prop}
+
+\begin{defn}
+设$T\in\mathcal{B}(H)$，若$T^{\ast}=T^{-1}$，则称$T$为\emph{\red 酉算子}\index{酉算子}。
+\end{defn}
+
+\subsection{正交投影}
+\begin{thm}[正交投影定理]\index{正交投影定理}
+  设$E$为Hilbert空间，$M$为$E$内的闭线性子空间，则$\forall x\in E$，$x$必可写成$x=y+z$的形式，其中$y\in M,z\in M^{\bot}$，并且
+  \begin{equation*}
+  ||x-y||=\inf_{y'\in M}||x-y'||
+  \end{equation*}
+  此分解称为{\red 正交分解}\index{正交分解}，$y$称为$x$在$M$上的{\red 正交投影}\index{正交投影}。
+\end{thm}
+\begin{prop}
+  设$M$为Hilbert空间$E$内的闭线性子空间，$P_M$为从$E$到$M$的正交投影，则$P_M$满足
+\begin{enumerate}[1)]
+    \setlength{\itemindent}{2ex}
+    \item $P_M$是$E$上的线性满算子；
+    \item $||P_Mx||\leqslant||x||,\forall x\in E$；
+    \item $||P_M||=1$或$0$；
+    \item $P_M^2=P_M$；
+    \item $\im P_M=M,\ker P_M=M^{\bot}$
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+  $P$是正交投影算子当且仅当$P$是自伴算子且$P^2=P$。
+\end{prop}
+
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Index}
+\printindex
+\end{document}
