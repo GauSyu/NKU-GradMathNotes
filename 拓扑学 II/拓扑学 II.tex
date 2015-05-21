@@ -1,0 +1,405 @@
+%%% LAYOUT %%%
+
+\documentclass[UTF-8,11pt,fancyhdr,hyperref,titlepage]{ctexart}
+
+\usepackage[text={170mm,250mm},centering]{geometry}   %调整页面布局
+
+\hypersetup{
+             pdftitle={拓扑学（I I）复习题},
+             pdfauthor={Gau Syu},
+             pdfsubject={algebraic topology},
+             pdfproducer={XeLaTeX},
+    colorlinks=true,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black.
+    bookmarksopenlevel=2
+}
+
+%%%%%%%设置章节标题格式%%%%%%%%
+\CTEXsetup[aftername={\\},titleformat={\Huge\kaishu}]{part}
+
+%%%%%%%%%Color%%%%%%%%%%%
+\usepackage{color}
+\newcommand{\red}{\color{red}}
+%%%%% Theorems and references %%%%%
+
+\usepackage{amsmath,amsthm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{question}{1.5ex plus 1ex minus .2ex}{1.5ex plus 1ex minus .2ex}{\large\itshape}{}{\songti\bfseries}{}{1em}{}
+\theoremstyle{question}
+\newtheorem{timu}{题目}
+\newtheorem{qst}{问题}[section]
+\newtheorem{cog}[qst]{猜想}
+\theoremstyle{theorem}
+\newtheorem{thm}{定理}[section]
+\newtheorem{cor}[thm]{推论}
+\newtheorem{con}[thm]{结论}
+\newtheorem{lem}[thm]{引理}
+\newtheorem{prop}[thm]{命题}
+\newtheorem{axiom}{公理}
+\newtheorem{xiti}{习题}
+\newtheorem{exa}[thm]{例}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{定义}
+\newtheorem{num}{}
+\theoremstyle{remark}
+\newtheorem*{rem}{注}
+\newtheorem*{recall}{回顾}
+\newtheorem*{note}{约定}
+\numberwithin{equation}{subsection}
+\renewcommand{\proofname}{\bf  证明}
+
+%%%%% Table of Contents; Index %%%%%
+\usepackage[titles]{tocloft}
+% \setlength{\cftsecnumwidth}{15ex}
+
+\usepackage{makeidx}
+\makeindex
+%\newcommand{\emindexing}[1]{{\em #1}\index{#1}}
+%\newcommand{\indexing}[1]{#1\index{#1}}
+
+\newcommand{\Chapter}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+\newcommand{\Section}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+\newcommand{\SubSection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
+
+%+++++++++++公式编号++++++++++++
+\renewcommand{\theequation}{\arabic{equation}}
+
+
+%%% MATRICES %%%
+
+%\usepackage{multirow}
+%\usepackage{rotating}
+%\usepackage{arydshln} % for block matrices
+
+\usepackage{enumerate}  %高级列表
+%%% GRAPHICS %%%
+
+\usepackage{tikz}
+%\usetikzlibrary{arrows,decorations.pathmorphing,decorations.pathreplacing,decorations.markings,shapes.geometric,calc,positioning,chains,matrix,scopes}
+
+%\tikzset{%
+%singly/.style={postaction={decorate},decoration={markings,mark=at position .6 with {\arrow{>}}}},%
+%doubly/.style={double, double distance=1.5pt,postaction={decorate},decoration={markings,mark=at position .6 with %{\arrow{>}}}},%
+%}
+\usepackage[all]{xy}                                    %交换图表。
+\usepackage{epic}															%增强绘图。
+\usepackage{graphicx}														%图像增强
+
+%%% SYMBOLS %%%
+
+\usepackage{amssymb,amsfonts,bbm,mathrsfs}%,stmaryrd}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+%%%%%%%%%%%%%%%%%%%
+\usepackage{chapterbib}
+%使用chapterbib 宏包可以让你在一个文档里产生多个参考文献。不过并不像它的名字所表示的那样，这些参考文献并不是和章或者节联系在一起，而是和\include 命令包含的子文件联系在一起。也就是说，每一个通过\include 命令包含的子文件可以拥有一个单独的参考文献，
+
+\usepackage{cases}
+%我们在输入分段函数公式的时候，时常会用到cases环境，前文中我们已经例述见（LaTeX技巧心得202以及LaTex技巧心得188），但是我们如果需要在编号上进行细节上的区分，我们就要用到cases宏包来实现了，注意：当我们在导言区加入\usepackage{cases}时一定要在\usepackage{amsmath}之后，否则运行不会通过，具体原因尚不明确，可能是宏包冲突。
+
+
+%%%%% Letters 字母 %%%%%
+
+\def\Aa{{\cal A}}
+\def\Bb{{\cal B}}
+\def\Cc{{\cal C}}
+\def\Dd{{\cal D}}
+\def\Ee{{\cal E}}
+\def\Ff{{\cal F}}
+\def\Gg{{\cal G}}
+\def\Hh{{\cal H}}
+\def\Ii{{\cal I}}
+\def\Jj{{\cal J}}
+\def\Kk{{\cal K}}
+\def\Ll{{\cal L}}
+\def\Mm{{\cal M}}
+\def\Nn{{\cal N}}
+\def\Oo{{\cal O}}
+\def\Pp{{\cal P}}
+\def\Qq{{\cal Q}}
+\def\Rr{{\cal R}}
+\def\Ss{{\cal S}}
+\def\Tt{{\cal T}}
+\def\Uu{{\cal U}}
+\def\Vv{{\cal V}}
+\def\Ww{{\cal W}}
+\def\Xx{{\cal X}}
+\def\Yy{{\cal Y}}
+\def\Zz{{\cal Z}}
+
+\def\AA{{\mathbb A}}
+\def\BB{{\mathbb B}}
+\def\CC{{\mathbb C}}
+\def\DD{{\mathbb D}}
+\def\EE{{\mathbb E}}
+\def\FF{{\mathbb F}}
+\def\GG{{\mathbb G}}
+\def\HH{{\mathbb H}}
+\def\II{{\mathbb I}}
+\def\JJ{{\mathbb J}}
+\def\KK{{\mathbb K}}
+\def\LL{{\mathbb L}}
+\def\MM{{\mathbb M}}
+\def\NN{{\mathbb N}}
+\def\OO{{\mathbb O}}
+\def\PP{{\mathbb P}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\SS{{\mathbb S}}
+\def\TT{{\mathbb T}}
+\def\UU{{\mathbb U}}
+\def\VV{{\mathbb V}}
+\def\WW{{\mathbb W}}
+\def\XX{{\mathbb X}}
+\def\YY{{\mathbb Y}}
+\def\ZZ{{\mathbb Z}}
+
+\def\Aaa{\mathscr{A}}
+\def\Bbb{\mathscr{B}}
+\def\Ccc{\mathscr{C}}
+\def\Ddd{\mathscr{D}}
+\def\Eee{\mathscr{E}}
+\def\Fff{\mathscr{F}}
+\def\Ggg{\mathscr{G}}
+\def\Hhh{\mathscr{H}}
+\def\Iii{\mathscr{I}}
+\def\Jjj{\mathscr{J}}
+\def\Kkk{\mathscr{K}}
+\def\Lll{\mathscr{L}}
+\def\Mmm{\mathscr{M}}
+\def\Nnn{\mathscr{N}}
+\def\Ooo{\mathscr{O}}
+\def\Ppp{\mathscr{P}}
+\def\Qqq{\mathscr{Q}}
+\def\Rrr{\mathscr{R}}
+\def\Sss{\mathscr{S}}
+\def\Ttt{\mathscr{T}}
+\def\Uuu{\mathscr{U}}
+\def\Vvv{\mathscr{V}}
+\def\Www{\mathscr{W}}
+\def\Xxx{\mathscr{X}}
+\def\Yyy{\mathscr{Y}}
+\def\Zzz{\mathscr{Z}}
+
+\def\aa{{\frak a}}
+\def\bb{{\frak b}}
+\def\cc{{\frak c}}
+%\def\dd{{\frak d}}
+\def\ee{{\frak e}}
+\def\ff{{\frak f}}
+\def\gg{{\frak g}}  % Knuth uses $\gg$ for ``>>''.
+\def\hh{{\frak h}}
+\def\ii{{\frak i}}
+\def\jj{{\frak j}}
+\def\kk{{\frak k}}
+\def\ll{{\frak l}}  % Knuth uses $\ll$ for ``<<''.
+\def\mm{{\frak m}}
+\def\nn{{\frak n}}
+\def\oo{{\frak o}}
+\def\pp{{\frak p}}
+\def\qq{{\frak q}}
+\def\rr{{\frak r}}
+\def\ss{{\frak s}}
+\def\tt{{\frak t}}
+\def\uu{{\frak u}}
+\def\vv{{\frak v}}
+\def\ww{{\frak w}}
+\def\xx{{\frak x}}
+\def\yy{{\frak y}}
+\def\zz{{\frak z}}
+
+\def\aaa{{a}}
+\def\bbb{{b}}
+\def\ccc{{c}}
+\def\ddd{{d}}
+
+
+\def\RP{\mathbb{R}\mathbf{P}}
+\def\CP{\mathbb{C}\mathbf{P}}
+\def\HP{\mathbb{H}\mathbf{P}}
+\def\CaP{\mathrm{Ca}\mathbf{P}}
+
+%%%%% Math characters 数学符号 %%%%%
+
+\def\<{\langle}
+\def\>{\rangle}
+\def\anti{\mathpzc{S}}
+\def\ctimes{\textrm{\c{$\otimes$}}}
+\def\sminus{\smallsetminus}
+\def\Wedge{\mbox{$\bigwedge$}}
+\def\lrtimes{\Join}
+
+\def\Hodge{\widetilde{\Delta}}
+
+%%%%% Arrows 箭头 %%%%%
+\def\acts{\curvearrowright}
+\def\epi{\twoheadrightarrow}
+\def\from{\leftarrow}
+\def\isom{\overset{\sim}{\to}}
+\def\longto{\longrightarrow}
+\def\mono{\hookrightarrow}
+\def\onto{\twoheadrightarrow}
+\def\then{\Rightarrow}
+\def\To{\longto}
+\def\Ot{\longleftarrow}
+\def\tofrom{\leftrightarrow}
+\def\tto{\rightrightarrows}
+\def\XTo{\xrightarrow}
+\newcommand{\markar}[1]{\stackrel{{#1}}{\longrightarrow}}% 带标号箭头（定长，与\xrightarrow不同）
+\newcommand{\markarl}[1]{\stackrel{{#1}}{\longleftarrow}}% 带标号箭头（定长，与\xrightarrow不同）
+
+%%%%% Combinations 组合 %%%%%
+\def\defined{\overset{\textrm{\upshape def}}{=}}
+\def\dzero{\left. \frac{d}{dt} \right|_{t=0}}
+\def\pt{\{{\rm pt}\}}
+\def\dt{\frac{\operatorname{d}}{\operatorname{d}t}}
+
+\usepackage{xifthen}% provides \isempty test
+\newcommand{\termin}[2][]{%
+  \ifthenelse{\isempty{#1}}%
+    {\emph{\red {#2}}\index{#2}}% if #1 is empty
+    {\emph{\red {#1}}\index{#2}}% if #1 is not empty
+}
+
+\newcommand{\cat}[1]{\textsc{#1}}
+%\newcommand{\interior}[1]{\overset{\circ}{#1}}
+\newcommand{\open}[1][\subseteq]{\underset{\textrm{open}}{#1}}
+%\newcommand{\widegrave}[1]{#1^{\grave{\left.\right.}}}
+\newcommand{\Xf}[1]{\mathfrak{X}(#1)}
+\newcommand{\pfrac}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\px}[1]{\pfrac{}{x^{#1}}}
+\newcommand{\local}[2]{\left.{#1}\right|_{#2}}%Local #1 at #2
+\newcommand{\localt}[1]{\local{#1}{t=0}}%Local #1 at  t=0
+\newcommand{\localp}[1]{\local{#1}{p}}%Local #1 at  p
+
+%%%%%%Functions%%%%%%%
+
+\newcommand{\defeq}{\stackrel{{\mathrm{def}}}{=}}
+\newcommand{\mapsim}[1]{\stackrel{{\mathrm{#1}}}{\sim}}
+
+\newcommand{\mapdes}[5]
+  {
+    \begin{align*}
+      #1\colon\  #2 & \longrightarrow  #3 \\
+            #4 & \longmapsto  #5
+    \end{align*}
+    %多于两个对齐点，align会出问题。换用alignat。
+  }
+
+
+\newcommand{\rH}{\widetilde{H}}
+%%%%% Words %%%%%
+
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Bil}{Bil}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\curl}{curl}%旋度
+\DeclareMathOperator{\dd}{d}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Der}{Der}%导子
+\DeclareMathOperator{\Div}{div}%散度
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Forget}{Forget}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\g}{g}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\grad}{grad}%梯度
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\h}{h}
+\DeclareMathOperator{\half}{\frac{1}{2}}
+\DeclareMathOperator{\Hess}{Hess}%Hessian
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\prim}{prim}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Span}{span} % Annoyingly, \span is already a command in TeX, and redefining it leads to other problems.
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Vect}{Vect}
+
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\GO}{O}
+\DeclareMathOperator{\SP}{Sp}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GU}{U}
+\DeclareMathOperator{\Pt}{Pt}
+
+
+\def\gl{\gg\ll}
+\def\sl{\ss\ll}
+\def\so{\ss\oo}
+\def\sp{\ss\pp}
+\def\su{\ss\uu}
+
+\def\st{\textrm{ s.t. }}
+\def\op{{\textrm{\upshape op}}}
+
+
+\def\Real{\mathbb{R}}
+%\def\TikZ{Ti{\em k}Z}
+
+%%% MISCELLANEOUS %%%
+%\usepackage{ifthen}
+
+% END PREAMBLE, and BEGIN CONTENT %
+
+%\renewcommand{\thepage}{\roman{page}}
+\renewcommand{\labelitemii}{\textbullet}
+
+\newcommand{\RC}{\mathcal{R}}
+%------------------标题作者-----------------
+\title{拓扑学（I I）复习题}
+\author{Made By \emph{\textbf{Gau Syu}}}
+\date{最近更新：\today}
+%\setcounter{secnumdepth}{1}
+%\setcounter{tocdepth}{1}
+\makeindex
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\Section{Preface}
+{\kaishu 这是2013年春季学期南开大学数学科学学院研究生课程“\textbf{拓扑学（I I）}”的期末复习材料及复习题解答，基于本人和一些同学的笔记、资料和解答整理而成，如有疏漏，还望海涵。
+
+该课程由\textbf{王向军}老师讲授。}
+
+\bigskip
+\bigskip
+\bigskip
+
+
+\tableofcontents
+\newpage
+\include{part1}
+\include{part2}
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{part}{索引}
+\printindex
+\end{document}
