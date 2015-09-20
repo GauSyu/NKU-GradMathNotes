@@ -2,7 +2,6 @@
 This is a place to put notes for graduate level math courses in Nankai University. If anyone wants to update or correct them, please be free. One can also contact me via either of the followings:
 
 email: GauSyu@gmail.com
-
 email: xinghuan-stear@163.com
 
 # 南开大学研究生数学课程笔记
